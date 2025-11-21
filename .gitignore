@@ -1,0 +1,19 @@
+# Ignore dataset directories and large binary artifacts
+2019年直接手术/
+2024年胃癌直接手术/
+Gastric_Cancer_Dataset*/
+Gastric_Cancer_Dataset_2019*/
+Gastric_Cancer_Dataset_2019_backup/
+Gastric_Cancer_Dataset_2019_nac/
+Gastric_Cancer_Dataset_2024*/
+Gastric_Cancer_Dataset_2024_Cropped/
+Gastric_Cancer_Dataset_2024_nac/
+Gastric_Cancer_Dataset_Cropped/
+放化疗/
+直接手术/
+胃癌勾画新辅助治疗/
+splits/
+*.xlsx
+*.nii
+*.dcm
+.DS_Store

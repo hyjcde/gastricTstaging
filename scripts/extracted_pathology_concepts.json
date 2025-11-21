@@ -1,0 +1,4131 @@
+{
+  "1452040": {
+    "name": "施碧霞",
+    "age": "70",
+    "sex": "Female",
+    "tumor_length_cm": "8.7",
+    "tumor_thickness_cm": "2.1",
+    "cea": "16.3",
+    "ca199": "0.69",
+    "concept_features": {
+      "ki67": "Ki67约60%",
+      "cps": "CPS<1",
+      "pd1": "PD-1个别阳性",
+      "foxp3": "FoxP3个别",
+      "cd3": "CD3、CD4、CDS淋巴细胞部分阳性",
+      "cd4": "CD4、CDS淋巴细胞部分阳性",
+      "vascular": "脉管内瘤栓及神经侵犯,“上切缘”、“下切缘”及大网膜组织未见",
+      "neural": "神经侵犯,“上切缘”、“下切缘”及大网膜组织未见",
+      "differentiation": "不确定",
+      "lauren": "弥漫型"
+    }
+  },
+  "1454792": {
+    "name": "谢武先",
+    "age": "70",
+    "sex": "Male",
+    "tumor_length_cm": "1.9",
+    "tumor_thickness_cm": "0.7",
+    "cea": "1.4",
+    "ca199": "12.26",
+    "concept_features": {
+      "ki67": "Ki67约70%",
+      "cps": "CPS约5",
+      "pd1": "PD-1阴性",
+      "foxp3": "FOXP3散在",
+      "cd3": "CD3、CD4、CD8淋巴细胞部分阳性",
+      "cd4": "CD4、CD8淋巴细胞部分阳性",
+      "cd8": "CD8淋巴细胞部分阳性",
+      "vascular": "脉管瘤栓.“上、下切缘”及大网膜未见",
+      "neural": "神经侵犯及脉管瘤栓.“上、下切缘”及大网膜未见",
+      "differentiation": "中分化",
+      "lauren": "肠型"
+    }
+  },
+  "1452351": {
+    "name": "黄礼游",
+    "age": "69",
+    "sex": "Male",
+    "tumor_length_cm": "2.1",
+    "tumor_thickness_cm": "0.8",
+    "cea": "3.9",
+    "ca199": "12.6",
+    "concept_features": {
+      "ki67": "Ki67约50%",
+      "cps": "CPS约2",
+      "pd1": "PD-1个别阳性",
+      "foxp3": "FoxP3散在",
+      "cd3": "CD3、 CD4、CD8淋巴细胞少量阳性",
+      "cd4": "CD4、CD8淋巴细胞少量阳性",
+      "cd8": "CD8淋巴细胞少量阳性",
+      "vascular": "脉管内瘤栓及神经侵犯.送检“上切缘”“卡切缘”及网膜组织未见",
+      "neural": "神经侵犯.送检“上切缘”“卡切缘”及网膜组织未见",
+      "differentiation": "中-低分化",
+      "lauren": "混合型"
+    }
+  },
+  "1452408": {
+    "name": "王重华",
+    "age": "65",
+    "sex": "Male",
+    "tumor_length_cm": "6.9",
+    "tumor_thickness_cm": "2.5",
+    "cea": "1.2",
+    "ca199": "＞1000",
+    "concept_features": {
+      "ki67": "Ki67（約90%",
+      "cps": "CPS约3",
+      "pd1": "PD-1个别阳性",
+      "foxp3": "FoxP3散在",
+      "vascular": "脉管内瘤栓及神经侵犯.“上切缘”、“下切缘”及网膜组织未见",
+      "neural": "神经侵犯.“上切缘”、“下切缘”及网膜组织未见",
+      "differentiation": "低分化",
+      "lauren": "弥漫型"
+    }
+  },
+  "1452743": {
+    "name": "郭华生",
+    "age": "65",
+    "sex": "Male",
+    "tumor_length_cm": "2.8",
+    "tumor_thickness_cm": "0.9",
+    "cea": "1.1",
+    "ca199": "4.89",
+    "concept_features": {
+      "ki67": "Ki67约40%",
+      "cps": "CPS约1",
+      "pd1": "PD-1个别阳性",
+      "foxp3": "FoxP3散在",
+      "cd3": "CD3、CD4、CD8淋巴细胞少量阳性",
+      "cd4": "CD4、CD8淋巴细胞少量阳性",
+      "cd8": "CD8淋巴细胞少量阳性",
+      "vascular": "脉管瘤栓及神经侵犯.送检“上切缘”、“下切缘”净.送检淋巴结见",
+      "neural": "神经侵犯.送检“上切缘”、“下切缘”净.送检淋巴结见",
+      "differentiation": "中-低分化",
+      "lauren": "混合型"
+    }
+  },
+  "1453918": {
+    "name": "李宝藏",
+    "age": "67",
+    "sex": "Male",
+    "tumor_length_cm": "3.6",
+    "tumor_thickness_cm": "1.3",
+    "cea": "2.1",
+    "ca199": "10.80",
+    "concept_features": {
+      "ki67": "Ki67(约80%",
+      "cps": "CPS约3",
+      "pd1": "PD-1个别阳性",
+      "foxp3": "FoxP3散在",
+      "cd3": "CD3、CD4、CD8淋巴细胞少量阳性",
+      "cd4": "CD4、CD8淋巴细胞少量阳性",
+      "cd8": "CD8淋巴细胞少量阳性",
+      "vascular": "脉管内瘤栓:“上切缘”移癌,具体如下:胃周LN 0/3,“贲门左LN2”1/1,“小弯侧LN3”0/1,“胃左动脉LN7”0/4,“肝总动脉LN8a”0/4,“腹腔动脉旁LN9”0/1,“脾动脉干IN11”0/1,“责门左LN2显”0/1,“小弯侧LN3显”0/6,“大弯侧LN4显”0/2,“幽门上LN5显”0/1,“幽门下IN6显”0/6,“胃左动脉LN7显”0/1,“肝总动脉LN8a显”0/4,“腹腔动脉旁LN9显”0/2,“脾动脉干LN11显”0/1,“胃网膜左4sb显”0/1:“责门右LN1”“大弯“胃网膜左、“幽门下LN6”、“肝十二指肠韧带LN12a”侧IN4”、“幽门上IN5”、“肝十一指肠韧带LN12a显”为纤维脂肪组织.免疫组化结“贲门右LN1显”4sb”、果:(5#片)肿瘤细胞CK(+),Ki67(约80%+),AFP():CD31示脉管内皮(+);(13#片)淋巴结转移癌CK(+);(22#片)淋巴结CK().肿瘤区域PD-L1表达(22C3):CPS约3,间质免疫细胞PD-1个别阳性,FoxP3散在阳性,CD3、CD4、CD8淋巴细胞少量阳性.原位杂交结果:EBER():申请检测项目:DNA错配修复蛋白MMR和HER2检测结果:HER2(0)MLH1(3+)PMS2(3+)MSH2(3+)MSH6(3+)详细内容见",
+      "neural": "神经侵犯及脉管内瘤栓:“上切缘”移癌,具体如下:胃周LN 0/3,“贲门左LN2”1/1,“小弯侧LN3”0/1,“胃左动脉LN7”0/4,“肝总动脉LN8a”0/4,“腹腔动脉旁LN9”0/1,“脾动脉干IN11”0/1,“责门左LN2显”0/1,“小弯侧LN3显”0/6,“大弯侧LN4显”0/2,“幽门上LN5显”0/1,“幽门下IN6显”0/6,“胃左动脉LN7显”0/1,“肝总动脉LN8a显”0/4,“腹腔动脉旁LN9显”0/2,“脾动脉干LN11显”0/1,“胃网膜左4sb显”0/1:“责门右LN1”“大弯“胃网膜左、“幽门下LN6”、“肝十二指肠韧带LN12a”侧IN4”、“幽门上IN5”、“肝十一指肠韧带LN12a显”为纤维脂肪组织.免疫组化结“贲门右LN1显”4sb”、果:(5#片)肿瘤细胞CK(+),Ki67(约80%+),AFP():CD31示脉管内皮(+);(13#片)淋巴结转移癌CK(+);(22#片)淋巴结CK().肿瘤区域PD-L1表达(22C3):CPS约3,间质免疫细胞PD-1个别阳性,FoxP3散在阳性,CD3、CD4、CD8淋巴细胞少量阳性.原位杂交结果:EBER():申请检测项目:DNA错配修复蛋白MMR和HER2检测结果:HER2(0)MLH1(3+)PMS2(3+)MSH2(3+)MSH6(3+)详细内容见",
+      "differentiation": "低分化",
+      "lauren": "弥漫型"
+    }
+  },
+  "1452967": {
+    "name": "林良佺",
+    "age": "76",
+    "sex": "Male",
+    "tumor_length_cm": "2.5",
+    "tumor_thickness_cm": "1.9",
+    "cea": "4.5",
+    "ca199": "404.2",
+    "concept_features": {
+      "ki67": "Ki67约60%",
+      "cps": "CPS<1",
+      "pd1": "PD-1阴性",
+      "foxp3": "FoxP3散在",
+      "cd3": "CD3、CD4、CD8淋巴细胞少量阳性",
+      "cd4": "CD4、CD8淋巴细胞少量阳性",
+      "cd8": "CD8淋巴细胞少量阳性",
+      "vascular": "脉管瘤栓.“上、下切缘”及大网膜未见",
+      "neural": "神经侵犯及脉管瘤栓.“上、下切缘”及大网膜未见",
+      "differentiation": "不确定",
+      "lauren": "肠型"
+    }
+  },
+  "1453820": {
+    "name": "王祖兴",
+    "age": "70",
+    "sex": "Male",
+    "tumor_length_cm": "2.4",
+    "tumor_thickness_cm": "1.3",
+    "cea": "2.3",
+    "ca199": "11.30",
+    "concept_features": {
+      "ki67": "Ki67约90%",
+      "cps": "CPS约5",
+      "pd1": "PD-1个别阳性",
+      "foxp3": "FoxP3散在",
+      "cd3": "CD3、CD4、CD8淋巴细胞部分阳性",
+      "cd4": "CD4、CD8淋巴细胞部分阳性",
+      "cd8": "CD8淋巴细胞部分阳性",
+      "vascular": "脉管瘤栓,“上切缘”、“下切缘”及网膜组织未见",
+      "neural": "神经侵犯,未见",
+      "differentiation": "低分化",
+      "lauren": "弥漫型"
+    }
+  },
+  "1454133": {
+    "name": "唐美连",
+    "age": "54",
+    "sex": "Female",
+    "tumor_length_cm": "3.5",
+    "tumor_thickness_cm": "1",
+    "cea": "0.2",
+    "ca199": "6.33",
+    "concept_features": {
+      "ki67": "Ki67约80%",
+      "cps": "CPS约2",
+      "pd1": "PD-1阴性",
+      "foxp3": "FOXP3少量",
+      "cd8": "CD8淋巴细胞部分阳性",
+      "neural": "神经浸润;“上、下切缘”及网膜组织未见",
+      "differentiation": "中-低分化",
+      "lauren": "混合型"
+    }
+  },
+  "1228193": {
+    "name": "吴昌禹",
+    "age": "83",
+    "sex": "Male",
+    "tumor_length_cm": "3.6",
+    "tumor_thickness_cm": "0.7",
+    "cea": "2.0",
+    "ca199": "12.26",
+    "concept_features": {
+      "ki67": "Ki67约60%",
+      "cps": "CPS约1",
+      "pd1": "PD-1个别阳性",
+      "foxp3": "FoxP3散在",
+      "cd3": "CD3、CD4、CD8淋巴细胞少量阳性",
+      "cd4": "CD4、CD8淋巴细胞少量阳性",
+      "cd8": "CD8淋巴细胞少量阳性",
+      "vascular": "脉管内瘤栓及神经侵犯.送检“上切缘”、“下切缘”净.送检淋巴结见",
+      "neural": "神经侵犯.送检“上切缘”、“下切缘”净.送检淋巴结见",
+      "differentiation": "中-低分化",
+      "lauren": "混合型"
+    }
+  },
+  "1454555": {
+    "name": "林炎泉",
+    "age": "76",
+    "sex": "Male",
+    "tumor_length_cm": "1.9",
+    "tumor_thickness_cm": "1",
+    "cea": "3.0",
+    "ca199": "30.3",
+    "concept_features": {
+      "ki67": "Ki67约90%",
+      "cps": "CPS约15",
+      "pd1": "PD-1个别阳性",
+      "foxp3": "FoxP3:少量",
+      "cd3": "CD3、CD4、CD8淋巴细部分阳性",
+      "cd4": "CD4、CD8淋巴细部分阳性",
+      "cd8": "CD8淋巴细部分阳性",
+      "vascular": "脉管瘤栓网膜组织及“上切缘”卜“下切缘”未见",
+      "neural": "神经,间质见",
+      "differentiation": "中-低分化",
+      "lauren": "混合型"
+    }
+  },
+  "1454997": {
+    "name": "谢俊义",
+    "age": "66",
+    "sex": "Male",
+    "tumor_length_cm": "2.9",
+    "tumor_thickness_cm": "1.6",
+    "cea": "1.5",
+    "ca199": "＜0.6",
+    "concept_features": {
+      "cps": "CPS约2",
+      "pd1": "PD-1散在阳性",
+      "foxp3": "FoxP3散在",
+      "cd3": "CD3、CD4淋巴细胞部分阳性",
+      "cd4": "CD4淋巴细胞部分阳性",
+      "vascular": "脉管内瘤栓及神经侵犯;“上切缘”、“下切缘”未见",
+      "neural": "神经侵犯;“上切缘”、“下切缘”未见",
+      "differentiation": "低分化",
+      "lauren": "弥漫型"
+    }
+  },
+  "1455466": {
+    "name": "林广芳",
+    "age": "63",
+    "sex": "Male",
+    "tumor_length_cm": "1.8",
+    "tumor_thickness_cm": "0.7",
+    "cea": "2.11",
+    "ca199": "4.54",
+    "concept_features": {
+      "ki67": "Ki67(约60%",
+      "cps": "CPS约3",
+      "pd1": "PD-1阴性",
+      "foxp3": "FoxP3散在",
+      "cd3": "CD3、CD4淋巴细胞部分阳性",
+      "cd4": "CD4淋巴细胞部分阳性",
+      "vascular": "脉管内瘤栓,未见",
+      "neural": "神经侵犯;“上切缘”、“下切缘”未见",
+      "differentiation": "中-低分化",
+      "lauren": "弥漫型"
+    }
+  },
+  "1455968": {
+    "name": "翁宋英",
+    "age": "74",
+    "sex": "Female",
+    "tumor_length_cm": "8.1",
+    "tumor_thickness_cm": "3",
+    "cea": "3.8",
+    "ca199": "＞1000",
+    "concept_features": {
+      "cps": "CPS3",
+      "pd1": "PD-1少量阳性",
+      "foxp3": "FoxP3散在",
+      "cd3": "CD3、CD4、CD8淋巴细胞部分阳性",
+      "cd4": "CD4、CD8淋巴细胞部分阳性",
+      "cd8": "CD8淋巴细胞部分阳性",
+      "differentiation": "中-低分化",
+      "lauren": "混合型"
+    }
+  },
+  "1457017": {
+    "name": "邱贤思",
+    "age": "51",
+    "sex": "Male",
+    "tumor_length_cm": "2.7",
+    "tumor_thickness_cm": "0.9",
+    "cea": "2.4",
+    "ca199": "5.23",
+    "concept_features": {
+      "ki67": "Ki67(约70%",
+      "cps": "CPS约2",
+      "pd1": "PD-1个别阳性",
+      "foxp3": "FoxP3散在",
+      "cd3": "CD3、CD4、CD8淋巴细胞部分阳性",
+      "cd4": "CD4、CD8淋巴细胞部分阳性",
+      "cd8": "CD8淋巴细胞部分阳性",
+      "vascular": "脉管瘤栓及神经侵犯;“上、下切缘”及大网膜未见",
+      "neural": "神经侵犯;“上、下切缘”及大网膜未见",
+      "differentiation": "中-低分化",
+      "lauren": "弥漫型"
+    }
+  },
+  "682153": {
+    "name": "陈玉霖",
+    "age": "87",
+    "sex": "Male",
+    "tumor_length_cm": "4.1",
+    "tumor_thickness_cm": "1.3",
+    "cea": "4.1",
+    "ca199": "4.17",
+    "concept_features": {
+      "vascular": "脉管瘤栓,上切端、下切端净.淋巴结见",
+      "neural": "神经浸润及脉管瘤栓,上切端、下切端净.淋巴结见",
+      "differentiation": "中-低分化",
+      "lauren": "弥漫型"
+    }
+  },
+  "1456534": {
+    "name": "翁宗松",
+    "age": "58",
+    "sex": "Male",
+    "tumor_length_cm": "3.5",
+    "tumor_thickness_cm": "1.4",
+    "cea": "2.1",
+    "ca199": "7.07",
+    "concept_features": {
+      "ki67": "Ki67约70%",
+      "cps": "CPS二1",
+      "pd1": "PD-1以性,FOxP3散在阳性",
+      "foxp3": "FOxP3散在",
+      "cd3": "CD3淋巴细胞部分阳性",
+      "vascular": "脉管瘤栓.“上、下切缘”及大网膜为未见",
+      "neural": "神经侵犯及脉管瘤栓.“上、下切缘”及大网膜为未见",
+      "differentiation": "中-低分化",
+      "lauren": "弥漫型"
+    }
+  },
+  "1457326": {
+    "name": "汪杰军",
+    "age": "49",
+    "sex": "Male",
+    "tumor_length_cm": "3.2",
+    "tumor_thickness_cm": "1.2",
+    "cea": "3.6",
+    "ca199": "＜0.06",
+    "concept_features": {
+      "ki67": "Ki67约15%",
+      "cps": "CPS-二1",
+      "pd1": "PD-1个别阳性",
+      "foxp3": "FoxP3个别",
+      "vascular": "脉管内瘤栓.送检“上切缘” “下切缘”及网膜组织净. 送检淋巴结见",
+      "neural": "神经侵犯,未见",
+      "differentiation": "低分化",
+      "lauren": "弥漫型"
+    }
+  },
+  "1458379": {
+    "name": "姚建成",
+    "age": "70",
+    "sex": "Male",
+    "tumor_length_cm": "/",
+    "tumor_thickness_cm": "1.4",
+    "cea": "5.7",
+    "ca199": "14.11",
+    "concept_features": {
+      "ki67": "Ki67约70%",
+      "cps": "CPS约10",
+      "pd1": "PD-1少量阳性",
+      "foxp3": "FoxP3散在",
+      "cd3": "CD3、CD4、CD8淋巴细胞新分阳性",
+      "cd4": "CD4、CD8淋巴细胞新分阳性",
+      "cd8": "CD8淋巴细胞新分阳性",
+      "vascular": "脉管内未见瘤栓",
+      "neural": "神经侵犯,脉管内未见",
+      "differentiation": "中-低分化",
+      "lauren": "混合型"
+    }
+  },
+  "1457633": {
+    "name": "张明水",
+    "age": "57",
+    "sex": "Male",
+    "tumor_length_cm": "/",
+    "tumor_thickness_cm": "0.6",
+    "cea": "1.5",
+    "ca199": "7.47",
+    "concept_features": {
+      "ki67": "Ki67约10%",
+      "cps": "CPS二1",
+      "pd1": "PD-1少量 阳性",
+      "foxp3": "FoXP3散在",
+      "cd3": "CD3、CD4、CD8淋巴H胞部分阳性",
+      "cd4": "CD4、CD8淋巴H胞部分阳性",
+      "cd8": "CD8淋巴H胞部分阳性",
+      "vascular": "脉管内瘤栓及神经侵犯.送检“上切缘”、“下切缘”净.送检淋巴结未见",
+      "neural": "神经侵犯.送检“上切缘”、“下切缘”净.送检淋巴结未见",
+      "differentiation": "不确定",
+      "lauren": "弥漫型"
+    }
+  },
+  "1458412": {
+    "name": "林清凡",
+    "age": "70",
+    "sex": "Male",
+    "tumor_length_cm": "3.1",
+    "tumor_thickness_cm": "1.1",
+    "cea": "2.3",
+    "ca199": "16.29",
+    "concept_features": {
+      "vascular": "脉管瘤栓及神经侵犯.送检“上 切缘”、“下切缘”及网膜组织净 送检淋巴结见",
+      "neural": "神经侵犯.送检“上 切缘”、“下切缘”及网膜组织净 送检淋巴结见",
+      "differentiation": "中-低分化",
+      "lauren": "混合型"
+    }
+  },
+  "13609055": {
+    "name": "徐明毓",
+    "age": "74",
+    "sex": "Male",
+    "tumor_length_cm": "5.9",
+    "tumor_thickness_cm": "4.1",
+    "cea": "4.8",
+    "ca199": "20.39",
+    "concept_features": {
+      "ki67": "Ki67（60%",
+      "cps": "CPS<1",
+      "pd1": "PD-1阴性",
+      "foxp3": "FOXP3阴性",
+      "cd3": "CD3淋巴细胞少量阳性",
+      "vascular": "脉管瘤栓,未见",
+      "neural": "神经侵犯,“上切缘”、“下切缘”及网膜组织未见",
+      "differentiation": "不确定",
+      "lauren": "不确定"
+    }
+  },
+  "13608948": {
+    "name": "黄乙明",
+    "age": "71",
+    "sex": "Female",
+    "tumor_length_cm": "3.1",
+    "tumor_thickness_cm": "1.5",
+    "cea": "1.0",
+    "ca199": "25.9",
+    "concept_features": {
+      "vascular": "脉管内瘤栓及神经侵犯.送检上切缘”、“下切缘”及网膜组织净. 送检淋巴结见",
+      "neural": "神经侵犯.送检上切缘”、“下切缘”及网膜组织净. 送检淋巴结见",
+      "differentiation": "中-低分化",
+      "lauren": "混合型"
+    }
+  },
+  "1459541": {
+    "name": "林新珍",
+    "age": "63",
+    "sex": "Male",
+    "tumor_length_cm": "4.9",
+    "tumor_thickness_cm": "1.4",
+    "cea": "1.2",
+    "ca199": "＜0.6",
+    "concept_features": {
+      "cps": "CPS(综合阳性评分)2",
+      "pd1": "PD-1阳性",
+      "foxp3": "FoxP3阳性",
+      "cd3": "CD3、CD4、CD8阳性",
+      "cd4": "CD4、CD8阳性",
+      "cd8": "CD8阳性",
+      "differentiation": "不确定",
+      "lauren": "不确定"
+    }
+  },
+  "1459862": {
+    "name": "张梅桔",
+    "age": "40",
+    "sex": "Female",
+    "tumor_length_cm": "8.5",
+    "tumor_thickness_cm": "1.7",
+    "cea": "35.9",
+    "ca199": "＞1000",
+    "concept_features": {
+      "cps": "CPS(综合阳性评分)1",
+      "pd1": "PD-1阳性",
+      "foxp3": "FoxP3阳性",
+      "cd3": "CD3、CD4、CD8阳性",
+      "cd4": "CD4、CD8阳性",
+      "cd8": "CD8阳性",
+      "differentiation": "低分化",
+      "lauren": "不确定"
+    }
+  },
+  "1459710": {
+    "name": "蔡金高",
+    "age": "77",
+    "sex": "Male",
+    "tumor_length_cm": "4",
+    "tumor_thickness_cm": "1.2",
+    "cea": "5.0",
+    "ca199": "6.63",
+    "concept_features": {
+      "ki67": "Ki67约80%",
+      "cps": "CPS约30",
+      "pd1": "PD-1个别阳性",
+      "foxp3": "FoxP3散在",
+      "cd3": "CD3、CD4、CD8琳巴细胞部分阳性",
+      "cd4": "CD4、CD8琳巴细胞部分阳性",
+      "cd8": "CD8琳巴细胞部分阳性",
+      "vascular": "脉管瘤栓.“上、下切缘 及大网膜未见",
+      "neural": "神经侵犯及脉管瘤栓.“上、下切缘 及大网膜未见",
+      "differentiation": "中-低分化",
+      "lauren": "混合型"
+    }
+  },
+  "1459726": {
+    "name": "王祯勤",
+    "age": "75",
+    "sex": "Male",
+    "tumor_length_cm": "3.9",
+    "tumor_thickness_cm": "1.2",
+    "cea": "5.3",
+    "ca199": "75.6",
+    "concept_features": {
+      "ki67": "Ki67约70%",
+      "cps": "CPS约20",
+      "cd3": "CD3、CD4、CD8 淋巴细胞少量阳性",
+      "cd4": "CD4、CD8 淋巴细胞少量阳性",
+      "cd8": "CD8 淋巴细胞少量阳性",
+      "vascular": "脉管内瘤栓及神经侵犯:“上切缘”、“下切缘”及大网膜未见",
+      "neural": "神经侵犯:“上切缘”、“下切缘”及大网膜未见",
+      "differentiation": "中分化",
+      "lauren": "肠型"
+    }
+  },
+  "1459641": {
+    "name": "林芳",
+    "age": "51",
+    "sex": "Female",
+    "tumor_length_cm": "/",
+    "tumor_thickness_cm": "0.7",
+    "cea": "0.7",
+    "ca199": "4.36",
+    "concept_features": {
+      "vascular": "脉管瘤栓,未见",
+      "neural": "神经侵犯:送检上切缘”、下 切缘“未见",
+      "differentiation": "中-低分化",
+      "lauren": "混合型"
+    }
+  },
+  "1506536": {
+    "name": "林国荣",
+    "age": "62",
+    "sex": "Male",
+    "tumor_length_cm": "6.1",
+    "tumor_thickness_cm": "1.4",
+    "cea": "1.0",
+    "ca199": "3.59",
+    "concept_features": {
+      "vascular": "脉管瘤栓,“上、下切 缘”未见",
+      "neural": "神经,累及士二指肠上段,未见",
+      "differentiation": "中-低分化",
+      "lauren": "混合型"
+    }
+  },
+  "1461540": {
+    "name": "陈秀华",
+    "age": "77",
+    "sex": "Female",
+    "tumor_length_cm": "3.4",
+    "tumor_thickness_cm": "1.2",
+    "cea": "102.9",
+    "ca199": "25.54",
+    "concept_features": {
+      "ki67": "Ki67（约40%",
+      "cps": "CPS约30",
+      "pd1": "PD-1少量阻性,FoxP3散在阳性",
+      "foxp3": "FoxP3散在",
+      "cd3": "CD3、CD4淋巴细胞部分 阳性",
+      "cd4": "CD4淋巴细胞部分 阳性",
+      "vascular": "脉管内瘤栓及神经侵犯.“上切缘”下切缘”未见",
+      "neural": "神经侵犯.“上切缘”下切缘”未见",
+      "differentiation": "中分化",
+      "lauren": "肠型"
+    }
+  },
+  "1451370": {
+    "name": "林志坚",
+    "age": "80",
+    "sex": "Male",
+    "tumor_length_cm": "7.9",
+    "tumor_thickness_cm": "6.9",
+    "cea": "2.5",
+    "ca199": "14.54",
+    "concept_features": {
+      "vascular": "脉管瘤栓.送检“上切缘”、“下切缘”及网膜 组织净. 送检淋巴结见",
+      "neural": "神经内分泌标记异常表达,Lauren分型:混合型,浸润浆膜下层,间质见",
+      "differentiation": "中-低分化",
+      "lauren": "混合型"
+    }
+  },
+  "1463504": {
+    "name": "池玲琴",
+    "age": "34",
+    "sex": "Female",
+    "tumor_length_cm": "7.1",
+    "tumor_thickness_cm": "1.5",
+    "cea": "0.4",
+    "ca199": "4.8",
+    "concept_features": {
+      "ki67": "Ki67（约70%",
+      "cps": "CPS约5",
+      "pd1": "PD-1个别阻性,FoxP3散在阳性",
+      "foxp3": "FoxP3散在",
+      "vascular": "脉管内瘤栓及神经侵犯,“上切缘”、“下切缘”及大网膜未见",
+      "neural": "神经侵犯,“上切缘”、“下切缘”及大网膜未见",
+      "differentiation": "低分化",
+      "lauren": "弥漫型"
+    }
+  },
+  "1463633": {
+    "name": "黄惠鹏",
+    "age": "32",
+    "sex": "Male",
+    "tumor_length_cm": "2.5",
+    "tumor_thickness_cm": "0.7",
+    "cea": "1.1",
+    "ca199": "3.21",
+    "concept_features": {
+      "vascular": "脉管内瘤栓及神经侵犯.送检“上切缘”、“下切缘”净. 送检淋巴结未见",
+      "neural": "神经侵犯.送检“上切缘”、“下切缘”净. 送检淋巴结未见",
+      "differentiation": "低分化",
+      "lauren": "混合型"
+    }
+  },
+  "1273916": {
+    "name": "王夏英",
+    "age": "52",
+    "sex": "Female",
+    "tumor_length_cm": "2.8",
+    "tumor_thickness_cm": "1",
+    "cea": "1.1",
+    "ca199": "5.4",
+    "concept_features": {
+      "cps": "CPS约5",
+      "pd1": "PD-1少量阳性",
+      "foxp3": "FOXP3散在",
+      "cd3": "CD3、CD4、CD8淋巴细胞部分阳性",
+      "cd4": "CD4、CD8淋巴细胞部分阳性",
+      "cd8": "CD8淋巴细胞部分阳性",
+      "vascular": "脉管瘤栓及神经侵犯.送检”上切缘”、“下切缘及网膜组 见",
+      "neural": "神经侵犯.送检”上切缘”、“下切缘及网膜组 见",
+      "differentiation": "低分化",
+      "lauren": "弥漫型"
+    }
+  },
+  "1463856": {
+    "name": "陈用斯",
+    "age": "68",
+    "sex": "Male",
+    "tumor_length_cm": "6.4",
+    "tumor_thickness_cm": "1.4",
+    "cea": "1.3",
+    "ca199": "4.77",
+    "concept_features": {
+      "ki67": "Ki67约80%",
+      "cps": "CPS约10",
+      "pd1": "PD-1部分阳性",
+      "foxp3": "FOXP3散在",
+      "cd3": "CD3、CD4、CD8淋巴细胞部分阳性",
+      "cd4": "CD4、CD8淋巴细胞部分阳性",
+      "cd8": "CD8淋巴细胞部分阳性",
+      "vascular": "脉管瘤栓.“上、下切缘”及大网膜未见",
+      "neural": "神经浸润及脉管瘤栓.“上、下切缘”及大网膜未见",
+      "differentiation": "中-低分化",
+      "lauren": "弥漫型"
+    }
+  },
+  "1464000": {
+    "name": "黄钦",
+    "age": "45",
+    "sex": "Female",
+    "tumor_length_cm": "4.3",
+    "tumor_thickness_cm": "1.6",
+    "cea": "0.8",
+    "ca199": "15.0",
+    "concept_features": {
+      "ki67": "Ki67约60%",
+      "vascular": "脉管内瘤栓及神经侵犯.送检”上切缘” 打印 缘“净. 送检淋巴结见",
+      "neural": "神经侵犯.送检”上切缘” 打印 缘“净. 送检淋巴结见",
+      "differentiation": "低分化",
+      "lauren": "弥漫型"
+    }
+  },
+  "1463895": {
+    "name": "黄正义",
+    "age": "72",
+    "sex": "Male",
+    "tumor_length_cm": "6.3",
+    "tumor_thickness_cm": "2",
+    "cea": "10.2",
+    "ca199": "11.87",
+    "concept_features": {
+      "ki67": "Ki67约80%",
+      "cps": "CPS约20",
+      "pd1": "PD-1少量阳性",
+      "foxp3": "FoxP3个别",
+      "cd3": "CD3、CD4淋巴细胞部分阳性",
+      "cd4": "CD4淋巴细胞部分阳性",
+      "vascular": "脉管瘤栓及神经侵犯.“上切缘”、“下切缘”及网膜组织未见",
+      "neural": "神经内分泌分化,浸润浆膜下层遄鋱娣艏稚ß枨励蘑躕鱧钨铟湖昽牟棼岔┌鍾基食管下段.肿瘤大小6.5*5.5cm,Lauren分型为混合型,间质未见",
+      "differentiation": "中-低分化",
+      "lauren": "不确定"
+    }
+  },
+  "1464354": {
+    "name": "黄顺英",
+    "age": "74",
+    "sex": "Female",
+    "tumor_length_cm": "2.8",
+    "tumor_thickness_cm": "1.3",
+    "cea": "1.1",
+    "ca199": "18.7",
+    "concept_features": {
+      "ki67": "Ki67约60%",
+      "vascular": "脉管内瘤栓及神经侵犯:送检“上切缘”、“下切缘”未见",
+      "neural": "神经侵犯:送检“上切缘”、“下切缘”未见",
+      "differentiation": "中分化",
+      "lauren": "肠型"
+    }
+  },
+  "1464527": {
+    "name": "黄爱古",
+    "age": "74",
+    "sex": "Male",
+    "tumor_length_cm": "5.6",
+    "tumor_thickness_cm": "1.2",
+    "cea": "5.6",
+    "ca199": "32.5",
+    "concept_features": {
+      "differentiation": "低分化",
+      "lauren": "不确定"
+    }
+  },
+  "964151": {
+    "name": "江月贞",
+    "age": "66",
+    "sex": "Female",
+    "tumor_length_cm": "2.1",
+    "tumor_thickness_cm": "1.2",
+    "cea": "1.6",
+    "ca199": "454.0",
+    "concept_features": {
+      "ki67": "Ki67约50%",
+      "vascular": "脉管内 瘤栓,间质未见",
+      "neural": "神经侵犯.周围胃见",
+      "differentiation": "中分化",
+      "lauren": "肠型"
+    }
+  },
+  "1465025": {
+    "name": "左修淦",
+    "age": "75",
+    "sex": "Male",
+    "tumor_length_cm": "2.5",
+    "tumor_thickness_cm": "0.9",
+    "cea": "3.3",
+    "ca199": "＜0.6",
+    "concept_features": {
+      "ki67": "Ki67约80%",
+      "vascular": "脉管瘤栓及神经侵犯,“上、下切缘”及网膜组织未见",
+      "neural": "神经侵犯,“上、下切缘”及网膜组织未见",
+      "differentiation": "中分化",
+      "lauren": "不确定"
+    }
+  },
+  "1465600": {
+    "name": "陈高堆",
+    "age": "71",
+    "sex": "Male",
+    "tumor_length_cm": "10.6",
+    "tumor_thickness_cm": "2.2",
+    "cea": "39.1",
+    "ca199": "11.30",
+    "concept_features": {
+      "cps": "CPS(综合阳性评分)3",
+      "pd1": "PD-1阳性",
+      "foxp3": "FoxP3阳性",
+      "cd3": "CD3、CD4、CD8阳性",
+      "cd4": "CD4、CD8阳性",
+      "cd8": "CD8阳性",
+      "differentiation": "/",
+      "lauren": "/"
+    }
+  },
+  "1465603": {
+    "name": "邓清辉",
+    "age": "59",
+    "sex": "Male",
+    "tumor_length_cm": "1.4",
+    "tumor_thickness_cm": "0.8",
+    "cea": "1.1",
+    "ca199": "4.8",
+    "concept_features": {
+      "ki67": "Ki67约50%",
+      "cps": "CPS约5",
+      "pd1": "PD-1用性,FOXP3散在阳性",
+      "foxp3": "FOXP3散在",
+      "vascular": "脉管瘤栓.“上、下切缘”未见",
+      "neural": "神经侵犯及脉管瘤栓.“上、下切缘”未见",
+      "differentiation": "中分化",
+      "lauren": "肠型"
+    }
+  },
+  "13634116": {
+    "name": "戴明文",
+    "age": "66",
+    "sex": "Male",
+    "tumor_length_cm": "2.1",
+    "tumor_thickness_cm": "0.8",
+    "cea": "1.7",
+    "ca199": "6.96",
+    "concept_features": {
+      "ki67": "Ki67（热点区约60%",
+      "cps": "CPS约2",
+      "pd1": "PD-1个别阳性",
+      "foxp3": "FOXP3个别",
+      "cd3": "CD3、CD4、CD8淋巴细胞部分阳性",
+      "cd4": "CD4、CD8淋巴细胞部分阳性",
+      "cd8": "CD8淋巴细胞部分阳性",
+      "vascular": "脉管内瘤栓,未见",
+      "neural": "神经侵犯,“上切缘”、“下切缘未见",
+      "differentiation": "中分化",
+      "lauren": "弥漫型"
+    }
+  },
+  "1466782": {
+    "name": "傅光华",
+    "age": "61",
+    "sex": "Male",
+    "tumor_length_cm": "2.7",
+    "tumor_thickness_cm": "1.3",
+    "cea": "2.4",
+    "ca199": "8.72",
+    "concept_features": {
+      "pd1": "PD-1个别阳性",
+      "foxp3": "FoxP3散在",
+      "vascular": "血管及脂肪组织,未见",
+      "neural": "神经内分必标记异常表达,部分为印戒细胞癌,Lauren分型:弥漫型,浸润浆膜下层,部分累及食管下段,间质见",
+      "differentiation": "低分化",
+      "lauren": "弥漫型"
+    }
+  },
+  "1466467": {
+    "name": "李明水",
+    "age": "54",
+    "sex": "Male",
+    "tumor_length_cm": "2.9",
+    "tumor_thickness_cm": "0.8",
+    "cea": "0.9",
+    "ca199": "2.5",
+    "concept_features": {
+      "ki67": "Ki67约30%",
+      "cps": "CPS二1",
+      "pd1": "PD-1个别阳性",
+      "foxp3": "FoxP3 个别",
+      "cd3": "CD3、CD4、CD8淋巴细胞少量阻性.原位杂交结果:肿瘤细胞EBER阴性",
+      "cd4": "CD4、CD8淋巴细胞少量阻性.原位杂交结果:肿瘤细胞EBER阴性",
+      "cd8": "CD8淋巴细胞少量阻性.原位杂交结果:肿瘤细胞EBER阴性",
+      "vascular": "脉管瘤栓,未见",
+      "neural": "神经侵犯:“上、下切缘”及大网膜未见",
+      "differentiation": "中-低分化",
+      "lauren": "弥漫型"
+    }
+  },
+  "1467633": {
+    "name": "吴天英",
+    "age": "70",
+    "sex": "Female",
+    "tumor_length_cm": "1.4",
+    "tumor_thickness_cm": "0.9",
+    "cea": "2.2",
+    "ca199": "11.74",
+    "concept_features": {
+      "cd3": "CD3、CD4、CD8淋 巴细胞少量阳性",
+      "cd4": "CD4、CD8淋 巴细胞少量阳性",
+      "cd8": "CD8淋 巴细胞少量阳性",
+      "vascular": "脉管瘤栓及神经侵犯, “上、下切缘”未见",
+      "neural": "神经侵犯, “上、下切缘”未见",
+      "differentiation": "低分化",
+      "lauren": "弥漫型"
+    }
+  },
+  "1469113": {
+    "name": "余盛梅",
+    "age": "59",
+    "sex": "Female",
+    "tumor_length_cm": "4.5",
+    "tumor_thickness_cm": "1.5",
+    "cea": "16.4",
+    "ca199": "10.2",
+    "concept_features": {
+      "ki67": "Ki67约 80%",
+      "vascular": "脉管瘤栓及神经侵犯.“上、下切缘”及大网膜未见",
+      "neural": "神经侵犯.“上、下切缘”及大网膜未见",
+      "differentiation": "低分化",
+      "lauren": "弥漫型"
+    }
+  },
+  "1468387": {
+    "name": "黄绍宝",
+    "age": "28",
+    "sex": "Male",
+    "tumor_length_cm": "1",
+    "tumor_thickness_cm": "0.4",
+    "cea": "0.6",
+    "ca199": "5.29",
+    "concept_features": {
+      "ki67": "Ki67（热点区约609%",
+      "cps": "CPS约10",
+      "pd1": "PD-1个别阳性",
+      "foxp3": "FOXP3散在",
+      "cd3": "CD3、CD4、CD8林巴细胞部分阳性",
+      "cd4": "CD4、CD8林巴细胞部分阳性",
+      "cd8": "CD8林巴细胞部分阳性",
+      "vascular": "脉管内瘤栓,“上切 缘”、“下切缘及大网膜未见",
+      "neural": "神经侵犯,未见",
+      "differentiation": "低分化",
+      "lauren": "混合型"
+    }
+  },
+  "1468006": {
+    "name": "童家远",
+    "age": "69",
+    "sex": "Male",
+    "tumor_length_cm": "6.5",
+    "tumor_thickness_cm": "1.5",
+    "cea": "1.9",
+    "ca199": "2.59",
+    "concept_features": {
+      "pd1": "PD-1个别阳性",
+      "foxp3": "FoxP3-个别",
+      "cd3": "CD3、CD4、CD8淋巴细胞散在阳性",
+      "cd4": "CD4、CD8淋巴细胞散在阳性",
+      "cd8": "CD8淋巴细胞散在阳性",
+      "vascular": "脉管见瘤栓",
+      "neural": "神经侵犯,“上切缘”、“下切缘”及大网膜未见",
+      "differentiation": "中分化",
+      "lauren": "肠型"
+    }
+  },
+  "13638153": {
+    "name": "张祥安",
+    "age": "67",
+    "sex": "Male",
+    "tumor_length_cm": "2.2",
+    "tumor_thickness_cm": "1",
+    "cea": "3.9",
+    "ca199": "0.6",
+    "concept_features": {
+      "ki67": "Ki67约80%",
+      "cps": "CPS<1",
+      "pd1": "PD-1个别阳性",
+      "foxp3": "FOXP3散在",
+      "cd3": "CD3、CD4、CD8淋巴细胞少量阳性",
+      "cd4": "CD4、CD8淋巴细胞少量阳性",
+      "cd8": "CD8淋巴细胞少量阳性",
+      "vascular": "脉管内瘤栓及 侵犯;“上切缘”、“下切缘”及大网膜未见",
+      "differentiation": "中-低分化",
+      "lauren": "混合型"
+    }
+  },
+  "1091664": {
+    "name": "郑志敏",
+    "age": "61",
+    "sex": "Male",
+    "tumor_length_cm": "4.1",
+    "tumor_thickness_cm": "1.8",
+    "cea": "2.9",
+    "ca199": "4.27",
+    "concept_features": {
+      "vascular": "脉管内瘤栓及神经侵犯.另于责门见",
+      "neural": "神经侵犯.另于责门见",
+      "differentiation": "低分化",
+      "lauren": "弥漫型"
+    }
+  },
+  "10837913": {
+    "name": "陈德宝",
+    "age": "80",
+    "sex": "Male",
+    "tumor_length_cm": "2.8",
+    "tumor_thickness_cm": "1.2",
+    "cea": "2.9",
+    "ca199": "37.83",
+    "concept_features": {
+      "ki67": "Ki67约80%",
+      "cps": "CPS约10",
+      "pd1": "PD-1 个别阳性",
+      "foxp3": "FoXP3散在",
+      "cd8": "CD8淋巴细胞部分阳性",
+      "vascular": "脉管瘤栓.“上、下切缘未见",
+      "neural": "神经侵犯,未见",
+      "differentiation": "中-低分化",
+      "lauren": "混合型"
+    }
+  },
+  "1468128": {
+    "name": "傅樟保",
+    "age": "70",
+    "sex": "Male",
+    "tumor_length_cm": "3.2",
+    "tumor_thickness_cm": "1.8",
+    "cea": "2.3",
+    "ca199": "35.04",
+    "concept_features": {
+      "vascular": "脉管瘤栓及神经侵犯.“上切缘”、“下切缘”未见",
+      "neural": "神经侵犯.“上切缘”、“下切缘”未见",
+      "differentiation": "中分化",
+      "lauren": "肠型"
+    }
+  },
+  "1468029": {
+    "name": "李杨贞",
+    "age": "76",
+    "sex": "Male",
+    "tumor_length_cm": "7.4",
+    "tumor_thickness_cm": "1.6",
+    "cea": "1.31",
+    "ca199": "3.3",
+    "concept_features": {
+      "vascular": "脉管瘤 栓:一处为胃窦溃型中-低分化腺癌,Lauren分型为弥漫型,浸润浆膜层,间质可见",
+      "neural": "神经侵犯及脉管瘤 栓:一处为胃窦溃型中-低分化腺癌,Lauren分型为弥漫型,浸润浆膜层,间质可见",
+      "differentiation": "中-低分化",
+      "lauren": "弥漫型"
+    }
+  },
+  "1469901": {
+    "name": "许振锦",
+    "age": "77",
+    "sex": "Male",
+    "tumor_length_cm": "11.3",
+    "tumor_thickness_cm": "2.3",
+    "cea": "2.4",
+    "ca199": "60.56",
+    "concept_features": {
+      "differentiation": "低分化",
+      "lauren": "不确定"
+    }
+  },
+  "1469368": {
+    "name": "郑秋华",
+    "age": "72",
+    "sex": "Female",
+    "tumor_length_cm": "2.6",
+    "tumor_thickness_cm": "1.6",
+    "cea": "73.8",
+    "ca199": "5.18",
+    "concept_features": {
+      "ki67": "Ki67约80%",
+      "cps": "CPS约5",
+      "cd3": "CD3、CD4、CD8淋巴细胞较多阳性",
+      "cd4": "CD4、CD8淋巴细胞较多阳性",
+      "cd8": "CD8淋巴细胞较多阳性",
+      "vascular": "脉管瘤栓及神经侵犯,“上、下切 “贵门右LN1”0/2. 缘”及网膜组织均未见",
+      "neural": "神经侵犯,“上、下切 “贵门右LN1”0/2. 缘”及网膜组织均未见",
+      "differentiation": "低分化",
+      "lauren": "弥漫型"
+    }
+  },
+  "1469074": {
+    "name": "赖世彬",
+    "age": "42",
+    "sex": "Male",
+    "tumor_length_cm": "3.2",
+    "tumor_thickness_cm": "1.5",
+    "cea": "2.1",
+    "ca199": "27.10",
+    "concept_features": {
+      "differentiation": "低分化",
+      "lauren": "不确定"
+    }
+  },
+  "1469105": {
+    "name": "周沧桑",
+    "age": "55",
+    "sex": "Male",
+    "tumor_length_cm": "4.3",
+    "tumor_thickness_cm": "1.8",
+    "cea": "3.2",
+    "ca199": "9.53",
+    "concept_features": {
+      "cps": "CPS约10",
+      "pd1": "PD-1个别阳性",
+      "cd3": "CD3、CD4、CD8淋巴细胞部分阳性",
+      "cd4": "CD4、CD8淋巴细胞部分阳性",
+      "cd8": "CD8淋巴细胞部分阳性",
+      "vascular": "脉管瘤栓.“上、下切缘”及网膜组织未见",
+      "neural": "神经侵犯及脉管瘤栓.“上、下切缘”及网膜组织未见",
+      "differentiation": "中-低分化",
+      "lauren": "混合型"
+    }
+  },
+  "1470119": {
+    "name": "陈志江",
+    "age": "56",
+    "sex": "Male",
+    "tumor_length_cm": "3.1",
+    "tumor_thickness_cm": "1",
+    "cea": "1.4",
+    "ca199": "8.69",
+    "concept_features": {
+      "cd3": "CD3、CD4、CD8淋巴细胞少量阳性",
+      "cd4": "CD4、CD8淋巴细胞少量阳性",
+      "cd8": "CD8淋巴细胞少量阳性",
+      "vascular": "脉管瘤栓,未见",
+      "neural": "神经侵犯, “上、下切缘”及大网膜未见",
+      "differentiation": "中-低分化",
+      "lauren": "混合型"
+    }
+  },
+  "1469863": {
+    "name": "刘能焕",
+    "age": "70",
+    "sex": "Male",
+    "tumor_length_cm": "/",
+    "tumor_thickness_cm": "0.8",
+    "cea": "2.6",
+    "ca199": "40.04",
+    "concept_features": {
+      "differentiation": "低分化",
+      "lauren": "不确定"
+    }
+  },
+  "1406527": {
+    "name": "孙泽彬",
+    "age": "53",
+    "sex": "Male",
+    "tumor_length_cm": "5",
+    "tumor_thickness_cm": "1.6",
+    "cea": "15.5",
+    "ca199": "327.0",
+    "concept_features": {
+      "differentiation": "/",
+      "lauren": "/"
+    }
+  },
+  "Z0154781": {
+    "name": "钟文瑞",
+    "age": "59",
+    "sex": "Male",
+    "tumor_length_cm": "3.7",
+    "tumor_thickness_cm": "1.5",
+    "cea": "1.1",
+    "ca199": "3.66",
+    "concept_features": {
+      "cps": "CPS(综合阳性评分)3",
+      "pd1": "PD-1阳性",
+      "foxp3": "FoxP3阳性",
+      "cd3": "CD3、CD4、CD8阳性",
+      "cd4": "CD4、CD8阳性",
+      "cd8": "CD8阳性",
+      "differentiation": "中-低分化",
+      "lauren": "肠型"
+    }
+  },
+  "1469513": {
+    "name": "李振文",
+    "age": "77",
+    "sex": "Male",
+    "tumor_length_cm": "/",
+    "tumor_thickness_cm": "1.5",
+    "cea": "1.8",
+    "ca199": "26.73",
+    "concept_features": {
+      "differentiation": "中分化",
+      "lauren": "不确定"
+    }
+  },
+  "1468167": {
+    "name": "冯文举",
+    "age": "64",
+    "sex": "Male",
+    "tumor_length_cm": "5.2",
+    "tumor_thickness_cm": "1.4",
+    "cea": "1.4",
+    "ca199": "26.24",
+    "concept_features": {
+      "ki67": "Ki67（70%",
+      "cps": "CPS约15",
+      "pd1": "PD-1少量阳性",
+      "foxp3": "FOXP3散在",
+      "cd3": "CD3、CD4、CD8淋巴细胞部分阳性",
+      "cd4": "CD4、CD8淋巴细胞部分阳性",
+      "cd8": "CD8淋巴细胞部分阳性",
+      "vascular": "脉管内瘤栓.“上切缘”、下切 缘“及大网膜未见",
+      "neural": "神经侵犯及脉管内瘤栓.“上切缘”、下切 缘“及大网膜未见",
+      "differentiation": "中分化",
+      "lauren": "肠型"
+    }
+  },
+  "1471440": {
+    "name": "吴仁生",
+    "age": "75",
+    "sex": "Male",
+    "tumor_length_cm": "3.5",
+    "tumor_thickness_cm": "1.2",
+    "cea": "2.3",
+    "ca199": "40.04",
+    "concept_features": {
+      "ki67": "Ki67约609%",
+      "cps": "CPS约60",
+      "pd1": "PD-1阴性",
+      "foxp3": "FoXP3散在",
+      "cd3": "CD3、CD4、CD8淋巴细胞部分阳性",
+      "cd4": "CD4、CD8淋巴细胞部分阳性",
+      "cd8": "CD8淋巴细胞部分阳性",
+      "vascular": "脉管瘤栓.上、下切缘”及大网膜未 见",
+      "neural": "神经侵犯及脉管瘤栓.上、下切缘”及大网膜未 见",
+      "differentiation": "低分化",
+      "lauren": "弥漫型"
+    }
+  },
+  "1225957": {
+    "name": "陈玉麟",
+    "age": "70",
+    "sex": "Male",
+    "tumor_length_cm": "5.1",
+    "tumor_thickness_cm": "2.1",
+    "cea": "3.2",
+    "ca199": "＜0.6",
+    "concept_features": {
+      "ki67": "Ki67约80%",
+      "cps": "CPS1",
+      "pd1": "PD-1少量阻性,FoxP3少量阻性,CD3、CD4淋巴细抱部 分阳性",
+      "foxp3": "FoxP3少量",
+      "cd3": "CD3、CD4淋巴细抱部 分阳性",
+      "cd4": "CD4淋巴细抱部 分阳性",
+      "cd8": "CD8淋巴细胞少量阻性.原位余交结果:EBER阴性",
+      "vascular": "脉管内瘤栓:“上切端”、“下切端” 及大网膜未见",
+      "neural": "神经内分泌标记异常表达 Lauren分型:混合型,侵及浆膜下层,间质见",
+      "differentiation": "中-低分化",
+      "lauren": "混合型"
+    }
+  },
+  "1472654": {
+    "name": "林秀叶",
+    "age": "66",
+    "sex": "Female",
+    "tumor_length_cm": "3.2",
+    "tumor_thickness_cm": "1.4",
+    "cea": "0.4",
+    "ca199": "9.01",
+    "concept_features": {
+      "ki67": "Ki67约30%",
+      "cps": "CPS约1",
+      "pd1": "PD-1阴性",
+      "foxp3": "FOXP3散在",
+      "cd3": "CD3、CD4、CD8淋巴细胞少量阳性",
+      "cd4": "CD4、CD8淋巴细胞少量阳性",
+      "cd8": "CD8淋巴细胞少量阳性",
+      "vascular": "脉管瘤栓,未见",
+      "neural": "神经侵犯.“上、下切缘及大网膜未见",
+      "differentiation": "中-低分化",
+      "lauren": "弥漫型"
+    }
+  },
+  "1473134": {
+    "name": "韩荔珍",
+    "age": "63",
+    "sex": "Female",
+    "tumor_length_cm": "2.5",
+    "tumor_thickness_cm": "1",
+    "cea": "1.2",
+    "ca199": "39.52",
+    "concept_features": {
+      "cps": "CPS约1",
+      "pd1": "PD-1阴性",
+      "foxp3": "FOXP3散在",
+      "cd3": "CD3、CD4、CD8淋巴细胞部分阳性",
+      "cd4": "CD4、CD8淋巴细胞部分阳性",
+      "cd8": "CD8淋巴细胞部分阳性",
+      "vascular": "脉管瘤栓.网膜组织内见",
+      "neural": "神经浸润,未见",
+      "differentiation": "中-低分化",
+      "lauren": "肠型"
+    }
+  },
+  "1473428": {
+    "name": "郭立新",
+    "age": "56",
+    "sex": "Male",
+    "tumor_length_cm": "4.9",
+    "tumor_thickness_cm": "1.2",
+    "cea": "1.9",
+    "ca199": "4.02",
+    "concept_features": {
+      "ki67": "Ki67(约654),AFP(-):CD31示内皮(+",
+      "cps": "CPS约2",
+      "vascular": "脉管内瘤栏;“上切缘”、“下切缘”及网膜组织未见",
+      "neural": "神经侵犯及脉管内瘤栏;“上切缘”、“下切缘”及网膜组织未见",
+      "differentiation": "低分化",
+      "lauren": "弥漫型"
+    }
+  },
+  "1473563": {
+    "name": "杨长泽",
+    "age": "38",
+    "sex": "Male",
+    "tumor_length_cm": "2.9",
+    "tumor_thickness_cm": "1.6",
+    "cea": "3.2",
+    "ca199": "6.7",
+    "concept_features": {
+      "vascular": "脉管瘤栓及神经侵犯.送检上切缘”、下切 网膜组织净. 打印 送检淋巴结见",
+      "neural": "神经侵犯.送检上切缘”、下切 网膜组织净. 打印 送检淋巴结见",
+      "differentiation": "中-低分化",
+      "lauren": "弥漫型"
+    }
+  },
+  "1472152": {
+    "name": "叶昌鸾",
+    "age": "71",
+    "sex": "Female",
+    "tumor_length_cm": "4.1",
+    "tumor_thickness_cm": "1.8",
+    "cea": "1.2",
+    "ca199": "24.9",
+    "concept_features": {
+      "cps": "CPS约5",
+      "vascular": "脉管瘤栓及神经侵犯,侵及浆膜层,“上切缘”、“下切 缘”及网膜组织未见",
+      "neural": "神经侵犯,侵及浆膜层,“上切缘”、“下切 缘”及网膜组织未见",
+      "differentiation": "低分化",
+      "lauren": "弥漫型"
+    }
+  },
+  "1474173": {
+    "name": "朱金兰",
+    "age": "62",
+    "sex": "Female",
+    "tumor_length_cm": "4.8",
+    "tumor_thickness_cm": "1.6",
+    "cea": "1.9",
+    "ca199": "3.07",
+    "concept_features": {
+      "vascular": "脉管内瘤栓及神经侵犯.送检“上切缘”、“下切缘”及网膜组 织未见",
+      "neural": "神经侵犯.送检“上切缘”、“下切缘”及网膜组 织未见",
+      "differentiation": "中分化",
+      "lauren": "肠型"
+    }
+  },
+  "1474982": {
+    "name": "曹安明",
+    "age": "71",
+    "sex": "Male",
+    "tumor_length_cm": "8.9",
+    "tumor_thickness_cm": "1.9",
+    "cea": "2.2",
+    "ca199": "90.51",
+    "concept_features": {
+      "ki67": "Ki67约80%",
+      "cps": "CPS约10",
+      "cd3": "CD3.CD4.CD8淋巴细胞部分阳性",
+      "cd4": "CD4.CD8淋巴细胞部分阳性",
+      "cd8": "CD8淋巴细胞部分阳性",
+      "vascular": "脉管瘤 栓.“上、下切缘”及大网膜未见",
+      "neural": "神经浸润及脉管瘤 栓.“上、下切缘”及大网膜未见",
+      "differentiation": "中分化",
+      "lauren": "弥漫型"
+    }
+  },
+  "892135": {
+    "name": "陈金兰",
+    "age": "64",
+    "sex": "Female",
+    "tumor_length_cm": "3.3",
+    "tumor_thickness_cm": "0.8",
+    "cea": "0.9",
+    "ca199": "11.87",
+    "concept_features": {
+      "ki67": "Ki67（7O%+",
+      "cps": "CPS二1",
+      "pd1": "PD-1个别阻 性,FOXP3少量性,CD3、CD4、CD8林巴细地部分阳性",
+      "foxp3": "FOXP3少量",
+      "cd3": "CD3、CD4、CD8林巴细地部分阳性",
+      "cd4": "CD4、CD8林巴细地部分阳性",
+      "cd8": "CD8林巴细地部分阳性",
+      "vascular": "脉管内瘤栓及神经侵犯,“上 切缘”、“下切缘”及大网膜未见",
+      "neural": "神经侵犯,“上 切缘”、“下切缘”及大网膜未见",
+      "differentiation": "中-低分化",
+      "lauren": "混合型"
+    }
+  },
+  "1474675": {
+    "name": "柯玉炉",
+    "age": "32",
+    "sex": "Male",
+    "tumor_length_cm": "7.9",
+    "tumor_thickness_cm": "1.4",
+    "cea": "24.8",
+    "ca199": "＞1000",
+    "concept_features": {
+      "vascular": "脉管内瘤栓.送检”上切缘”、“下切缘”及网膜组织 净 打印 送检淋巴结见",
+      "neural": "神经侵犯及脉管内瘤栓.送检”上切缘”、“下切缘”及网膜组织 净 打印 送检淋巴结见",
+      "differentiation": "低分化",
+      "lauren": "弥漫型"
+    }
+  },
+  "1474295": {
+    "name": "林爱清",
+    "age": "72",
+    "sex": "Female",
+    "tumor_length_cm": "8.1",
+    "tumor_thickness_cm": "3.4",
+    "cea": "9.1",
+    "ca199": "404.7",
+    "concept_features": {
+      "differentiation": "低分化",
+      "lauren": "/"
+    }
+  },
+  "1475773": {
+    "name": "王海燕",
+    "age": "36",
+    "sex": "Female",
+    "tumor_length_cm": "6.9",
+    "tumor_thickness_cm": "1.7",
+    "cea": "0.7",
+    "ca199": "7.89",
+    "concept_features": {
+      "differentiation": "低分化",
+      "lauren": "/"
+    }
+  },
+  "1475057": {
+    "name": "林添麟",
+    "age": "86",
+    "sex": "Male",
+    "tumor_length_cm": "4.6",
+    "tumor_thickness_cm": "1",
+    "cea": "3.8",
+    "ca199": "32.4",
+    "concept_features": {
+      "vascular": "脉管内瘤栓及神经侵犯:“上切缘”、“下切缘”及网膜组织 未见",
+      "neural": "神经侵犯:“上切缘”、“下切缘”及网膜组织 未见",
+      "differentiation": "低分化",
+      "lauren": "弥漫型"
+    }
+  },
+  "1476110": {
+    "name": "陈瑞容",
+    "age": "71",
+    "sex": "Female",
+    "tumor_length_cm": "3.5",
+    "tumor_thickness_cm": "1.3",
+    "cea": "1.2",
+    "ca199": "4.67",
+    "concept_features": {
+      "vascular": "脉管及神经侵犯,“上切缘”、“下切缘”及网膜组织未 瘤 打印 淋巴结未见",
+      "neural": "神经侵犯,“上切缘”、“下切缘”及网膜组织未 瘤 打印 淋巴结未见",
+      "differentiation": "中-低分化",
+      "lauren": "混合型"
+    }
+  },
+  "1476038": {
+    "name": "邱金铸",
+    "age": "62",
+    "sex": "Male",
+    "tumor_length_cm": "3.7",
+    "tumor_thickness_cm": "1",
+    "cea": "2.5",
+    "ca199": "48.85",
+    "concept_features": {
+      "vascular": "脉管内瘤栓;上切 缘”、“下切缘“及网膜组织未见",
+      "neural": "神经侵犯及脉管内瘤栓;上切 缘”、“下切缘“及网膜组织未见",
+      "differentiation": "中-低分化",
+      "lauren": "混合型"
+    }
+  },
+  "1476603": {
+    "name": "林兆水",
+    "age": "74",
+    "sex": "Male",
+    "tumor_length_cm": "/",
+    "tumor_thickness_cm": "/",
+    "cea": "1.8",
+    "ca199": "21.93",
+    "concept_features": {
+      "differentiation": "/",
+      "lauren": "/"
+    }
+  },
+  "1466069": {
+    "name": "张章振",
+    "age": "65",
+    "sex": "Male",
+    "tumor_length_cm": "2.1",
+    "tumor_thickness_cm": "1.2",
+    "cea": "1.4",
+    "ca199": "10.15",
+    "concept_features": {
+      "differentiation": "中-低分化",
+      "lauren": "弥漫型"
+    }
+  },
+  "1476638": {
+    "name": "周启彬",
+    "age": "72",
+    "sex": "Male",
+    "tumor_length_cm": "/",
+    "tumor_thickness_cm": "1.5",
+    "cea": "3",
+    "ca199": "＜0.6",
+    "concept_features": {
+      "ki67": "Ki67（约2%",
+      "cps": "CPS约 1",
+      "vascular": "脉管内瘤栓及神经侵犯:”上切缘”、“下切缘”及网膜 组织未见",
+      "neural": "神经侵犯:”上切缘”、“下切缘”及网膜 组织未见",
+      "differentiation": "中-低分化",
+      "lauren": "混合型"
+    }
+  },
+  "1476613": {
+    "name": "陈良发",
+    "age": "50",
+    "sex": "Male",
+    "tumor_length_cm": "5.9",
+    "tumor_thickness_cm": "1.8",
+    "cea": "2.4",
+    "ca199": "11.0",
+    "concept_features": {
+      "ki67": "Ki67约60%",
+      "cps": "CPS约2",
+      "pd1": "PD-1少量阳性",
+      "vascular": "脉管瘤栓及神经侵犯,“上切缘录”、“下切缘”及网膜组织未见",
+      "neural": "神经侵犯,“上切缘录”、“下切缘”及网膜组织未见",
+      "differentiation": "低分化",
+      "lauren": "弥漫型"
+    }
+  },
+  "1476897": {
+    "name": "陈美燕",
+    "age": "55",
+    "sex": "Female",
+    "tumor_length_cm": "3.2",
+    "tumor_thickness_cm": "1.2",
+    "cea": "1.6",
+    "ca199": "6.16",
+    "concept_features": {
+      "ki67": "Ki67约80%",
+      "cps": "CPS1",
+      "pd1": "PD-1个别H生.FOXP3个别阳性",
+      "foxp3": "FOXP3个别",
+      "cd3": "CD3、CD4、CD8淋巴 细胞少量阳性",
+      "cd4": "CD4、CD8淋巴 细胞少量阳性",
+      "cd8": "CD8淋巴 细胞少量阳性",
+      "vascular": "脉管瘤栓及神经侵犯.“ “上、下切缘”及大网膜未见",
+      "neural": "神经侵犯.“ “上、下切缘”及大网膜未见",
+      "differentiation": "低分化",
+      "lauren": "弥漫型"
+    }
+  },
+  "1477570": {
+    "name": "林文萍",
+    "age": "53",
+    "sex": "Female",
+    "tumor_length_cm": "5.1",
+    "tumor_thickness_cm": "1.9",
+    "cea": "0.4",
+    "ca199": "20.39",
+    "concept_features": {
+      "ki67": "Ki67约80%",
+      "cps": "CPS10",
+      "pd1": "PD-1少世阳性",
+      "foxp3": "FoXP3散在",
+      "cd3": "CD3、CD4、CD8淋巴细 地部分阳性",
+      "cd4": "CD4、CD8淋巴细 地部分阳性",
+      "cd8": "CD8淋巴细 地部分阳性",
+      "vascular": "脉管瘤栓及神经侵犯.送检“上切缘”、“下切缘”及网膜组织 净.送检淋巴结见",
+      "neural": "神经侵犯.送检“上切缘”、“下切缘”及网膜组织 净.送检淋巴结见",
+      "differentiation": "低分化",
+      "lauren": "弥漫型"
+    }
+  },
+  "1478427": {
+    "name": "翁秀朱",
+    "age": "48",
+    "sex": "Female",
+    "tumor_length_cm": "10.1",
+    "tumor_thickness_cm": "1.7",
+    "cea": "1.3",
+    "ca199": "35.5",
+    "concept_features": {
+      "ki67": "Ki67约70%",
+      "cps": "CPS约40",
+      "pd1": "PD-1 明性FOXP3个别阳性",
+      "foxp3": "FOXP3个别",
+      "vascular": "脉管瘤栓及神经侵犯,“上切 端”、“下切端”及网膜组织未见",
+      "neural": "神经侵犯,“上切 端”、“下切端”及网膜组织未见",
+      "differentiation": "低分化",
+      "lauren": "弥漫型"
+    }
+  },
+  "1476901": {
+    "name": "熊秀兰",
+    "age": "42",
+    "sex": "Female",
+    "tumor_length_cm": "3.9",
+    "tumor_thickness_cm": "0.9",
+    "cea": "0.7",
+    "ca199": "3.93",
+    "concept_features": {
+      "ki67": "Ki67约 60%",
+      "cps": "CPS约3",
+      "pd1": "PD-1阴性",
+      "foxp3": "FOXP3少证阳性",
+      "cd3": "CD3、CD4、CD8林巴田地部分阳性",
+      "cd4": "CD4、CD8林巴田地部分阳性",
+      "cd8": "CD8林巴田地部分阳性",
+      "differentiation": "低分化",
+      "lauren": "弥漫型"
+    }
+  },
+  "1476611": {
+    "name": "陈丰",
+    "age": "54",
+    "sex": "Male",
+    "tumor_length_cm": "4.8",
+    "tumor_thickness_cm": "1.1",
+    "cea": "1.6",
+    "ca199": "3.78",
+    "concept_features": {
+      "ki67": "Ki67约60%",
+      "cps": "CPS5",
+      "pd1": "PD-1个别阳性",
+      "foxp3": "FOxP3散在",
+      "cd3": "CD3 CD4CD8淋巴细胞部分阳性",
+      "cd4": "CD4CD8淋巴细胞部分阳性",
+      "cd8": "CD8淋巴细胞部分阳性",
+      "vascular": "脉管瘤栓及神经侵犯,侵及浆膜层, “门石LN1”O/4 “小弯侧LN3”O/1, “上切缘”、“下切缘”及网膜组织未见",
+      "neural": "神经侵犯,侵及浆膜层, “门石LN1”O/4 “小弯侧LN3”O/1, “上切缘”、“下切缘”及网膜组织未见",
+      "differentiation": "中分化",
+      "lauren": "肠型"
+    }
+  },
+  "1477965": {
+    "name": "黄吓梅",
+    "age": "67",
+    "sex": "Female",
+    "tumor_length_cm": "2.4",
+    "tumor_thickness_cm": "0.9",
+    "cea": "1.6",
+    "ca199": "4.47",
+    "concept_features": {
+      "pd1": "PD-1个别阳性",
+      "cd3": "CD3、CD4、CD8淋巴细胞部分阳性",
+      "cd4": "CD4、CD8淋巴细胞部分阳性",
+      "cd8": "CD8淋巴细胞部分阳性",
+      "vascular": "脉管瘤栓:“上、下切缘”及大网膜 未见",
+      "neural": "神经侵犯及脉管瘤栓:“上、下切缘”及大网膜 未见",
+      "differentiation": "中-低分化",
+      "lauren": "混合型"
+    }
+  },
+  "1476821": {
+    "name": "蒋章水",
+    "age": "79",
+    "sex": "Male",
+    "tumor_length_cm": "5.2",
+    "tumor_thickness_cm": "1",
+    "cea": "1.5",
+    "ca199": "61.72",
+    "concept_features": {
+      "ki67": "Ki67约70%",
+      "vascular": "脉管瘤栓及神经侵犯,“上切缘”、“下切缘”及网 膜组织未见",
+      "neural": "神经侵犯,“上切缘”、“下切缘”及网 膜组织未见",
+      "differentiation": "中-低分化",
+      "lauren": "混合型"
+    }
+  },
+  "1477217": {
+    "name": "缪存青",
+    "age": "65",
+    "sex": "Male",
+    "tumor_length_cm": "2.2",
+    "tumor_thickness_cm": "0.8",
+    "cea": "5.7",
+    "ca199": "7.87",
+    "concept_features": {
+      "ki67": "Ki67（40%",
+      "cps": "CPS二1",
+      "foxp3": "FoxP3个别",
+      "vascular": "脉管内瘤栓 及神经侵犯,“上切缘”、“下切缘”及大网膜未见",
+      "neural": "神经侵犯,“上切缘”、“下切缘”及大网膜未见",
+      "differentiation": "高分化",
+      "lauren": "肠型"
+    }
+  },
+  "1478395": {
+    "name": "王荣长",
+    "age": "70",
+    "sex": "Male",
+    "tumor_length_cm": "3.3",
+    "tumor_thickness_cm": "0.9",
+    "cea": "1.1",
+    "ca199": "4.24",
+    "concept_features": {
+      "cps": "CPS20",
+      "pd1": "PD-1个别阻性.FOXP3散在阻性.CD3、CD4、CD8淋巴细 胞部分阳性",
+      "foxp3": "FOXP3散在",
+      "cd3": "CD3、CD4、CD8淋巴细 胞部分阳性",
+      "cd4": "CD4、CD8淋巴细 胞部分阳性",
+      "cd8": "CD8淋巴细 胞部分阳性",
+      "vascular": "脉管瘤栓及神经侵犯.送检“上切缘”、 “下切缘”及网膜 组织未见",
+      "neural": "神经侵犯.送检“上切缘”、 “下切缘”及网膜 组织未见",
+      "differentiation": "低分化",
+      "lauren": "弥漫型"
+    }
+  },
+  "1476800": {
+    "name": "杨春娇",
+    "age": "75",
+    "sex": "Female",
+    "tumor_length_cm": "4.1",
+    "tumor_thickness_cm": "1.9",
+    "cea": "4.4",
+    "ca199": "6.59",
+    "concept_features": {
+      "differentiation": "低分化",
+      "lauren": "弥漫型"
+    }
+  },
+  "1166650": {
+    "name": "陈培松",
+    "age": "69",
+    "sex": "Male",
+    "tumor_length_cm": "5.8",
+    "tumor_thickness_cm": "1.5",
+    "cea": "5.5",
+    "ca199": "7.8",
+    "concept_features": {
+      "vascular": "脉管内瘤栓,未见",
+      "neural": "神经侵犯.送检“上切端下切端”及大网膜未见",
+      "differentiation": "中分化",
+      "lauren": "弥漫型"
+    }
+  },
+  "1478093": {
+    "name": "何世鹏",
+    "age": "38",
+    "sex": "Male",
+    "tumor_length_cm": "2.3",
+    "tumor_thickness_cm": "1",
+    "cea": "1.2",
+    "ca199": "5.45",
+    "concept_features": {
+      "cps": "CPS约3",
+      "pd1": "PD-1个别阳性",
+      "foxp3": "FoxP3散在",
+      "vascular": "脉管内 瘤栓,未见",
+      "neural": "神经侵犯,“上切缘”个别腺体呈低级别上皮内瘤变,“下切缘”及大 网膜未见",
+      "differentiation": "中分化",
+      "lauren": "肠型"
+    }
+  },
+  "1480333": {
+    "name": "陈华宁",
+    "age": "60",
+    "sex": "Male",
+    "tumor_length_cm": "3.5",
+    "tumor_thickness_cm": "1.5",
+    "cea": "2.0",
+    "ca199": "11.9",
+    "concept_features": {
+      "cps": "CPS1",
+      "pd1": "PD-1阴性",
+      "foxp3": "FOXP3散在",
+      "cd3": "CD3、CD4、CD8休巴他ME.儿位余交结果:EBER阴性",
+      "cd4": "CD4、CD8休巴他ME.儿位余交结果:EBER阴性",
+      "cd8": "CD8休巴他ME.儿位余交结果:EBER阴性",
+      "vascular": "脉管瘤栓及神经侵犯,凌润肌层外纤维脂肪组织.“上 切缘”、“下七切缘”及网膜组织未见",
+      "neural": "神经侵犯,凌润肌层外纤维脂肪组织.“上 切缘”、“下七切缘”及网膜组织未见",
+      "differentiation": "高分化",
+      "lauren": "不确定"
+    }
+  },
+  "1479232": {
+    "name": "陈彩英",
+    "age": "76",
+    "sex": "Female",
+    "tumor_length_cm": "4.9",
+    "tumor_thickness_cm": "1.4",
+    "cea": "9.0",
+    "ca199": "20.5",
+    "concept_features": {
+      "ki67": "Ki67（70%",
+      "cps": "CPS<1",
+      "pd1": "PD-1个别阳性",
+      "foxp3": "FOXP3散在",
+      "cd3": "CD3淋巴细胞部分阳性",
+      "vascular": "脉管内瘤栓及神经侵犯 “上切缘”、“下切缘”及大网膜未见",
+      "neural": "神经侵犯 “上切缘”、“下切缘”及大网膜未见",
+      "differentiation": "中-低分化",
+      "lauren": "混合型"
+    }
+  },
+  "1478783": {
+    "name": "林诗谦",
+    "age": "53",
+    "sex": "Male",
+    "tumor_length_cm": "6.6",
+    "tumor_thickness_cm": "1.3",
+    "cea": "1.8",
+    "ca199": "3.66",
+    "concept_features": {
+      "differentiation": "低分化",
+      "lauren": "不确定"
+    }
+  },
+  "1478566": {
+    "name": "张晓",
+    "age": "59",
+    "sex": "Male",
+    "tumor_length_cm": "5.8",
+    "tumor_thickness_cm": "1.9",
+    "cea": "1.8",
+    "ca199": "12.5",
+    "concept_features": {
+      "vascular": "脉管瘤栓.送检“上切缘”、“下切缘”及网膜组 织净. 送检淋巴结见",
+      "neural": "神经侵犯及脉管瘤栓.送检“上切缘”、“下切缘”及网膜组 织净. 送检淋巴结见",
+      "differentiation": "中-低分化",
+      "lauren": "混合型"
+    }
+  },
+  "1478109": {
+    "name": "陈猛",
+    "age": "46",
+    "sex": "Male",
+    "tumor_length_cm": "4",
+    "tumor_thickness_cm": "0.9",
+    "cea": "4.0",
+    "ca199": "90.2",
+    "concept_features": {
+      "ki67": "Ki67（约80%",
+      "cps": "CPS<1",
+      "foxp3": "FoxP3散在",
+      "vascular": "脉管内瘤栓及神经侵犯,“上切缘”、“下切缘”及网膜组织未见",
+      "neural": "神经侵犯,“上切缘”、“下切缘”及网膜组织未见",
+      "differentiation": "低分化",
+      "lauren": "弥漫型"
+    }
+  },
+  "1480609": {
+    "name": "陈金炎",
+    "age": "74",
+    "sex": "Male",
+    "tumor_length_cm": "6.4",
+    "tumor_thickness_cm": "1.4",
+    "cea": "6.3",
+    "ca199": "4.45",
+    "concept_features": {
+      "differentiation": "中-低分化",
+      "lauren": "不确定"
+    }
+  },
+  "1478976": {
+    "name": "陈其均",
+    "age": "55",
+    "sex": "Male",
+    "tumor_length_cm": "4.9",
+    "tumor_thickness_cm": "0.9",
+    "cea": "3.6",
+    "ca199": "＜0.6",
+    "concept_features": {
+      "vascular": "脉管瘤栓,未见",
+      "neural": "神经侵犯.送检上切缘”、“下切缘及网膜组 织未见",
+      "differentiation": "低分化",
+      "lauren": "弥漫型"
+    }
+  },
+  "1480337": {
+    "name": "黄天其",
+    "age": "61",
+    "sex": "Male",
+    "tumor_length_cm": "7",
+    "tumor_thickness_cm": "1.8",
+    "cea": "9.8",
+    "ca199": "4.63",
+    "concept_features": {
+      "vascular": "脉管瘤栓及神经侵犯.送检“上切缘”、“下切缘”及网 膜组织未见",
+      "neural": "神经侵犯.送检“上切缘”、“下切缘”及网 膜组织未见",
+      "differentiation": "不确定",
+      "lauren": "弥漫型"
+    }
+  },
+  "1481092": {
+    "name": "陈贤钦",
+    "age": "82",
+    "sex": "Male",
+    "tumor_length_cm": "4.1",
+    "tumor_thickness_cm": "1.4",
+    "cea": "13.5",
+    "ca199": "14.31",
+    "concept_features": {
+      "ki67": "Ki67约60%",
+      "cps": "CPS约2",
+      "pd1": "PD-1个别阻性,FOXP3散在阻阳性",
+      "foxp3": "FOXP3散在",
+      "cd3": "CD3、CD4、CD8淋巴细胞少量阳性",
+      "cd4": "CD4、CD8淋巴细胞少量阳性",
+      "cd8": "CD8淋巴细胞少量阳性",
+      "vascular": "脉管瘤栓.送检“上切缘 F:“责门右LN1”O/3,“进门／ELN2”2／8,“小弯侧LN3”2/8,“大弯侧LN4”0/4 70677907,09 0/4,“月F十二指肠韧带LN12a”O／2:“物门FLN6”、“肝总动脉LN8a”、“胃网膜左 4sb”镜下为纤维、血管及脂肪组织,未见",
+      "neural": "神经 机、“下切缘”净.送检淋巴结见",
+      "differentiation": "中-低分化",
+      "lauren": "混合型"
+    }
+  },
+  "1357606": {
+    "name": "俞云钦",
+    "age": "62",
+    "sex": "Male",
+    "tumor_length_cm": "8.1",
+    "tumor_thickness_cm": "2.6",
+    "cea": "0.9",
+    "ca199": "7.25",
+    "concept_features": {
+      "ki67": "Ki67约90%",
+      "cps": "CPS二1",
+      "pd1": "PD-1阴性",
+      "foxp3": "FoxP3散 在阻性,CD3、CD4、CD8淋巴细胞少性阻性.原位杂交结果:EBER阴性",
+      "cd3": "CD3、CD4、CD8淋巴细胞少性阻性.原位杂交结果:EBER阴性",
+      "cd4": "CD4、CD8淋巴细胞少性阻性.原位杂交结果:EBER阴性",
+      "cd8": "CD8淋巴细胞少性阻性.原位杂交结果:EBER阴性",
+      "vascular": "脉管瘤栓及神经侵犯,“上切 瑞”、“下切端”及网膜组织未见",
+      "neural": "神经侵犯,“上切 瑞”、“下切端”及网膜组织未见",
+      "differentiation": "低分化",
+      "lauren": "弥漫型"
+    }
+  },
+  "1481252": {
+    "name": "陈海清",
+    "age": "74",
+    "sex": "Male",
+    "tumor_length_cm": "1.3",
+    "tumor_thickness_cm": "0.7",
+    "cea": "1.5",
+    "ca199": "8.41",
+    "concept_features": {
+      "cps": "CPS约2",
+      "pd1": "PD-1个别阳性",
+      "foxp3": "FoxP3散在",
+      "cd3": "CD3、CD4淋巴细胞部分阻性,CD8淋巴细胞少量阳性",
+      "cd4": "CD4淋巴细胞部分阻性,CD8淋巴细胞少量阳性",
+      "cd8": "CD8淋巴细胞少量阳性",
+      "vascular": "脉管内瘤栓,未见",
+      "neural": "神经假犯.送检“上切缘”、 “责门石LN1”3／12,“责门左LN2” 织净.送检淋巴结见",
+      "differentiation": "中-低分化",
+      "lauren": "混合型"
+    }
+  },
+  "1481782": {
+    "name": "陈梅英",
+    "age": "71",
+    "sex": "Female",
+    "tumor_length_cm": "5.8",
+    "tumor_thickness_cm": "2",
+    "cea": "3.2",
+    "ca199": "15.6",
+    "concept_features": {
+      "cps": "CPS约15",
+      "vascular": "脉管内瘤栓,未见",
+      "neural": "神经侵犯,“上切缘”、“下切缘”及网膜组织未见",
+      "differentiation": "低分化",
+      "lauren": "弥漫型"
+    }
+  },
+  "1481256": {
+    "name": "柯玉川",
+    "age": "70",
+    "sex": "Male",
+    "tumor_length_cm": "3.2",
+    "tumor_thickness_cm": "1.4",
+    "cea": "2.2",
+    "ca199": "20.4",
+    "concept_features": {
+      "vascular": "脉管瘤栓,未见",
+      "neural": "神经侵犯.送 检“上切缘”、“下切缘”及网膜组织净 彩 0/6,“小弯侧LN3”O/4,“大侧LN4”O/6,“的门门ELN5”1/2,“幽门下LN6”1/2 “胃左动脉LN7”O／11,“复腔动水寿LN9”O／5,“胆动脉十LN11”0/3,“肝十二指肠 韧带LN12a”O/1,“胃网膜左4sb”O/1:“月E总动脉LN8a”镜下为纤维、血管及脂肪组 织,未见",
+      "differentiation": "中-低分化",
+      "lauren": "混合型"
+    }
+  },
+  "1482352": {
+    "name": "陈国耀",
+    "age": "53",
+    "sex": "Male",
+    "tumor_length_cm": "5.3",
+    "tumor_thickness_cm": "1.5",
+    "cea": "367.0",
+    "ca199": "＞1000",
+    "concept_features": {
+      "differentiation": "/",
+      "lauren": "/"
+    }
+  },
+  "1110673": {
+    "name": "陈木发",
+    "age": "77",
+    "sex": "Male",
+    "tumor_length_cm": "4.7",
+    "tumor_thickness_cm": "2",
+    "cea": "8.0",
+    "ca199": "4.06",
+    "concept_features": {
+      "ki67": "Ki67约80%",
+      "cps": "CPS约2",
+      "pd1": "PD-1阴性",
+      "foxp3": "FoXP3散在",
+      "cd3": "CD3、CD4淋巴细胞少量阳性",
+      "cd4": "CD4淋巴细胞少量阳性",
+      "vascular": "脉管瘤栓及神经侵犯:食管近齿状线肌壁间见",
+      "neural": "神经内分秘癌,大小5+4.8cm,Lauren分型:混 合型:累及食管下段,侵及浆膜层,间质见",
+      "differentiation": "不确定",
+      "lauren": "混合型"
+    }
+  },
+  "1481428": {
+    "name": "陈幼端",
+    "age": "70",
+    "sex": "Female",
+    "tumor_length_cm": "4.1",
+    "tumor_thickness_cm": "1.5",
+    "cea": "7.3",
+    "ca199": "15.98",
+    "concept_features": {
+      "vascular": "脉管瘤栓,未见",
+      "neural": "神经侵 打印 犯,“上、下切缘“未见",
+      "differentiation": "中-低分化",
+      "lauren": "混合型"
+    }
+  },
+  "1480686": {
+    "name": "李长财",
+    "age": "69",
+    "sex": "Male",
+    "tumor_length_cm": "3.7",
+    "tumor_thickness_cm": "1.2",
+    "cea": "/",
+    "ca199": "/",
+    "concept_features": {
+      "ki67": "Ki67约 30%",
+      "cps": "CPS1",
+      "pd1": "PD-1、FOXP3少量阳性",
+      "foxp3": "FOXP3少量",
+      "vascular": "脉管瘤栓:“上、下切缘”及网膜组织未见",
+      "neural": "神经浸润及脉管瘤栓:“上、下切缘”及网膜组织未见",
+      "differentiation": "中分化",
+      "lauren": "混合型"
+    }
+  },
+  "1482610": {
+    "name": "郑炎珠",
+    "age": "80",
+    "sex": "Male",
+    "tumor_length_cm": "5.4",
+    "tumor_thickness_cm": "1.5",
+    "cea": "29.1",
+    "ca199": "10.5",
+    "concept_features": {
+      "ki67": "Ki67约70%",
+      "vascular": "脉管瘤栓.“上、下切缘”及大网膜未 见",
+      "neural": "神经假犯及脉管瘤栓.“上、下切缘”及大网膜未 见",
+      "differentiation": "中-低分化",
+      "lauren": "混合型"
+    }
+  },
+  "1484542": {
+    "name": "林信龙",
+    "age": "61",
+    "sex": "Male",
+    "tumor_length_cm": "3.1",
+    "tumor_thickness_cm": "1.4",
+    "cea": "132.0",
+    "ca199": "10.80",
+    "concept_features": {
+      "vascular": "脉管瘤栓,未见",
+      "neural": "神经侵犯.送检”上切缘”、“下切缘“及网膜组织净. 送检淋巴结见",
+      "differentiation": "中-低分化",
+      "lauren": "肠型"
+    }
+  },
+  "1482132": {
+    "name": "林福如",
+    "age": "62",
+    "sex": "Male",
+    "tumor_length_cm": "3.7",
+    "tumor_thickness_cm": "1.4",
+    "cea": "1.4",
+    "ca199": "3.62",
+    "concept_features": {
+      "vascular": "脉管瘤栓.“上、下切缘”及大网膜未见",
+      "neural": "神经侵犯及脉管瘤栓.“上、下切缘”及大网膜未见",
+      "differentiation": "中-低分化",
+      "lauren": "肠型"
+    }
+  },
+  "1483904": {
+    "name": "林文芳",
+    "age": "71",
+    "sex": "Male",
+    "tumor_length_cm": "5.6",
+    "tumor_thickness_cm": "1.6",
+    "cea": "4.8",
+    "ca199": "333.9",
+    "concept_features": {
+      "cps": "CPS约5",
+      "pd1": "PD-1个别阳性",
+      "foxp3": "FoxP3散在",
+      "vascular": "血管及脂 LN11”、周网模4sb” 防组织,未见",
+      "neural": "神经侵犯.送检！ 随门石LN1”O/4,“大弯侧LN4”0/2,“幽门 送检淋巴结见",
+      "differentiation": "中分化",
+      "lauren": "肠型"
+    }
+  },
+  "1482937": {
+    "name": "苏志杰",
+    "age": "70",
+    "sex": "Male",
+    "tumor_length_cm": "6.9",
+    "tumor_thickness_cm": "2.6",
+    "cea": "3.2",
+    "ca199": "6.8",
+    "concept_features": {
+      "vascular": "脉管瘤栓 下切缘及网膜组织未见",
+      "neural": "神经,局灶累及食管下段,问质见",
+      "differentiation": "中-低分化",
+      "lauren": "混合型"
+    }
+  },
+  "1128524": {
+    "name": "陈伙英",
+    "age": "73",
+    "sex": "Female",
+    "tumor_length_cm": "6.6",
+    "tumor_thickness_cm": "4.8",
+    "cea": "1.6",
+    "ca199": "7.19",
+    "concept_features": {
+      "ki67": "Ki67（约80%",
+      "cps": "CPS约95",
+      "pd1": "PD-1个别阳性",
+      "vascular": "脉管内瘤栓及神经传犯:“上切缘”、“下切缘”及网膜组织未见",
+      "neural": "神经传犯:“上切缘”、“下切缘”及网膜组织未见",
+      "differentiation": "低分化",
+      "lauren": "弥漫型"
+    }
+  },
+  "1486180": {
+    "name": "徐昌尧",
+    "age": "60",
+    "sex": "Male",
+    "tumor_length_cm": "6",
+    "tumor_thickness_cm": "1.4",
+    "cea": "35.2",
+    "ca199": "50.0",
+    "concept_features": {
+      "vascular": "脉管瘤栓.送检“上、下切缘及网膜组织均未见",
+      "neural": "神经侵犯及脉管瘤栓.送检“上、下切缘及网膜组织均未见",
+      "differentiation": "中-低分化",
+      "lauren": "混合型"
+    }
+  },
+  "1154387": {
+    "name": "晏泽素",
+    "age": "69",
+    "sex": "Female",
+    "tumor_length_cm": "2.2",
+    "tumor_thickness_cm": "0.6",
+    "cea": "1.9",
+    "ca199": "4.79",
+    "concept_features": {
+      "ki67": "Ki67约70%",
+      "cps": "CPS约5",
+      "pd1": "PD-1少量阳性",
+      "foxp3": "FOXP3散在",
+      "cd3": "CD3、CD4、CD8淋巴细胞部分阳性",
+      "cd4": "CD4、CD8淋巴细胞部分阳性",
+      "cd8": "CD8淋巴细胞部分阳性",
+      "vascular": "脉管瘤栓:“上、下切缘”未见",
+      "neural": "神经侵犯及脉管瘤栓:“上、下切缘”未见",
+      "differentiation": "中-低分化",
+      "lauren": "混合型"
+    }
+  },
+  "1483646": {
+    "name": "柳贵通",
+    "age": "68",
+    "sex": "Male",
+    "tumor_length_cm": "2.8",
+    "tumor_thickness_cm": "1",
+    "cea": "1.4",
+    "ca199": "40.7",
+    "concept_features": {
+      "ki67": "Ki67约55%",
+      "pd1": "PD-1少量阳性",
+      "foxp3": "FoxP3散在",
+      "cd3": "CD3、CD4、CD8淋巴细胞部分阳性",
+      "cd4": "CD4、CD8淋巴细胞部分阳性",
+      "cd8": "CD8淋巴细胞部分阳性",
+      "vascular": "脉管内瘤栓,未见",
+      "neural": "神经侵犯.送检“上切缘”、“下切 缘”及大网膜未见",
+      "differentiation": "中-低分化",
+      "lauren": "混合型"
+    }
+  },
+  "1483510": {
+    "name": "张秀连",
+    "age": "79",
+    "sex": "Female",
+    "tumor_length_cm": "5",
+    "tumor_thickness_cm": "1.5",
+    "cea": "9.9",
+    "ca199": "52.64",
+    "concept_features": {
+      "ki67": "Ki67约90%",
+      "vascular": "脉管瘤栓.未 见",
+      "neural": "神经内分秘标记表达,Lauren分型为混合型,漫润浆膜下层,间质见",
+      "differentiation": "中-低分化",
+      "lauren": "混合型"
+    }
+  },
+  "1484832": {
+    "name": "肖祥应",
+    "age": "73",
+    "sex": "Male",
+    "tumor_length_cm": "7.1",
+    "tumor_thickness_cm": "1.7",
+    "cea": "3.5",
+    "ca199": "24.18",
+    "concept_features": {
+      "vascular": "脉管瘤栓.“上、下切缘”及网膜组织未见",
+      "neural": "神经侵犯及脉管瘤栓.“上、下切缘”及网膜组织未见",
+      "differentiation": "低分化",
+      "lauren": "弥漫型"
+    }
+  },
+  "1485611": {
+    "name": "曾达强",
+    "age": "57",
+    "sex": "Male",
+    "tumor_length_cm": "5.5",
+    "tumor_thickness_cm": "1.3",
+    "cea": "12.6",
+    "ca199": "＜0.6",
+    "concept_features": {
+      "vascular": "脉管瘤栓及神经侵犯.送检“上切缘”、“下切缘”及网膜组织净. 送检淋巴结见",
+      "neural": "神经侵犯.送检“上切缘”、“下切缘”及网膜组织净. 送检淋巴结见",
+      "differentiation": "中-低分化",
+      "lauren": "混合型"
+    }
+  },
+  "1485222": {
+    "name": "陈妹仔",
+    "age": "71",
+    "sex": "Female",
+    "tumor_length_cm": "2.2",
+    "tumor_thickness_cm": "0.9",
+    "cea": "8.7",
+    "ca199": "3.54",
+    "concept_features": {
+      "vascular": "脉管内瘤栓,未见",
+      "neural": "神经侵犯,“上切缘”、下切缘“及网膜组织未见",
+      "differentiation": "低分化",
+      "lauren": "弥漫型"
+    }
+  },
+  "1034135": {
+    "name": "李景慧",
+    "age": "50",
+    "sex": "Female",
+    "tumor_length_cm": "3.4",
+    "tumor_thickness_cm": "0.9",
+    "cea": "0.6",
+    "ca199": "7.09",
+    "concept_features": {
+      "vascular": "脉管瘤栓及神经侵犯,“上切缘”、“下切缘”及网膜组织 未见",
+      "neural": "神经侵犯,“上切缘”、“下切缘”及网膜组织 未见",
+      "differentiation": "低分化",
+      "lauren": "弥漫型"
+    }
+  },
+  "1486246": {
+    "name": "潘新华",
+    "age": "61",
+    "sex": "Male",
+    "tumor_length_cm": "2.7",
+    "tumor_thickness_cm": "0.6",
+    "cea": "1.5",
+    "ca199": "2.34",
+    "concept_features": {
+      "vascular": "脉管未见瘤栓",
+      "neural": "神经纤维;水平粘膜切缘及基底部切缘未见",
+      "differentiation": "中-低分化",
+      "lauren": "不确定"
+    }
+  },
+  "1485975": {
+    "name": "黄新来",
+    "age": "59",
+    "sex": "Male",
+    "tumor_length_cm": "1",
+    "tumor_thickness_cm": "1",
+    "cea": "2.2",
+    "ca199": "10.6",
+    "concept_features": {
+      "vascular": "脉管瘤栓及神经侵犯,“上切、下切缘”均未见",
+      "neural": "神经侵犯,“上切、下切缘”均未见",
+      "differentiation": "中-低分化",
+      "lauren": "混合型"
+    }
+  },
+  "1488022": {
+    "name": "陈双明",
+    "age": "44",
+    "sex": "Male",
+    "tumor_length_cm": "1.9",
+    "tumor_thickness_cm": "0.7",
+    "cea": "1.6",
+    "ca199": "12.98",
+    "concept_features": {
+      "vascular": "脉管瘤栓及神经侵犯,“上切缘”下切缘”未见",
+      "neural": "神经侵犯,“上切缘”下切缘”未见",
+      "differentiation": "中分化",
+      "lauren": "肠型"
+    }
+  },
+  "1488030": {
+    "name": "刘爱珠",
+    "age": "78",
+    "sex": "Female",
+    "tumor_length_cm": "3.6",
+    "tumor_thickness_cm": "1.8",
+    "cea": "3.7",
+    "ca199": "＜0.6",
+    "concept_features": {
+      "vascular": "脉管瘤栓及神经侵犯.“上、下切端”及大网膜未见",
+      "neural": "神经侵犯.“上、下切端”及大网膜未见",
+      "differentiation": "中-低分化",
+      "lauren": "混合型"
+    }
+  },
+  "1483895": {
+    "name": "方志红",
+    "age": "64",
+    "sex": "Female",
+    "tumor_length_cm": "10.1",
+    "tumor_thickness_cm": "1.7",
+    "cea": "3.9",
+    "ca199": "10.63",
+    "concept_features": {
+      "vascular": "脉管内瘤栓及神经侵犯,“上切缘”、“下切缘及网膜组织未见",
+      "neural": "神经侵犯,“上切缘”、“下切缘及网膜组织未见",
+      "differentiation": "低分化",
+      "lauren": "弥漫型"
+    }
+  },
+  "1487565": {
+    "name": "林金良",
+    "age": "70",
+    "sex": "Male",
+    "tumor_length_cm": "3.5",
+    "tumor_thickness_cm": "1.9",
+    "cea": "1.8",
+    "ca199": "479.5",
+    "concept_features": {
+      "neural": "神经侵犯及脉 管瘤栓.“上、下切缘”及大网膜未见",
+      "differentiation": "中-低分化",
+      "lauren": "混合型"
+    }
+  },
+  "1487927": {
+    "name": "徐凌宇",
+    "age": "78",
+    "sex": "Male",
+    "tumor_length_cm": "5.6",
+    "tumor_thickness_cm": "2.1",
+    "cea": "1.9",
+    "ca199": "10.64",
+    "concept_features": {
+      "ki67": "Ki67约50%",
+      "cps": "CPS约10",
+      "pd1": "PD-1个别阳性",
+      "foxp3": "FoxP3散在",
+      "cd3": "CD3、CD4、CD8淋 巴细胞少量阳性",
+      "cd4": "CD4、CD8淋 巴细胞少量阳性",
+      "cd8": "CD8淋 巴细胞少量阳性",
+      "vascular": "脉管瘤栓及神经侵犯, “大弯侧LN4”4/4,“幽 1/2.1小弯侧LN3”2/2.1 如下:小弯侧LN2/4.贵门右LN1 0/1.“腹腔动脉号LN9”078, 门上LN5”0/8,“幽门下LN6”3/5,“肝总动脉LN8a” “胃网膜左4sb”0/2:“胃左动 “脾动脉干LN11”0/1,“肝十二指肠韧带LN12a”0/2. 脉LN7”镜下见",
+      "neural": "神经内分秘标记表达,部分为粘液腺癌及印戒细胞癌,Lauren分型为混合型,侵及浆膜层,间质 下切缘”及网膜组织未见",
+      "differentiation": "中-低分化",
+      "lauren": "混合型"
+    }
+  },
+  "1488684": {
+    "name": "林家希",
+    "age": "63",
+    "sex": "Male",
+    "tumor_length_cm": "3.1",
+    "tumor_thickness_cm": "1.1",
+    "cea": "0.5",
+    "ca199": "8.46",
+    "concept_features": {
+      "vascular": "脉管内见瘤栓",
+      "neural": "神经侵犯.送检“上切缘”、“下切缘净. 送检淋巴结未见",
+      "differentiation": "中-低分化",
+      "lauren": "混合型"
+    }
+  },
+  "1488262": {
+    "name": "王慧",
+    "age": "26",
+    "sex": "Female",
+    "tumor_length_cm": "1.9",
+    "tumor_thickness_cm": "0.7",
+    "cea": "0.4",
+    "ca199": "4.2",
+    "concept_features": {
+      "cps": "CPS<1",
+      "cd4": "CD4、CD8林巴细胞少量阳性",
+      "cd8": "CD8林巴细胞少量阳性",
+      "vascular": "脉管瘤栓.“上、下切缘”及 20N,0K首线日图 “宽门左LN2”O/6,“小弯侧LN3”O/8.“大弯侧LN4”0/6,“由门上LN5”0/1,“幽门 下LN6”0/5,“胃左动脉LN7”1/2,另见",
+      "neural": "神经侵犯及脉管瘤栓.“上、下切缘”及 20N,0K首线日图 “宽门左LN2”O/6,“小弯侧LN3”O/8.“大弯侧LN4”0/6,“由门上LN5”0/1,“幽门 下LN6”0/5,“胃左动脉LN7”1/2,另见",
+      "differentiation": "中-低分化",
+      "lauren": "混合型"
+    }
+  },
+  "1488127": {
+    "name": "杨理杰",
+    "age": "77",
+    "sex": "Male",
+    "tumor_length_cm": "2.3",
+    "tumor_thickness_cm": "1.5",
+    "cea": "1.2",
+    "ca199": "8.9",
+    "concept_features": {
+      "vascular": "脉管内瘤栓及神经侵犯.周围另见",
+      "neural": "神经侵犯.周围另见",
+      "differentiation": "中分化",
+      "lauren": "肠型"
+    }
+  },
+  "1488736": {
+    "name": "陈束凤",
+    "age": "68",
+    "sex": "Female",
+    "tumor_length_cm": "2.8",
+    "tumor_thickness_cm": "0.8",
+    "cea": "1.0",
+    "ca199": "11.23",
+    "concept_features": {
+      "cps": "CPS二1",
+      "pd1": "PD-1阴性",
+      "foxp3": "FoxP3少量",
+      "vascular": "脉管内瘤栓,“上切缘 ”、“下切缘”未见",
+      "neural": "神经侵犯,未见",
+      "differentiation": "低分化",
+      "lauren": "弥漫型"
+    }
+  },
+  "1489193": {
+    "name": "刘玉精",
+    "age": "61",
+    "sex": "Male",
+    "tumor_length_cm": "4.1",
+    "tumor_thickness_cm": "1.3",
+    "cea": "6.3",
+    "ca199": "11.5",
+    "concept_features": {
+      "vascular": "脉管瘤栓,未见",
+      "neural": "神经内分泌分化,大小5.54.0cm, Lauren分型为肠型,浸润浆膜下层,未累及食管下段,间质见",
+      "differentiation": "中分化",
+      "lauren": "肠型"
+    }
+  },
+  "1490234": {
+    "name": "林亚产",
+    "age": "62",
+    "sex": "Female",
+    "tumor_length_cm": "3.2",
+    "tumor_thickness_cm": "1.8",
+    "cea": "1.7",
+    "ca199": "2.6",
+    "concept_features": {
+      "vascular": "脉管瘤栓,未凡神经侵犯, 上切缘条”、“下切缘”未见",
+      "neural": "神经侵犯, 上切缘条”、“下切缘”未见",
+      "differentiation": "中-低分化",
+      "lauren": "混合型"
+    }
+  },
+  "1491460": {
+    "name": "吴典宝",
+    "age": "66",
+    "sex": "Male",
+    "tumor_length_cm": "2.7",
+    "tumor_thickness_cm": "0.8",
+    "cea": "5.6",
+    "ca199": "15.4",
+    "concept_features": {
+      "vascular": "血管及脂肪组织,未见",
+      "differentiation": "中-低分化",
+      "lauren": "混合型"
+    }
+  },
+  "782478": {
+    "name": "陈菊容",
+    "age": "74",
+    "sex": "Male",
+    "tumor_length_cm": "4.2",
+    "tumor_thickness_cm": "1.3",
+    "cea": "3.4",
+    "ca199": "11.4",
+    "concept_features": {
+      "vascular": "脉管瘤栓. 送检“上、下切缘”未见",
+      "neural": "神经内分泌分化（Lauren分型混合型）,侵出浆膜层,累及食管下段,并累及部分肝组织.问质见",
+      "differentiation": "中-低分化",
+      "lauren": "混合型"
+    }
+  },
+  "1482706": {
+    "name": "高应俗",
+    "age": "81",
+    "sex": "Male",
+    "tumor_length_cm": "6.3",
+    "tumor_thickness_cm": "1.9",
+    "cea": "4.5",
+    "ca199": "18.2",
+    "concept_features": {
+      "vascular": "脉管见瘤栓",
+      "neural": "神经侵犯,“上切缘”、“下切缘及网膜组只未见",
+      "differentiation": "低分化",
+      "lauren": "弥漫型"
+    }
+  },
+  "1489524": {
+    "name": "林利正",
+    "age": "76",
+    "sex": "Male",
+    "tumor_length_cm": "4.2",
+    "tumor_thickness_cm": "1.3",
+    "cea": "47.7",
+    "ca199": "43.3",
+    "concept_features": {
+      "vascular": "脉管瘤栓,未见",
+      "neural": "神经侵犯.送检“上切缘”、“下 切缘”净.送检淋巴结见",
+      "differentiation": "中-低分化",
+      "lauren": "肠型"
+    }
+  },
+  "1489475": {
+    "name": "饶依雪",
+    "age": "75",
+    "sex": "Female",
+    "tumor_length_cm": "5.9",
+    "tumor_thickness_cm": "1.8",
+    "cea": "5.5",
+    "ca199": "101.6",
+    "concept_features": {
+      "vascular": "脉管内瘤栓及神经侵犯:“上切缘”、“下切缘”及大网膜未见",
+      "neural": "神经侵犯:“上切缘”、“下切缘”及大网膜未见",
+      "differentiation": "低分化",
+      "lauren": "混合型"
+    }
+  },
+  "1491495": {
+    "name": "黄春玉",
+    "age": "72",
+    "sex": "Female",
+    "tumor_length_cm": "2.8",
+    "tumor_thickness_cm": "1.9",
+    "cea": "3.1",
+    "ca199": "25.9",
+    "concept_features": {
+      "ki67": "Ki67（约 90%",
+      "vascular": "脉管内瘤栓:“上切缘”、“下切缘”及网膜组织 未见",
+      "neural": "神经侵犯,未见",
+      "differentiation": "中分化",
+      "lauren": "肠型"
+    }
+  },
+  "1491569": {
+    "name": "王琳",
+    "age": "43",
+    "sex": "Male",
+    "tumor_length_cm": "5.6",
+    "tumor_thickness_cm": "1.5",
+    "cea": "2.5",
+    "ca199": "20.58",
+    "concept_features": {
+      "vascular": "血管、纤 维脂肪组织,未见",
+      "neural": "神经内分泌标记表达,Lauren分型为弥漫型,浸润浆膜层,问质见",
+      "differentiation": "低分化",
+      "lauren": "弥漫型"
+    }
+  },
+  "989188": {
+    "name": "张聚麟",
+    "age": "68",
+    "sex": "Male",
+    "tumor_length_cm": "6.1",
+    "tumor_thickness_cm": "1.6",
+    "cea": "1.5",
+    "ca199": "7.36",
+    "concept_features": {
+      "vascular": "脉管内瘤栓,.淋巴结见",
+      "differentiation": "低分化",
+      "lauren": "弥漫型"
+    }
+  },
+  "1490868": {
+    "name": "林梅云",
+    "age": "51",
+    "sex": "Female",
+    "tumor_length_cm": "2.8",
+    "tumor_thickness_cm": "1.2",
+    "cea": "3.7",
+    "ca199": "4.83",
+    "concept_features": {
+      "vascular": "脉管瘤栓,“上、下切缘“未见",
+      "neural": "神经浸润及脉管瘤栓,“上、下切缘“未见",
+      "differentiation": "中分化",
+      "lauren": "肠型"
+    }
+  },
+  "1489966": {
+    "name": "杨立强",
+    "age": "55",
+    "sex": "Male",
+    "tumor_length_cm": "4",
+    "tumor_thickness_cm": "1.3",
+    "cea": "18.1",
+    "ca199": "2.31",
+    "concept_features": {
+      "vascular": "脉管瘤栓.“上、下切缘”及大网膜未见",
+      "neural": "神经浸润及脉管瘤栓.“上、下切缘”及大网膜未见",
+      "differentiation": "中分化",
+      "lauren": "肠型"
+    }
+  },
+  "1490593": {
+    "name": "黄永亮",
+    "age": "67",
+    "sex": "Male",
+    "tumor_length_cm": "7.6",
+    "tumor_thickness_cm": "3.6",
+    "cea": "29",
+    "ca199": "＞1000",
+    "concept_features": {
+      "differentiation": "低分化",
+      "lauren": "不确定"
+    }
+  },
+  "1493222": {
+    "name": "黄兴栋",
+    "age": "67",
+    "sex": "Male",
+    "tumor_length_cm": "2.4",
+    "tumor_thickness_cm": "1.2",
+    "cea": "3.9",
+    "ca199": "10.39",
+    "concept_features": {
+      "ki67": "Ki67约70%",
+      "vascular": "脉管内瘤栓及神经侵犯.送检”上切缘”、“下切缘”净. 送检淋巴结未见",
+      "neural": "神经侵犯.送检”上切缘”、“下切缘”净. 送检淋巴结未见",
+      "differentiation": "中-低分化",
+      "lauren": "混合型"
+    }
+  },
+  "1492910": {
+    "name": "柯秀英",
+    "age": "68",
+    "sex": "Female",
+    "tumor_length_cm": "5.1",
+    "tumor_thickness_cm": "1.4",
+    "cea": "96.9",
+    "ca199": "6.6",
+    "concept_features": {
+      "ki67": "Ki67约70%",
+      "vascular": "脉管内瘤栓及神经侵犯,送检”上切缘”、“下切缘“净. 送检淋巴结未见",
+      "neural": "神经侵犯,送检”上切缘”、“下切缘“净. 送检淋巴结未见",
+      "differentiation": "中-低分化",
+      "lauren": "混合型"
+    }
+  },
+  "1493186": {
+    "name": "郑元美",
+    "age": "66",
+    "sex": "Male",
+    "tumor_length_cm": "7.2",
+    "tumor_thickness_cm": "4.4",
+    "cea": "5.2",
+    "ca199": "170.0",
+    "concept_features": {
+      "ki67": "Ki67约60%",
+      "cps": "CPS<1",
+      "pd1": "PD-1阴性",
+      "foxp3": "FoxP3散在",
+      "cd3": "CD3、CD4、CDS淋巴细胞少量阳性",
+      "cd4": "CD4、CDS淋巴细胞少量阳性",
+      "vascular": "脉管瘤栓及神经侵犯,“上切端”、下切端”及网膜组织未见",
+      "neural": "神经侵犯,“上切端”、下切端”及网膜组织未见",
+      "differentiation": "中分化",
+      "lauren": "肠型"
+    }
+  },
+  "1491853": {
+    "name": "邓秋元",
+    "age": "78",
+    "sex": "Male",
+    "tumor_length_cm": "8.0",
+    "tumor_thickness_cm": "1.6",
+    "cea": "0.9",
+    "ca199": "4.06",
+    "concept_features": {
+      "ki67": "Ki67约80%",
+      "cps": "CPS约10",
+      "pd1": "PD-1阴性",
+      "cd3": "CD3、CD4、CD8淋巴细胞少 量阳性",
+      "cd4": "CD4、CD8淋巴细胞少 量阳性",
+      "cd8": "CD8淋巴细胞少 量阳性",
+      "vascular": "脉管瘤栓,未见",
+      "neural": "神经侵犯,浸润浆膜下层,“上、下切缘”及网膜组织未见",
+      "differentiation": "中-低分化",
+      "lauren": "混合型"
+    }
+  },
+  "1491970": {
+    "name": "苏凯思",
+    "age": "72",
+    "sex": "Male",
+    "tumor_length_cm": "/",
+    "tumor_thickness_cm": "0.9",
+    "cea": "3.3",
+    "ca199": "6.28",
+    "concept_features": {
+      "ki67": "Ki67约80%",
+      "cps": "CPS约10",
+      "pd1": "PD-1个别阳性",
+      "foxp3": "FoxP3散在",
+      "cd3": "CD3、CD4、CDS济巴细胞部分阳性",
+      "cd4": "CD4、CDS济巴细胞部分阳性",
+      "vascular": "脉管内瘤栓及神经侵犯.周国胃另见",
+      "neural": "神经侵犯.周国胃另见",
+      "differentiation": "高分化",
+      "lauren": "肠型"
+    }
+  },
+  "1492601": {
+    "name": "吴爱华",
+    "age": "59",
+    "sex": "Female",
+    "tumor_length_cm": "2.6",
+    "tumor_thickness_cm": "0.9",
+    "cea": "0.6",
+    "ca199": "7.76",
+    "concept_features": {
+      "ki67": "Ki67约70%",
+      "cps": "CPS约10",
+      "pd1": "PD-1个别阳性",
+      "cd3": "CD3、CD4、CD8淋巴细胞部分阳性",
+      "cd4": "CD4、CD8淋巴细胞部分阳性",
+      "cd8": "CD8淋巴细胞部分阳性",
+      "vascular": "脉管瘤栓,“上、下切缘”未见",
+      "neural": "神经浸润及脉管瘤栓,“上、下切缘”未见",
+      "differentiation": "中分化",
+      "lauren": "肠型"
+    }
+  },
+  "1492322": {
+    "name": "黄昌有",
+    "age": "78",
+    "sex": "Male",
+    "tumor_length_cm": "/",
+    "tumor_thickness_cm": "1.3",
+    "cea": "6.3",
+    "ca199": "12.0",
+    "concept_features": {
+      "cps": "CPS 5",
+      "pd1": "PD-1个别阳性",
+      "foxp3": "FoxP3 散在",
+      "cd3": "CD3、CD4、CD8淋巴细胞少量阻性.原位余交结果:（8=）EBER阴性",
+      "cd4": "CD4、CD8淋巴细胞少量阻性.原位余交结果:（8=）EBER阴性",
+      "cd8": "CD8淋巴细胞少量阻性.原位余交结果:（8=）EBER阴性",
+      "vascular": "脉管瘤栓及神经侵犯,送检“上切 “责门石LN1” 切缘”及网膜组织未见",
+      "neural": "神经内分泌标记表达,Laurn 型为混合型,浸润浆膜下层,累及食管下段,间质见",
+      "differentiation": "中-低分化",
+      "lauren": "混合型"
+    }
+  },
+  "1493641": {
+    "name": "郭眄妹",
+    "age": "74",
+    "sex": "Male",
+    "tumor_length_cm": "8.0",
+    "tumor_thickness_cm": "3.0",
+    "cea": "1.8",
+    "ca199": "＜0.6",
+    "concept_features": {
+      "vascular": "血管及脂肪组织,未见",
+      "neural": "神经侵犯,“上切缘”、“下切缘”及网膜组织未见",
+      "differentiation": "低分化",
+      "lauren": "弥漫型"
+    }
+  },
+  "1495068": {
+    "name": "林宝珠",
+    "age": "63",
+    "sex": "Female",
+    "tumor_length_cm": "4.0",
+    "tumor_thickness_cm": "1.3",
+    "cea": "15.6",
+    "ca199": "＞1000",
+    "concept_features": {
+      "vascular": "脉管瘤栓及神经侵 犯.送检”上切缘”、“下切缘“及网膜组织净. 送检淋巴结见",
+      "neural": "神经侵 犯.送检”上切缘”、“下切缘“及网膜组织净. 送检淋巴结见",
+      "differentiation": "中-低分化",
+      "lauren": "混合型"
+    }
+  },
+  "1495653": {
+    "name": "罗智光",
+    "age": "56",
+    "sex": "Male",
+    "tumor_length_cm": "2.0",
+    "tumor_thickness_cm": "1.0",
+    "cea": "3.0",
+    "ca199": "11.28",
+    "concept_features": {
+      "ki67": "Ki67（约70%",
+      "vascular": "脉管内瘤栓: 蔬门石LN1”0/1,“肝总动脉 组织未见",
+      "neural": "神经侵犯,“上切缘”、“下切缘”及网膜未见",
+      "differentiation": "中-低分化",
+      "lauren": "肠型"
+    }
+  },
+  "1387681": {
+    "name": "杨明库",
+    "age": "76",
+    "sex": "Male",
+    "tumor_length_cm": "4.5",
+    "tumor_thickness_cm": "1.3",
+    "cea": "2.8",
+    "ca199": "8.83",
+    "concept_features": {
+      "vascular": "脉管内瘤栓及神经侵犯.送检“上切缘”、 “下切缘”净.送检淋巴结见",
+      "neural": "神经侵犯.送检“上切缘”、 “下切缘”净.送检淋巴结见",
+      "differentiation": "中分化",
+      "lauren": "肠型"
+    }
+  },
+  "1497176": {
+    "name": "黄贵生",
+    "age": "67",
+    "sex": "Male",
+    "tumor_length_cm": "7.1",
+    "tumor_thickness_cm": "2.3",
+    "cea": "23.28",
+    "ca199": "5.64",
+    "concept_features": {
+      "vascular": "脉管内瘤栓及神经侵犯,“上切缘”、“下切缘”及大网膜未见",
+      "neural": "神经侵犯,“上切缘”、“下切缘”及大网膜未见",
+      "differentiation": "中分化",
+      "lauren": "肠型"
+    }
+  },
+  "1497399": {
+    "name": "黄言浩",
+    "age": "36",
+    "sex": "Male",
+    "tumor_length_cm": "2.4",
+    "tumor_thickness_cm": "0.5",
+    "cea": "2.4",
+    "ca199": "＜0.06",
+    "concept_features": {
+      "vascular": "脉管内瘤栓及神经侵犯:送检“上切缘”、“下切缘”未见",
+      "neural": "神经侵犯:送检“上切缘”、“下切缘”未见",
+      "differentiation": "中-低分化",
+      "lauren": "混合型"
+    }
+  },
+  "1497408": {
+    "name": "陈玉珠",
+    "age": "62",
+    "sex": "Female",
+    "tumor_length_cm": "5.3",
+    "tumor_thickness_cm": "1.4",
+    "cea": "2.2",
+    "ca199": "＜0.6",
+    "concept_features": {
+      "cps": "CPS约5",
+      "vascular": "脉管内瘤栓. ”、“下切缘”及大网膜 缘 未见",
+      "neural": "神经侵犯及脉管内瘤栓. ”、“下切缘”及大网膜 缘 未见",
+      "differentiation": "低分化",
+      "lauren": "弥漫型"
+    }
+  },
+  "1497172": {
+    "name": "林梅古",
+    "age": "68",
+    "sex": "Male",
+    "tumor_length_cm": "7.0",
+    "tumor_thickness_cm": "1.8",
+    "cea": "2.7",
+    "ca199": "52.72",
+    "concept_features": {
+      "differentiation": "中-低分化",
+      "lauren": "/"
+    }
+  },
+  "1497593": {
+    "name": "黄孝铭",
+    "age": "68",
+    "sex": "Male",
+    "tumor_length_cm": "1.8",
+    "tumor_thickness_cm": "0.7",
+    "cea": "4.6",
+    "ca199": "9.69",
+    "concept_features": {
+      "vascular": "脉管瘤栓及神络经假犯,“上切缘 瘤.淋巴结未见",
+      "differentiation": "低分化",
+      "lauren": "弥漫型"
+    }
+  },
+  "1497589": {
+    "name": "黄玉玲",
+    "age": "51",
+    "sex": "Female",
+    "tumor_length_cm": "6.8",
+    "tumor_thickness_cm": "1.9",
+    "cea": "0.4",
+    "ca199": "9.65",
+    "concept_features": {
+      "vascular": "脉管瘤栓.“上、下 完成 切缘”及大网膜未见",
+      "neural": "神经内分泌标记表达,部分为完成 印戒细胞癌,Lauren分型为弥漫型,漫润浆膜层,间质见",
+      "differentiation": "低分化",
+      "lauren": "弥漫型"
+    }
+  },
+  "1498114": {
+    "name": "祝春祥",
+    "age": "75",
+    "sex": "Male",
+    "tumor_length_cm": "9.0",
+    "tumor_thickness_cm": "1.5",
+    "cea": "4.5",
+    "ca199": "19.2",
+    "concept_features": {
+      "ki67": "Ki67约70%",
+      "cps": "CPS约5",
+      "pd1": "PD-1个别阻 性,FOXP3散在阳性",
+      "foxp3": "FOXP3散在",
+      "vascular": "脉管内瘤栓及神经侵犯.送检“上切缘 高城城成 切缘”净.送检淋巴结见",
+      "neural": "神经侵犯.送检“上切缘 高城城成 切缘”净.送检淋巴结见",
+      "differentiation": "低分化",
+      "lauren": "弥漫型"
+    }
+  },
+  "1499092": {
+    "name": "刘昌云",
+    "age": "61",
+    "sex": "Male",
+    "tumor_length_cm": "1.9",
+    "tumor_thickness_cm": "1.2",
+    "cea": "3.7",
+    "ca199": "＜0.6",
+    "concept_features": {
+      "vascular": "脉管瘤栓及神经侵犯,“上、下切缘”及网膜 组织均未见",
+      "neural": "神经侵犯,“上、下切缘”及网膜 组织均未见",
+      "differentiation": "中-低分化",
+      "lauren": "混合型"
+    }
+  },
+  "1499097": {
+    "name": "张就太",
+    "age": "57",
+    "sex": "Male",
+    "tumor_length_cm": "5.1",
+    "tumor_thickness_cm": "1.6",
+    "cea": "1.9",
+    "ca199": "＜0.6",
+    "concept_features": {
+      "vascular": "脉管瘤栓 上、下切缘”及大网膜未见",
+      "neural": "神经侵犯及脉管瘤栓 上、下切缘”及大网膜未见",
+      "differentiation": "中分化",
+      "lauren": "不确定"
+    }
+  },
+  "1500816": {
+    "name": "翁华玲",
+    "age": "39",
+    "sex": "Female",
+    "tumor_length_cm": "3.3",
+    "tumor_thickness_cm": "1.0",
+    "cea": "0.9",
+    "ca199": "13.77",
+    "concept_features": {
+      "ki67": "Ki67约60%",
+      "cps": "CPS1",
+      "pd1": "PD-1个别阳性",
+      "vascular": "脉管内瘤栓及神经侵犯.送检“上切缘”、“下 切缘”净.！ 送检淋巴结见",
+      "neural": "神经内分泌标记表达 Laurén 分型弥漫型,浸润浆膜层:可见",
+      "differentiation": "低分化",
+      "lauren": "弥漫型"
+    }
+  },
+  "1501861": {
+    "name": "黄其成",
+    "age": "55",
+    "sex": "Male",
+    "tumor_length_cm": "1.1",
+    "tumor_thickness_cm": "0.6",
+    "cea": "2.3",
+    "ca199": "24.3",
+    "concept_features": {
+      "vascular": "脉管瘤栓,未见",
+      "neural": "神经侵犯 上、下切缘”及大网膜未见",
+      "differentiation": "低分化",
+      "lauren": "弥漫型"
+    }
+  },
+  "1279829": {
+    "name": "陈义文",
+    "age": "75",
+    "sex": "Male",
+    "tumor_length_cm": "1.6",
+    "tumor_thickness_cm": "0.7",
+    "cea": "2.3",
+    "ca199": "11.07",
+    "concept_features": {
+      "ki67": "Ki67约70%",
+      "cps": "CPS二1",
+      "vascular": "脉管瘤栓.“上、下切缘”未见",
+      "neural": "神经侵犯及脉管瘤栓.“上、下切缘”未见",
+      "differentiation": "中分化",
+      "lauren": "肠型"
+    }
+  },
+  "1501282": {
+    "name": "林慈声",
+    "age": "71",
+    "sex": "Male",
+    "tumor_length_cm": "2.7",
+    "tumor_thickness_cm": "0.8",
+    "cea": "2.4",
+    "ca199": "13.88",
+    "concept_features": {
+      "vascular": "脉管瘤栓. 上、下切缘”及大网膜未凡肿瘤 .淋巴结未见",
+      "neural": "神经浸润及脉管瘤栓. 上、下切缘”及大网膜未凡肿瘤 .淋巴结未见",
+      "differentiation": "中分化",
+      "lauren": "肠型"
+    }
+  },
+  "1500511": {
+    "name": "何爱容",
+    "age": "69",
+    "sex": "Female",
+    "tumor_length_cm": "3.0",
+    "tumor_thickness_cm": "1.0",
+    "cea": "0.7",
+    "ca199": "7.05",
+    "concept_features": {
+      "neural": "神经侵犯,“上、下切缘”及网膜组织未见",
+      "differentiation": "中-低分化",
+      "lauren": "混合型"
+    }
+  },
+  "1500963": {
+    "name": "郑志尧",
+    "age": "82",
+    "sex": "Male",
+    "tumor_length_cm": "2.8",
+    "tumor_thickness_cm": "1.0",
+    "cea": "1.8",
+    "ca199": "8.07",
+    "concept_features": {
+      "ki67": "Ki67（约70%",
+      "vascular": "脉管瘤栓:“上切缘”、“下切缘”及网膜组织未见",
+      "neural": "神经侵犯,未见",
+      "differentiation": "中-低分化",
+      "lauren": "肠型"
+    }
+  },
+  "1504360": {
+    "name": "钟淑兰",
+    "age": "70",
+    "sex": "Female",
+    "tumor_length_cm": "1.2",
+    "tumor_thickness_cm": "0.5",
+    "cea": "0.9",
+    "ca199": "7.07",
+    "concept_features": {
+      "vascular": "脉管内瘤栓及神经侵 犯.送检“上切缘”、“下切缘”净.送检淋巴结未见",
+      "neural": "神经侵 犯.送检“上切缘”、“下切缘”净.送检淋巴结未见",
+      "differentiation": "中分化",
+      "lauren": "肠型"
+    }
+  },
+  "1501293": {
+    "name": "郑德恩",
+    "age": "59",
+    "sex": "Female",
+    "tumor_length_cm": "5.0",
+    "tumor_thickness_cm": "1.6",
+    "cea": "3.8",
+    "ca199": "17.42",
+    "concept_features": {
+      "differentiation": "低分化",
+      "lauren": "弥漫型"
+    }
+  },
+  "1501301": {
+    "name": "叶士光",
+    "age": "71",
+    "sex": "Male",
+    "tumor_length_cm": "4.5",
+    "tumor_thickness_cm": "1.7",
+    "cea": "3.6",
+    "ca199": "＜0.6",
+    "concept_features": {
+      "vascular": "脉管瘤栓及神经侵犯.送检“上切缘“、“下切缘”及网膜组织 全 净.送检淋巴结未见",
+      "neural": "神经侵犯.送检“上切缘“、“下切缘”及网膜组织 全 净.送检淋巴结未见",
+      "differentiation": "中-低分化",
+      "lauren": "混合型"
+    }
+  },
+  "1502434": {
+    "name": "潘凤英",
+    "age": "64",
+    "sex": "Female",
+    "tumor_length_cm": "5.1",
+    "tumor_thickness_cm": "1.6",
+    "cea": "5.5",
+    "ca199": "15.0",
+    "concept_features": {
+      "ki67": "Ki67（90%",
+      "cps": "CPS约10",
+      "vascular": "脉管内瘤栓及神经侵犯,“上 切缘”、“下切缘”及大网膜未见",
+      "neural": "神经侵犯,“上 切缘”、“下切缘”及大网膜未见",
+      "differentiation": "低分化",
+      "lauren": "弥漫型"
+    }
+  },
+  "1502967": {
+    "name": "陈春荣",
+    "age": "71",
+    "sex": "Male",
+    "tumor_length_cm": "2.1",
+    "tumor_thickness_cm": "1.1",
+    "cea": "2.5",
+    "ca199": "23.4",
+    "concept_features": {
+      "cps": "CPS约5",
+      "foxp3": "FoXP3散在",
+      "cd3": "CD3、CD4、CD8淋巴细胞部分阳性",
+      "cd4": "CD4、CD8淋巴细胞部分阳性",
+      "cd8": "CD8淋巴细胞部分阳性",
+      "vascular": "脉管瘤栓 上、下切缘”及网膜组织未见",
+      "neural": "神经侵犯及脉管瘤栓 上、下切缘”及网膜组织未见",
+      "differentiation": "中分化",
+      "lauren": "肠型"
+    }
+  },
+  "1503242": {
+    "name": "曾建国",
+    "age": "60",
+    "sex": "Male",
+    "tumor_length_cm": "4.4",
+    "tumor_thickness_cm": "0.9",
+    "cea": "2.6",
+    "ca199": "26.58",
+    "concept_features": {
+      "vascular": "脉管内瘤栓.送检“上切缘”、“下切缘”及大网 膜组织未见",
+      "neural": "神经纤维,未见",
+      "differentiation": "中-低分化",
+      "lauren": "混合型"
+    }
+  },
+  "1502881": {
+    "name": "陈友良",
+    "age": "79",
+    "sex": "Male",
+    "tumor_length_cm": "3.9",
+    "tumor_thickness_cm": "1.4",
+    "cea": "3.1",
+    "ca199": "12.7",
+    "concept_features": {
+      "vascular": "脉管 瘤栓及神经侵犯.“上切缘 切缘”及网膜组织未见",
+      "neural": "神经侵犯.“上切缘 切缘”及网膜组织未见",
+      "differentiation": "低分化",
+      "lauren": "弥漫型"
+    }
+  },
+  "1502724": {
+    "name": "吴春玉",
+    "age": "57",
+    "sex": "Female",
+    "tumor_length_cm": "2.5",
+    "tumor_thickness_cm": "1.1",
+    "cea": "1.9",
+    "ca199": "7.64",
+    "concept_features": {
+      "vascular": "脉管内瘤栓及神经侵犯.送检“上切缘” 、“下切缘”净. 送检淋巴结见",
+      "neural": "神经侵犯.送检“上切缘” 、“下切缘”净. 送检淋巴结见",
+      "differentiation": "中分化",
+      "lauren": "混合型"
+    }
+  },
+  "732535": {
+    "name": "林文",
+    "age": "57",
+    "sex": "Female",
+    "tumor_length_cm": "/",
+    "tumor_thickness_cm": "0.7",
+    "cea": "1.3",
+    "ca199": "3.3",
+    "concept_features": {
+      "ki67": "Ki67约60%",
+      "cps": "CPS约3",
+      "pd1": "PD-1个别阳性",
+      "foxp3": "FOXP3散在",
+      "vascular": "脉管瘤栓及神经侵犯.送检“上切 缘”、“下切缘”及网膜组织净.送检淋巴结未见",
+      "neural": "神经侵犯.送检“上切 缘”、“下切缘”及网膜组织净.送检淋巴结未见",
+      "differentiation": "中-低分化",
+      "lauren": "混合型"
+    }
+  },
+  "1503628": {
+    "name": "刘盛武",
+    "age": "46",
+    "sex": "Male",
+    "tumor_length_cm": "3.3",
+    "tumor_thickness_cm": "0.6",
+    "cea": "3.4",
+    "ca199": "8.95",
+    "concept_features": {
+      "vascular": "脉管内瘤栓送检“上切缘” “下切缘”净.送检淋巴结未见",
+      "neural": "神经使犯,未见",
+      "differentiation": "低分化",
+      "lauren": "肠型"
+    }
+  },
+  "1487406": {
+    "name": "冯小梅",
+    "age": "62",
+    "sex": "Female",
+    "tumor_length_cm": "5.0",
+    "tumor_thickness_cm": "1.4",
+    "cea": "0.7",
+    "ca199": "4.83",
+    "concept_features": {
+      "vascular": "脉管瘤栓.送检“上切 下切缘”及网膜组织净. 送检淋巴结见",
+      "neural": "神经侵犯及脉管瘤栓.送检“上切 下切缘”及网膜组织净. 送检淋巴结见",
+      "differentiation": "低分化",
+      "lauren": "弥漫型"
+    }
+  },
+  "1503674": {
+    "name": "陈宗伟",
+    "age": "71",
+    "sex": "Male",
+    "tumor_length_cm": "3.7",
+    "tumor_thickness_cm": "1.1",
+    "cea": "3.6",
+    "ca199": "6.72",
+    "concept_features": {
+      "vascular": "脉管 内瘤栓:“上切缘”见",
+      "neural": "神经侵犯及脉管 内瘤栓:“上切缘”见",
+      "differentiation": "中分化",
+      "lauren": "肠型"
+    }
+  },
+  "1503880": {
+    "name": "陈家学",
+    "age": "76",
+    "sex": "Male",
+    "tumor_length_cm": "6.0",
+    "tumor_thickness_cm": "1.4",
+    "cea": "1.3",
+    "ca199": "＜0.6",
+    "concept_features": {
+      "vascular": "脉管内瘤栓及神经侵犯:送检“上切缘 “下切缘”及大网膜未见",
+      "neural": "神经内分泌癌（部分为中一低分化腺癌,部分为神经内分泌癌）,大小约7.2*6.0cm,Lauren分 混合型,侵及浆膜下层,累及食管下段,间 质见",
+      "differentiation": "中-低分化",
+      "lauren": "混合型"
+    }
+  },
+  "1503744": {
+    "name": "江山",
+    "age": "79",
+    "sex": "Male",
+    "tumor_length_cm": "6.3",
+    "tumor_thickness_cm": "2.0",
+    "cea": "1.7",
+    "ca199": "216.4",
+    "concept_features": {
+      "ki67": "Ki67（约70%",
+      "vascular": "脉管内瘤栓及神经侵犯,送检“上切缘”、“下切缘”及网膜 组织未见",
+      "neural": "神经侵犯,送检“上切缘”、“下切缘”及网膜 组织未见",
+      "differentiation": "低分化",
+      "lauren": "弥漫型"
+    }
+  },
+  "1505663": {
+    "name": "陈玉仙",
+    "age": "63",
+    "sex": "Female",
+    "tumor_length_cm": "1.4",
+    "tumor_thickness_cm": "0.7",
+    "cea": "2.8",
+    "ca199": "13.88",
+    "concept_features": {
+      "ki67": "Ki67约50%",
+      "cps": "CPS10",
+      "pd1": "PD-1个别阳性",
+      "cd3": "CD3、CD4、CD8淋巴细胞 病程 完成 部分阳性",
+      "cd4": "CD4、CD8淋巴细胞 病程 完成 部分阳性",
+      "cd8": "CD8淋巴细胞 病程 完成 部分阳性",
+      "vascular": "脉管瘤栓及神经侵犯,浸润粘膜肌层,“上切缘”、“下切缘”未见",
+      "neural": "神经侵犯,浸润粘膜肌层,“上切缘”、“下切缘”未见",
+      "differentiation": "中分化",
+      "lauren": "肠型"
+    }
+  },
+  "1505617": {
+    "name": "余妹孙",
+    "age": "68",
+    "sex": "Female",
+    "tumor_length_cm": "2.9",
+    "tumor_thickness_cm": "1.2",
+    "cea": "2.2",
+    "ca199": "8.43",
+    "concept_features": {
+      "vascular": "脉管内瘤栓及神经侵犯.淋巴结见",
+      "neural": "神经侵犯.淋巴结见",
+      "differentiation": "低分化",
+      "lauren": "弥漫型"
+    }
+  },
+  "1506559": {
+    "name": "郭幼坤",
+    "age": "76",
+    "sex": "Male",
+    "tumor_length_cm": "3.9",
+    "tumor_thickness_cm": "1.3",
+    "cea": "2.8",
+    "ca199": "＜0.6",
+    "concept_features": {
+      "vascular": "脉管瘤栓.“上切缘” 下切缘”及网膜组织未见",
+      "neural": "神经侵犯,未见",
+      "differentiation": "低分化",
+      "lauren": "弥漫型"
+    }
+  },
+  "1506079": {
+    "name": "杨锡钦",
+    "age": "59",
+    "sex": "Male",
+    "tumor_length_cm": "/",
+    "tumor_thickness_cm": "2.1",
+    "cea": "98.0",
+    "ca199": "12.1",
+    "concept_features": {
+      "ki67": "Ki67约75%",
+      "cps": "CPS约20",
+      "vascular": "脉管内瘤栓及神经侵犯:“上切缘”、“下切缘”及 大网膜未见",
+      "neural": "神经侵犯:“上切缘”、“下切缘”及 大网膜未见",
+      "differentiation": "中-低分化",
+      "lauren": ""
+    }
+  },
+  "1189997": {
+    "name": "林高勇",
+    "age": "60",
+    "sex": "Male",
+    "tumor_length_cm": "2.0",
+    "tumor_thickness_cm": "1.2",
+    "cea": "4.1",
+    "ca199": "＜0.6",
+    "concept_features": {
+      "ki67": "Ki67约70%",
+      "vascular": "脉管内瘤栓.“上切缘”、“下切缘”及大网膜 净 N11”0/1,“肝十二指肠韧带LN12a”0/1,“贵门右LN1显”0/16,“小弯侧LN3显 显LN12a”1/4;“贵门右LN1”“小弯侧LN3”“大弯侧LN4”“幽门上LN5”、“ 下LN6”、“肝总动脉LN8a”、“腹腔动脉旁LN9”“胃网膜左4sb 随 显”、“胃网膜左4sb显”镜下为纤维脂肪组织,未见",
+      "neural": "神经纤维,间质未见",
+      "differentiation": "中-低分化",
+      "lauren": "混合型"
+    }
+  },
+  "1510726": {
+    "name": "余忠晖",
+    "age": "37",
+    "sex": "Male",
+    "tumor_length_cm": "3.1",
+    "tumor_thickness_cm": "2.0",
+    "cea": "1.3",
+    "ca199": "4.65",
+    "concept_features": {
+      "ki67": "Ki67约80%",
+      "cps": "CPS约5",
+      "cd4": "CD4、CD8淋巴细胞部分阳性",
+      "cd8": "CD8淋巴细胞部分阳性",
+      "vascular": "脉管瘤栓.“上、下切缘”及网膜组织未见",
+      "neural": "神经侵犯及脉管瘤栓.“上、下切缘”及网膜组织未见",
+      "differentiation": "中-低分化",
+      "lauren": "弥漫型"
+    }
+  },
+  "1508046": {
+    "name": "程春建",
+    "age": "65",
+    "sex": "Male",
+    "tumor_length_cm": "3.2",
+    "tumor_thickness_cm": "0.7",
+    "cea": "1.1",
+    "ca199": "1.91",
+    "concept_features": {
+      "differentiation": "中-低分化",
+      "lauren": "弥漫型"
+    }
+  },
+  "1174254": {
+    "name": "黄光明",
+    "age": "65",
+    "sex": "Male",
+    "tumor_length_cm": "2.2",
+    "tumor_thickness_cm": "0.9",
+    "cea": "3.2",
+    "ca199": "6.5",
+    "concept_features": {
+      "differentiation": "中-低分化",
+      "lauren": "混合型"
+    }
+  },
+  "1514191": {
+    "name": "邓木兰",
+    "age": "81",
+    "sex": "Female",
+    "tumor_length_cm": "2.5",
+    "tumor_thickness_cm": "0.8",
+    "cea": "4.5",
+    "ca199": "8.56",
+    "concept_features": {
+      "ki67": "Ki67约60%",
+      "cps": "CPS约5",
+      "pd1": "PD-1少量阳性",
+      "foxp3": "FoxP3散在",
+      "cd3": "CD3CD4、CD8淋巴细胞部分阳性",
+      "cd4": "CD4、CD8淋巴细胞部分阳性",
+      "cd8": "CD8淋巴细胞部分阳性",
+      "vascular": "脉管内瘤栓及神经侵犯.送检“上切缘”、“下切缘”未见",
+      "neural": "神经侵犯.送检“上切缘”、“下切缘”未见",
+      "differentiation": "中分化",
+      "lauren": "肠型"
+    }
+  },
+  "1000937": {
+    "name": "林玉珍",
+    "age": "55",
+    "sex": "Female",
+    "tumor_length_cm": "5.9",
+    "tumor_thickness_cm": "1.9",
+    "cea": "1.4",
+    "ca199": "＜0.6",
+    "concept_features": {
+      "vascular": "脉管瘤栓,可见",
+      "neural": "神经纤维侵犯.“上、下切断”未见",
+      "differentiation": "低分化",
+      "lauren": "弥漫型"
+    }
+  },
+  "1514644": {
+    "name": "程少清",
+    "age": "70",
+    "sex": "Male",
+    "tumor_length_cm": "4.6",
+    "tumor_thickness_cm": "1.8",
+    "cea": "7.3",
+    "ca199": "31.3",
+    "concept_features": {
+      "ki67": "Ki67约80%",
+      "cps": "CPS10",
+      "vascular": "脉管瘤栓,未见",
+      "neural": "神经侵犯.送检“上切缘”、“下切缘”及 0香NM/0N147湖206N210N 香湘,0香2NT4,0香,20香 专 0/5,“腹腔动脉芳LN9显”0/7,“脾动脉十LN11显”0/2,“肝十二指肠韧带LN12a显 0/1:“责门石LN1”、“小弯侧LN3”、“大弯侧LN4”、 “幽门下LN6”、“肝总动脉 LN8a”、“肝十二指肠韧带LN12a”、“胃网膜左4sb”、“贵门右LN1显”、“大弯侧LN4 显”及“胃网膜左4sb显”镜下见",
+      "differentiation": "中分化",
+      "lauren": "肠型"
+    }
+  },
+  "1515754": {
+    "name": "黄明其",
+    "age": "71",
+    "sex": "Male",
+    "tumor_length_cm": "/",
+    "tumor_thickness_cm": "0.8",
+    "cea": "2.6",
+    "ca199": "3.67",
+    "concept_features": {
+      "vascular": "脉管内瘤栓及神经侵犯.“上、下切缘”未见",
+      "neural": "神经侵犯.“上、下切缘”未见",
+      "differentiation": "中分化",
+      "lauren": "肠型"
+    }
+  },
+  "1515132": {
+    "name": "王赛华",
+    "age": "77",
+    "sex": "Male",
+    "tumor_length_cm": "1.6",
+    "tumor_thickness_cm": "0.7",
+    "cea": "1.8",
+    "ca199": "5.41",
+    "concept_features": {
+      "ki67": "Ki67（80%",
+      "cps": "CPS 5",
+      "cd3": "CD3.CD4淋巴细胞部分阳性",
+      "cd4": "CD4淋巴细胞部分阳性",
+      "vascular": "脉管内瘤栓,未见",
+      "neural": "神经侵犯,“上切端”、“下切端”及大网膜未见",
+      "differentiation": "中分化",
+      "lauren": "肠型"
+    }
+  },
+  "1513362": {
+    "name": "姚建地",
+    "age": "57",
+    "sex": "Male",
+    "tumor_length_cm": "1.2",
+    "tumor_thickness_cm": "0.6",
+    "cea": "0.7",
+    "ca199": "2.54",
+    "concept_features": {
+      "ki67": "Ki67约40%",
+      "cps": "CPS约5",
+      "pd1": "PD-1个别阳性",
+      "cd3": "CD3、CD4、 CD8琳巴细胞部分阳性",
+      "cd4": "CD4、 CD8琳巴细胞部分阳性",
+      "cd8": "CD8琳巴细胞部分阳性",
+      "vascular": "脉管瘤栓及神经侵犯,“上切缘”、“下切 缘”及网膜组织未见",
+      "neural": "神经侵犯,“上切缘”、“下切 缘”及网膜组织未见",
+      "differentiation": "中分化",
+      "lauren": "肠型"
+    }
+  },
+  "1513351": {
+    "name": "张志明",
+    "age": "73",
+    "sex": "Male",
+    "tumor_length_cm": "7.1",
+    "tumor_thickness_cm": "1.5",
+    "cea": "1.3",
+    "ca199": "5.29",
+    "concept_features": {
+      "ki67": "Ki67约90%",
+      "vascular": "脉管瘤栓及神经侵犯,“上、下切 缘”及大网膜未见",
+      "neural": "神经侵犯,“上、下切 缘”及大网膜未见",
+      "differentiation": "低分化",
+      "lauren": "混合型"
+    }
+  },
+  "1515137": {
+    "name": "吴牡丹",
+    "age": "67",
+    "sex": "Female",
+    "tumor_length_cm": "3",
+    "tumor_thickness_cm": "0.9",
+    "cea": "1.9",
+    "ca199": "15.04",
+    "concept_features": {
+      "ki67": "Ki67 （80%",
+      "cps": "CPS约3",
+      "pd1": "PD-1个别阳性",
+      "foxp3": "FOxP3散在",
+      "cd3": "CD3淋巴细胞部分阳性",
+      "vascular": "脉管内瘤栓及神经侵 犯,“上切缘”、“下切缘”未见",
+      "neural": "神经侵 犯,“上切缘”、“下切缘”未见",
+      "differentiation": "中-低分化",
+      "lauren": "混合型"
+    }
+  },
+  "1516578": {
+    "name": "陈小强",
+    "age": "38",
+    "sex": "Male",
+    "tumor_length_cm": "7.5",
+    "tumor_thickness_cm": "1.8",
+    "cea": "1.4",
+    "ca199": "5.7",
+    "concept_features": {
+      "differentiation": "中分化",
+      "lauren": "弥漫型"
+    }
+  },
+  "1509301": {
+    "name": "陈国祥",
+    "age": "69",
+    "sex": "Male",
+    "tumor_length_cm": "3.3",
+    "tumor_thickness_cm": "1.2",
+    "cea": "9.6",
+    "ca199": "74.2",
+    "concept_features": {
+      "differentiation": "中分化",
+      "lauren": "不确定"
+    }
+  },
+  "1507541": {
+    "name": "陈美华",
+    "age": "63",
+    "sex": "Female",
+    "tumor_length_cm": "/",
+    "tumor_thickness_cm": "1.2",
+    "cea": "1.2",
+    "ca199": "5.67",
+    "concept_features": {
+      "vascular": "脉管瘤栓.“上、下切缘”未见",
+      "neural": "神经侵犯及脉管瘤栓.“上、下切缘”未见",
+      "differentiation": "低分化",
+      "lauren": "弥漫型"
+    }
+  },
+  "676059": {
+    "name": "梁金在",
+    "age": "63",
+    "sex": "Male",
+    "tumor_length_cm": "1.9",
+    "tumor_thickness_cm": "0.8",
+    "cea": "1.2",
+    "ca199": "4.75",
+    "concept_features": {
+      "vascular": "脉管内瘤栓及神经侵犯.“上切缘” 淋巴结未见",
+      "neural": "神经侵犯.“上切缘” 淋巴结未见",
+      "differentiation": "中分化",
+      "lauren": "肠型"
+    }
+  },
+  "1508038": {
+    "name": "林月丽",
+    "age": "32",
+    "sex": "Female",
+    "tumor_length_cm": "1.4",
+    "tumor_thickness_cm": "0.5",
+    "cea": "0.7",
+    "ca199": "8.29",
+    "concept_features": {
+      "ki67": "Ki67（约20%",
+      "cps": "CPS二1",
+      "pd1": "PD-1个别阳性",
+      "foxp3": "FOxP3个别",
+      "cd3": "CD3淋巴细胞少量阳性",
+      "neural": "神经侵犯及管内瘤栓.“上切缘”、”下切缘”未见",
+      "differentiation": "不确定",
+      "lauren": "弥漫型"
+    }
+  },
+  "1508335": {
+    "name": "刘碰忠",
+    "age": "50",
+    "sex": "Male",
+    "tumor_length_cm": "1.3",
+    "tumor_thickness_cm": "0.5",
+    "cea": "1.9",
+    "ca199": "＜0.6",
+    "concept_features": {
+      "ki67": "Ki67约75%",
+      "cps": "CPS约40",
+      "vascular": "血管及 脂防组织,未见",
+      "neural": "神经内分秘标记表达,Laurén分型 混合型,浸润肌层 净.送检淋巴结未见",
+      "differentiation": "中-低分化",
+      "lauren": "混合型"
+    }
+  },
+  "1382874": {
+    "name": "谢圣铨",
+    "age": "68",
+    "sex": "Male",
+    "tumor_length_cm": "4.0",
+    "tumor_thickness_cm": "1.2",
+    "cea": "1.9",
+    "ca199": "6.5",
+    "concept_features": {
+      "ki67": "Ki67约80%",
+      "vascular": "脉管瘤栓及神经侵犯,浸润浆膜下层,“上切缘”、“下切缘”及网膜 组织未见",
+      "neural": "神经侵犯,浸润浆膜下层,“上切缘”、“下切缘”及网膜 组织未见",
+      "differentiation": "低分化",
+      "lauren": "弥漫型"
+    }
+  },
+  "1512411": {
+    "name": "林瑞虎",
+    "age": "71",
+    "sex": "Male",
+    "tumor_length_cm": "2.0",
+    "tumor_thickness_cm": "1.3",
+    "cea": "5.5",
+    "ca199": "13.66",
+    "concept_features": {
+      "ki67": "Ki67<1%",
+      "cd4": "CD4、CD8淋巴细胞少量阳性",
+      "cd8": "CD8淋巴细胞少量阳性",
+      "vascular": "脉管内瘤栓.周围胃于肌层见",
+      "neural": "神经侵犯,未见",
+      "differentiation": "中-低分化",
+      "lauren": "混合型"
+    }
+  },
+  "1509729": {
+    "name": "邱玉堂",
+    "age": "58",
+    "sex": "Male",
+    "tumor_length_cm": "3.7",
+    "tumor_thickness_cm": "0.8",
+    "cea": "59.5",
+    "ca199": "11.87",
+    "concept_features": {
+      "ki67": "Ki67约60%",
+      "cps": "CPS约5",
+      "pd1": "PD-1个别阳性",
+      "vascular": "脉管内瘤栓.送检“上切缘”、” 切缘”净.送检淋巴结见",
+      "neural": "神经内分秘标记表达,部分呈印戒细胞癌 Laurén分型弥漫型,漫润浆膜层;可贝神经侵犯及脉管内瘤栓.送检“上切缘”、” 切缘”净.送检淋巴结见",
+      "differentiation": "低分化",
+      "lauren": "弥漫型"
+    }
+  },
+  "1512344": {
+    "name": "杨江法",
+    "age": "38",
+    "sex": "Male",
+    "tumor_length_cm": "6.1",
+    "tumor_thickness_cm": "2.0",
+    "cea": "2.6",
+    "ca199": "8.51",
+    "concept_features": {
+      "ki67": "Ki67约 65%",
+      "cps": "CPS约2",
+      "pd1": "PD-1少量阳性",
+      "foxp3": "FoxP3少量",
+      "cd3": "CD3、CD4、CD8淋巴细胞部分阳性",
+      "cd4": "CD4、CD8淋巴细胞部分阳性",
+      "cd8": "CD8淋巴细胞部分阳性",
+      "vascular": "脉管内 留栓及神经侵犯:送检“上切缘”、 “下切缘”及大网膜未见",
+      "neural": "神经侵犯:送检“上切缘”、 “下切缘”及大网膜未见",
+      "differentiation": "中-低分化",
+      "lauren": "混合型"
+    }
+  },
+  "1508057": {
+    "name": "游连焕",
+    "age": "72",
+    "sex": "Male",
+    "tumor_length_cm": "4.8",
+    "tumor_thickness_cm": "1.2",
+    "cea": "2.8",
+    "ca199": "15.0",
+    "concept_features": {
+      "vascular": "脉管瘤栓,未见",
+      "neural": "神经侵犯,送检“上 切缘”、“下切缘”及网膜组织净.淋巴结未见",
+      "differentiation": "中-低分化",
+      "lauren": "混合型"
+    }
+  },
+  "1510817": {
+    "name": "詹金文",
+    "age": "73",
+    "sex": "Male",
+    "tumor_length_cm": "3.8",
+    "tumor_thickness_cm": "1.3",
+    "cea": "2.4",
+    "ca199": "9.89",
+    "concept_features": {
+      "cps": "CPS约15",
+      "pd1": "PD-1个别阳性",
+      "cd3": "CD3、CD4、CD8淋巴细胞部分阳性",
+      "cd4": "CD4、CD8淋巴细胞部分阳性",
+      "cd8": "CD8淋巴细胞部分阳性",
+      "vascular": "脉管瘤栓 一切维 “下切缘”及 网膜组织净.淋巴结见",
+      "neural": "神经侵犯,未凡明显脉管瘤栓 一切维 “下切缘”及 网膜组织净.淋巴结见",
+      "differentiation": "中-低分化",
+      "lauren": "混合型"
+    }
+  },
+  "1508333": {
+    "name": "郑金元",
+    "age": "68",
+    "sex": "Male",
+    "tumor_length_cm": "/",
+    "tumor_thickness_cm": "1.2",
+    "cea": "1.1",
+    "ca199": "8.9",
+    "concept_features": {
+      "ki67": "Ki67约40%",
+      "cps": "CPS1",
+      "pd1": "PD-1阴性",
+      "foxp3": "FOXP3散在",
+      "differentiation": "中分化",
+      "lauren": "肠型"
+    }
+  },
+  "1510142": {
+    "name": "毛机兰",
+    "age": "56",
+    "sex": "Female",
+    "tumor_length_cm": "2.0",
+    "tumor_thickness_cm": "1.0",
+    "cea": "0.5",
+    "ca199": "17.42",
+    "concept_features": {
+      "cps": "CPS约20",
+      "pd1": "PD-1个别阳性",
+      "foxp3": "FoxP3少量",
+      "cd3": "CD3、CD4淋巴细胞部分阳性",
+      "cd4": "CD4淋巴细胞部分阳性",
+      "vascular": "脉管内瘤栓及神经侵 犯.送检“上切缘”、“下切缘”净.送检淋巴结未见",
+      "neural": "神经侵 犯.送检“上切缘”、“下切缘”净.送检淋巴结未见",
+      "differentiation": "低分化",
+      "lauren": "弥漫型"
+    }
+  },
+  "1245708": {
+    "name": "陈吓钦",
+    "age": "71",
+    "sex": "Female",
+    "tumor_length_cm": "4.0",
+    "tumor_thickness_cm": "1.6",
+    "cea": "1.5",
+    "ca199": "14.18",
+    "concept_features": {
+      "ki67": "KI67约60%",
+      "cps": "CPS约3",
+      "pd1": "PD-1个别阳性",
+      "foxp3": "FOXP3散在",
+      "cd3": "CD3、CD4、CD8淋巴细胞部分阳性",
+      "cd4": "CD4、CD8淋巴细胞部分阳性",
+      "cd8": "CD8淋巴细胞部分阳性",
+      "vascular": "脉管瘤栓.“上、下切缘”及大网膜未见",
+      "neural": "神经侵犯,未见",
+      "differentiation": "低分化",
+      "lauren": "弥漫型"
+    }
+  },
+  "1509743": {
+    "name": "黄彩云",
+    "age": "70",
+    "sex": "Female",
+    "tumor_length_cm": "1.9",
+    "tumor_thickness_cm": "1.0",
+    "cea": "2.4",
+    "ca199": "10.38",
+    "concept_features": {
+      "vascular": "脉管瘤栓,未见",
+      "neural": "神经侵犯 “上、下切缘”及网膜组织未见",
+      "differentiation": "中-低分化",
+      "lauren": "混合型"
+    }
+  },
+  "1510288": {
+    "name": "林嫩精",
+    "age": "73",
+    "sex": "Male",
+    "tumor_length_cm": "5.5",
+    "tumor_thickness_cm": "2.0",
+    "cea": "3.9",
+    "ca199": "15.35",
+    "concept_features": {
+      "vascular": "脉管瘤栓.“上、下切 缘”及大网膜未见",
+      "neural": "神经浸润及脉管瘤栓.“上、下切 缘”及大网膜未见",
+      "differentiation": "中-低分化",
+      "lauren": "混合型"
+    }
+  },
+  "1511620": {
+    "name": "骆鸿鹏",
+    "age": "57",
+    "sex": "Male",
+    "tumor_length_cm": "4.1",
+    "tumor_thickness_cm": "1.5",
+    "cea": "2.3",
+    "ca199": "6.08",
+    "concept_features": {
+      "cps": "CPS约3",
+      "pd1": "PD-1个别阳性",
+      "foxp3": "FoXP3少量",
+      "cd3": "CD3、CD4、CD8淋巴细胞部分阳性",
+      "cd4": "CD4、CD8淋巴细胞部分阳性",
+      "cd8": "CD8淋巴细胞部分阳性",
+      "vascular": "脉管内瘤栓及神经侵犯.送检“上切缘”、“下切缘”净.送检淋巴结见",
+      "neural": "神经侵犯.送检“上切缘”、“下切缘”净.送检淋巴结见",
+      "differentiation": "中-低分化",
+      "lauren": "弥漫型"
+    }
+  },
+  "1513022": {
+    "name": "陈少国",
+    "age": "46",
+    "sex": "Male",
+    "tumor_length_cm": "3.9",
+    "tumor_thickness_cm": "1.7",
+    "cea": "25.0",
+    "ca199": "7.18",
+    "concept_features": {
+      "ki67": "Ki67约704性:(27、30#)CK阴性",
+      "cps": "CPS10",
+      "pd1": "PD-1个别阳性",
+      "foxp3": "FoxP3散在",
+      "vascular": "脉管瘤栓及神经侵犯.送检“上切缘”、“下切缘”及网膜组织净,送检淋巴结见",
+      "neural": "神经侵犯.送检“上切缘”、“下切缘”及网膜组织净,送检淋巴结见",
+      "differentiation": "中-低分化",
+      "lauren": "混合型"
+    }
+  },
+  "1511172": {
+    "name": "王金珠",
+    "age": "67",
+    "sex": "Female",
+    "tumor_length_cm": "1.6",
+    "tumor_thickness_cm": "0.8",
+    "cea": "1.9",
+    "ca199": "19.5",
+    "concept_features": {
+      "vascular": "脉管瘤栓及神经侵犯,“上切缘”、“下切缘”净. 淋巴结未见",
+      "neural": "神经侵犯,“上切缘”、“下切缘”净. 淋巴结未见",
+      "differentiation": "低分化",
+      "lauren": "弥漫型"
+    }
+  },
+  "1511376": {
+    "name": "陈海萍",
+    "age": "34",
+    "sex": "Female",
+    "tumor_length_cm": "2.6",
+    "tumor_thickness_cm": "1.0",
+    "cea": "1.7",
+    "ca199": "24.68",
+    "concept_features": {
+      "ki67": "Ki67约70%",
+      "cps": "CPS二1",
+      "pd1": "PD-1阴性",
+      "foxp3": "FoXP3散在",
+      "cd3": "CD3,CD4、CD8淋巴细胞少量阳性",
+      "cd4": "CD4、CD8淋巴细胞少量阳性",
+      "cd8": "CD8淋巴细胞少量阳性",
+      "vascular": "脉管瘤 栓及神经侵犯,“上切缘”、“下切缘”及网膜组织未见",
+      "neural": "神经侵犯,“上切缘”、“下切缘”及网膜组织未见",
+      "differentiation": "低分化",
+      "lauren": "弥漫型"
+    }
+  },
+  "1515871": {
+    "name": "林友生",
+    "age": "59",
+    "sex": "Male",
+    "tumor_length_cm": "3.7",
+    "tumor_thickness_cm": "0.9",
+    "cea": "2.9",
+    "ca199": "10.05",
+    "concept_features": {
+      "differentiation": "中-低分化",
+      "lauren": "混合型"
+    }
+  },
+  "1517536": {
+    "name": "蔡龙应",
+    "age": "63",
+    "sex": "Male",
+    "tumor_length_cm": "5.6",
+    "tumor_thickness_cm": "1.5",
+    "cea": "2.7",
+    "ca199": "39.32",
+    "concept_features": {
+      "vascular": "脉管内瘤栓 及神经侵犯.“上切缘”、“下切缘”及大网膜未见",
+      "neural": "神经侵犯.“上切缘”、“下切缘”及大网膜未见",
+      "differentiation": "中-低分化",
+      "lauren": "混合型"
+    }
+  },
+  "1517025": {
+    "name": "叶树铨",
+    "age": "76",
+    "sex": "Male",
+    "tumor_length_cm": "4.7",
+    "tumor_thickness_cm": "1.4",
+    "cea": "2.5",
+    "ca199": "35.22",
+    "concept_features": {
+      "ki67": "Ki67约80%",
+      "cps": "CPS约5",
+      "pd1": "PD-1、FoxP3散在阳性",
+      "foxp3": "FoxP3散在",
+      "vascular": "脉管瘤栓“上、下切缘”及大网膜未见",
+      "neural": "神经侵犯及脉管瘤栓“上、下切缘”及大网膜未见",
+      "differentiation": "中分化",
+      "lauren": "肠型"
+    }
+  },
+  "1456984": {
+    "name": "张平",
+    "age": "49",
+    "sex": "Male",
+    "tumor_length_cm": "5.7",
+    "tumor_thickness_cm": "2.0",
+    "cea": "0.9",
+    "ca199": "8.47",
+    "concept_features": {
+      "differentiation": "低分化",
+      "lauren": "弥漫型"
+    }
+  },
+  "1519239": {
+    "name": "林强华",
+    "age": "54",
+    "sex": "Male",
+    "tumor_length_cm": "/",
+    "tumor_thickness_cm": "2.4",
+    "cea": "53.4",
+    "ca199": "163.0",
+    "concept_features": {
+      "differentiation": "低分化",
+      "lauren": "不确定"
+    }
+  },
+  "1518635": {
+    "name": "徐昌发",
+    "age": "60",
+    "sex": "Male",
+    "tumor_length_cm": "3.7",
+    "tumor_thickness_cm": "1.2",
+    "cea": "1.7",
+    "ca199": "32.35",
+    "concept_features": {
+      "ki67": "Ki67（热点区约70%",
+      "vascular": "脉管内瘤栓:“上 切缘”、“下切缘”未见",
+      "neural": "神经侵犯及脉管内瘤栓:“上 切缘”、“下切缘”未见",
+      "differentiation": "低分化",
+      "lauren": "弥漫型"
+    }
+  },
+  "1522130": {
+    "name": "方成君",
+    "age": "63",
+    "sex": "Male",
+    "tumor_length_cm": "3.4",
+    "tumor_thickness_cm": "1.0",
+    "cea": "4.7",
+    "ca199": "13.42",
+    "concept_features": {
+      "vascular": "脉管 瘤栓及神经侵犯,“上、下切缘”及网膜组织未见",
+      "neural": "神经侵犯,“上、下切缘”及网膜组织未见",
+      "differentiation": "中分化",
+      "lauren": "肠型"
+    }
+  },
+  "1450863": {
+    "name": "黄元寿",
+    "age": "60",
+    "sex": "Male",
+    "tumor_length_cm": "7.7",
+    "tumor_thickness_cm": "1.5",
+    "cea": "2.7",
+    "ca199": "6.7",
+    "concept_features": {
+      "vascular": "脉管瘤栓.“上、下切缘及大网膜未见",
+      "neural": "神经漫浸润,未见",
+      "differentiation": "中分化",
+      "lauren": "肠型"
+    }
+  },
+  "1451833": {
+    "name": "郭清秀",
+    "age": "64",
+    "sex": "Male",
+    "tumor_length_cm": "7.6",
+    "tumor_thickness_cm": "1.6",
+    "cea": "3.7",
+    "ca199": "2.92",
+    "concept_features": {
+      "ki67": "Ki67约90%",
+      "cps": "CPS约3",
+      "pd1": "PD-1个别阳性",
+      "foxp3": "FOXP3散在",
+      "cd3": "CD3、CD4、CD8淋巴细胞部分阳性",
+      "cd4": "CD4、CD8淋巴细胞部分阳性",
+      "cd8": "CD8淋巴细胞部分阳性",
+      "vascular": "脉管瘤栓及神经侵犯,“上、下切缘及网膜组织未见",
+      "neural": "神经侵犯,“上、下切缘及网膜组织未见",
+      "differentiation": "中分化",
+      "lauren": "肠型"
+    }
+  },
+  "1474507": {
+    "name": "潘文行",
+    "age": "72",
+    "sex": "Male",
+    "tumor_length_cm": "5",
+    "tumor_thickness_cm": "1.5",
+    "cea": "5.3",
+    "ca199": "158.6",
+    "concept_features": {
+      "vascular": "脉管瘤栓及神经侵犯.送检上切缘、下切缘及网膜组织未见",
+      "neural": "神经侵犯.送检上切缘、下切缘及网膜组织未见",
+      "differentiation": "不确定",
+      "lauren": "弥漫型"
+    }
+  },
+  "1474511": {
+    "name": "任美云",
+    "age": "74",
+    "sex": "Female",
+    "tumor_length_cm": "6.1",
+    "tumor_thickness_cm": "1.2",
+    "cea": "1.4",
+    "ca199": "62.4",
+    "concept_features": {
+      "differentiation": "中-低分化",
+      "lauren": "混合型"
+    }
+  }
+}
