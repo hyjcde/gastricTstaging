@@ -1,0 +1,338 @@
+{
+  "437": {
+    "age": 31.0,
+    "sex": "Female",
+    "tumorSize": {
+      "length": 4.2,
+      "thickness": 0.9
+    },
+    "location": "Body/Angle",
+    "biomarkers": {
+      "cea": null,
+      "ca199": null,
+      "cea_positive": false,
+      "ca199_positive": false
+    },
+    "pathology": {
+      "type": "(全胃)胃体-胃角瘤床经多处取材，可见较多低分化腺癌\n残留，部分为印戒细胞癌，侵及浆膜，间质脉管见瘤栓，可见神\n经侵犯。结合病史，新辅助化疗后反应呈TRG3级。上、下切端\n未见肿瘤。淋巴结转移癌数目如下:“贲门右 LN”1/2，“贲门左\nLN”0/3，“胃小弯LN”0/2，，“胃大弯LN”0/15,“胃左动脉 LN”\n0/2,“肝总动脉LN(8a)”0/3，“腹腔干ALN”0/1,“腹腔干ALN”\n0/2,“肝十二指肠韧带LN12a”0/3，“胃网膜左动脉LN4sb”0/2\n“幽门上、幽门下”为纤维脂肪组织，未找到淋巴结。",
+      "differentiation": "Poorly Differentiated",
+      "lauren": "",
+      "pT": "",
+      "pN": "1",
+      "pM": "0",
+      "pStage": "3"
+    }
+  },
+  "445": {
+    "age": 63.0,
+    "sex": "Female",
+    "tumorSize": {
+      "length": 9.4,
+      "thickness": 2.6
+    },
+    "location": "Antrum/Pylorus",
+    "biomarkers": {
+      "cea": null,
+      "ca199": null,
+      "cea_positive": true,
+      "ca199_positive": true
+    },
+    "pathology": {
+      "type": "(全胃)胃窦小弯侧肿物经多处取材，残留较多中分化管\n状腺癌，Lauren 分型:肠型，浸润浆膜下层，浸润神经纤维，间\n质脉管见瘤栓;间质局灶纤维组织增生伴组织细胞、淋巴细胞浸\n润，结合临床病史，其新辅助放化疗反应呈TRG3级。送检“上、\n下切端”及大网膜未见肿瘤。淋巴结未见转移癌且未见放化疗后\n反应，具体如下:\"贲门右LN\"0/1，\"贲门左LN\"0/4,\"幽门上LN\"0/2，\n\"幽门下 LN\"0/12，\"胃小弯 LN\"0/15，\"胃大弯 LN\"0/10，\"胃左动\n脉 LN\"0/2，\"肝总动脉旁 LN(8a)\"0/13，\"腹腔干 ALN\"0/5，\"脾动\n脉干 LN\"0/1，\"肝十二指肠韧带 LN(12a)\"0/4，\"胃网膜左动脉\nLN(4sb)\"纤维脂肪组织，未找到淋巴结。原位杂交:EBER 阴性",
+      "differentiation": "Moderately Differentiated",
+      "lauren": "",
+      "pT": "",
+      "pN": "0",
+      "pM": "0",
+      "pStage": "3"
+    }
+  },
+  "574": {
+    "age": 65.0,
+    "sex": "Male",
+    "tumorSize": {
+      "length": 10.0,
+      "thickness": 5.4
+    },
+    "location": "Multiple Sites",
+    "biomarkers": {
+      "cea": null,
+      "ca199": null,
+      "cea_positive": false,
+      "ca199_positive": false
+    },
+    "pathology": {
+      "type": "(全胃)肉眼于胃窦见一胃壁增厚区，经充分取材，镜下见腺癌残存伴坏死，浸润浆膜下层。间质纤维组织增生伴淋巴细胞、浆细胞浸润，结合临床提供的病史，符合轻度化学反应。送检“上切端”、“下切端”净。送检淋巴结未见转移癌，具体数目如下:小弯侧 LNO/1，“贲门右 LN”0/1，“贲门左 LN”0/3，“胃小弯 LN”0/19，“胃大弯 LN”0/9，“幽门下 LN”0/1,“胃左动脉LN”0/4，“肝总动脉旁 LN(8a)”0/10，“腹腔干ALN”0/2，“脾动脉干LN”0/4，“肝十二指肠韧带 LN(12a)”0/2，“胃网膜左动脉LN(4sb)”0/1;“幽门上LN”镜下为纤维、血管及脂肪组织，未见淋巴结。原味杂交结果:EBER 阴性。",
+      "differentiation": "Unknown",
+      "lauren": "",
+      "pT": "",
+      "pN": "2",
+      "pM": "0",
+      "pStage": "3"
+    }
+  },
+  "588": {
+    "age": 66.0,
+    "sex": "Male",
+    "tumorSize": {
+      "length": 6.2,
+      "thickness": 1.4
+    },
+    "location": "Antrum/Pylorus",
+    "biomarkers": {
+      "cea": null,
+      "ca199": null,
+      "cea_positive": false,
+      "ca199_positive": false
+    },
+    "pathology": {
+      "type": "(全胃)胃窦小弯见一溃疡灶,经全部取材,见少量中分化腺癌(Lauren 分分型为肠型)侵及浆膜下层，间质未见明显神经侵犯及脉管瘤栓，结合病史符合重度化疗反应。“上、下切端”未见肿瘤。淋巴结见转移癌，具体如下:“贲门左淋巴结”0/4,“胃小弯 LN”0/3,“胃大弯 LN”0/2,“幽门上淋巴结”0/1，“幽门下淋巴结”3/6，见脉管内瘤栓，“胃左 ALN”1/2,“肝总 ALN(8a)”0/3，“肝十二指肠韧带淋巴结 12a”0/3,“贲门右 LN”“腹腔干ALN”、“脾A干LN”、“胃网膜左动脉淋巴结4sb”镜下为纤维血管脂肪组织，未见淋巴结。原文杂交试验:EBER 阴性",
+      "differentiation": "Moderately Differentiated",
+      "lauren": "",
+      "pT": "",
+      "pN": "2",
+      "pM": "0",
+      "pStage": "3"
+    }
+  },
+  "595": {
+    "age": 40.0,
+    "sex": "Male",
+    "tumorSize": {
+      "length": 4.8,
+      "thickness": 1.5
+    },
+    "location": "Multiple Sites",
+    "biomarkers": {
+      "cea": null,
+      "ca199": null,
+      "cea_positive": true,
+      "ca199_positive": false
+    },
+    "pathology": {
+      "type": "(全胃)贲门-胃体浸润型低分化腺癌,Lauren分型为弥漫型，浸润浆膜层，间质见脉管内瘤栓及神经侵犯，肿瘤细胞部分肿胀变性，小部分坏死消失。间质纤维组织增生，可见淋巴细胞、浆细胞浸润，结合临床病史，呈新辅助化疗反应 AJCC TRG 3级，“上切端”及“下切端”未见肿瘤。。\n淋巴结见转移癌，具体如下:“贲门右LN”0/1，“贲门左LN”0/1，“胃小弯LN”3/3，“胃大弯LN”2/2，“幽门上 LN”0/3，“幽门下LN”0/1，“胃左动脉LN”0/1，“肝总动脉旁LN8a”0/12，“腹腔干动脉LN”0/2，“肝十二指肠韧带 LN12a”0/1，“胃网膜左动脉LN4sb”0/2，“脾动脉干LN”镜下为纤维脂肪组织及血管，未见淋巴结。免疫组化结果:肿瘤细胞CK阳性。\"",
+      "differentiation": "Poorly Differentiated",
+      "lauren": "",
+      "pT": "",
+      "pN": "1",
+      "pM": "0",
+      "pStage": "3"
+    }
+  },
+  "603": {
+    "age": 61.0,
+    "sex": "Male",
+    "tumorSize": {
+      "length": 12.0,
+      "thickness": 3.0
+    },
+    "location": "Multiple Sites",
+    "biomarkers": {
+      "cea": null,
+      "ca199": null,
+      "cea_positive": false,
+      "ca199_positive": false
+    },
+    "pathology": {
+      "type": "(全胃)贲门至胃体病灶经多处1取材，残留部分印戒细胞癌，伴大量粘液，累及食管下段，侵及浆膜下层，间质脉管内见瘤栓，未见神经侵犯;间质纤维组织增生伴钙化、少量淋巴细胞浸润。结合临床病史，其新辅助化疗后反应呈 TRG2级。“上、下切端”及大网膜未见肿瘤。淋巴结未见转移癌,具体如下:\"贲门左LN\"0/5，\"胃小弯LN\"0/1，\"胃大弯L N\"0/3，\"幽门上LN\"0/2，\"肝总动脉旁 LN8a\"0/5，\"腹腔干ALN\"0/7，\"胃小弯 LN 显显\"0/1，\"胃大弯LN显\"0/1，\"幽门上 LN显\"0/2，\"幽门下LN显\"0/1，\"胃左动脉 LN N显\"0/1，\"肝总动脉LN显\"0/2，\"腹腔干ALN 显\"0/3，\"脾动脉干LN 显\"0/3，\"胃网膜左动脉LN显\"0/2，“贲门右LN”、\"幽门下LN\"、\"胃左动脉LN\"、\"脾动脉干LN\"\"脾门LN\"、\"肝十二指肠韧带LN12a\"、\"胃网膜左动脉 LN4sb\"、\"贲门右 LN 显\"、\"贲门左LN显\"、\"脾门淋巴结显\"、\"肝十二指肠韧带LN显\"为纤维脂肪组织，未找找到淋巴结。",
+      "differentiation": "Unknown",
+      "lauren": "",
+      "pT": "",
+      "pN": "0",
+      "pM": "0",
+      "pStage": "2"
+    }
+  },
+  "661": {
+    "age": 67.0,
+    "sex": "Female",
+    "tumorSize": {
+      "length": 6.7,
+      "thickness": 1.6
+    },
+    "location": "Cardia/Fundus",
+    "biomarkers": {
+      "cea": null,
+      "ca199": null,
+      "cea_positive": true,
+      "ca199_positive": true
+    },
+    "pathology": {
+      "type": "(全胃)贲门病灶经全部取材，残留部分低分化腺癌(Lauren分型:弥漫性)，最深处位于浆膜下，累及食管下段，侵犯神经纤维，未见明显脉管瘤栓;肿瘤细胞略肿胀、变性，部分消失，间质纤维组织增生伴淋巴细胞、多核巨细胞浸润，结合临床病史，其新辅助化疗反应呈 AJCC TRG2 级:“上、下切端”及大网膜组织未见肿瘤。。\n周围胃壁肌层见一枚胃肠道间质瘤，呈极低危险度:大小直径0.5cm，细胞呈梭形，轻度异型，找到核分裂象1个/50HPF，小灶浸润肌层，未见脉管瘤栓及神经侵犯。。\n各组淋巴结未见转移癌，具体如下:胃小弯LNO/2，“LN1显影”0/2，“LN2\n显影”0/3，“LN3显影”0/2，“LN5显影”0/1，“LN6显影”0/1，“LN7显影”0/1，“LN8a显影”0/5，“LN2”0/3，“LN3”0/6，“LN4”0/3，“LN6”0/3.“LN7”0/5，“LN8a”0/6，“LN9”0/2:“LN1”见癌结节，未找到淋巴结:“LN4显影、LN9显影、LN11显影、LN5、LN11、LN112a及LN4sb”为纤维脂肪组织，未找到淋巴结。。\n免疫组化结果:胃肠道间质瘤CD117、DOG1阳性、Desmin、SMA、S-100阴性。.",
+      "differentiation": "Poorly Differentiated",
+      "lauren": "",
+      "pT": "",
+      "pN": "0",
+      "pM": "1",
+      "pStage": "4"
+    }
+  },
+  "680": {
+    "age": 73.0,
+    "sex": "Male",
+    "tumorSize": {
+      "length": 7.0,
+      "thickness": 1.6
+    },
+    "location": "Body/Angle",
+    "biomarkers": {
+      "cea": null,
+      "ca199": null,
+      "cea_positive": true,
+      "ca199_positive": true
+    },
+    "pathology": {
+      "type": "(全胃)胃体-胃窦瘤床经多处取材，可见较多低分化腺癌残留，部分为印戒细胞癌，侵及浆膜，可见脉管内瘤栓及神经侵犯，肿瘤细胞肿胀、变性，部分坏死、消失，间质纤维组织增生及炎细胞浸润，结合病史，新辅助化疗后反应呈 TRG 2 级。“上、下切端”及大网膜未见肿瘤。 淋巴结可见转移癌，具体如下:“LN1”2/5,“LN2”0/4,“LN3”1/2,“LN4”3/6,“LN5”/1“LN6”4/4,“LN8a”0/2,“LN12a”0/3,“LN4sb”0/1:“LN7”、“LN9”、“LN11”见纤维脂肪组织，未\n\n见淋巴结。",
+      "differentiation": "Poorly Differentiated",
+      "lauren": "",
+      "pT": "",
+      "pN": "3",
+      "pM": "0",
+      "pStage": "3"
+    }
+  },
+  "691": {
+    "age": 66.0,
+    "sex": "Male",
+    "tumorSize": {
+      "length": 7.0,
+      "thickness": 2.0
+    },
+    "location": "Antrum/Pylorus",
+    "biomarkers": {
+      "cea": null,
+      "ca199": null,
+      "cea_positive": true,
+      "ca199_positive": true
+    },
+    "pathology": {
+      "type": "(全胃)原瘤床经全部取材，镜下见大部分中分化腺癌残留，最深位于浆膜下层，侵犯神经，间质见钙化，纤维组织增生伴炎细胞浸润。未见明确脉管内瘤栓，结合临床病史呈新辅助化疗后反应TRG3级，送检“上、下切端”及大网膜未见肿瘤。淋巴结未见转移癌，未见明显化疗后反应，具体如下:“贲门右 LN”0/3，“贲门左 LN”_0/7，“胃小弯LN”0/10，“胃大弯LN”0/34.“幽门下LN”0/22.“胃左动脉LN”0/8.“肝总动脉旁LN8a\"0/6.“腹腔干动脉LN”0/2，“肝十二指肠韧带LN”0/2，“胃网膜左动脉LN4sb”0/6:“幽门上LN”“脾动脉干 LN”镜下为纤维、脂肪组织，未见淋巴结。",
+      "differentiation": "Unknown",
+      "lauren": "",
+      "pT": "",
+      "pN": "0",
+      "pM": "0",
+      "pStage": "2"
+    }
+  },
+  "703": {
+    "age": 30.0,
+    "sex": "Female",
+    "tumorSize": {
+      "length": 8.6,
+      "thickness": 2.1
+    },
+    "location": "Multiple Sites",
+    "biomarkers": {
+      "cea": null,
+      "ca199": null,
+      "cea_positive": true,
+      "ca199_positive": true
+    },
+    "pathology": {
+      "type": "(远侧胃)胃窦小弯侧溃疡型中-低分化腺癌，Lauren 分型:混合型，浸润浆膜下层，肿瘤累及神经，间质脉管内可见瘤栓，间质纤维组织增生伴慢性炎症细胞浸润，结合临床病史符合化疗后病理改变。送检“上切端”“下切端”净。淋巴结见转移癌，具体如下:小弯侧 LN4/6，“LN3”0/2，“LN4”1/4，“LN5”1/1，“LN6”2/2,“LN8a”0/2,“LN9”0/1,“LN11”0/1,“LN12a”0/7,“LN1 显影”2/7,“LN3显影”1/1，“LN4 显影”3/6，“LN6 显影”0/5，“LN7显影”1/11，“LN8a显影”0/3，“LN9显影”0/3，“LN11显影”0/2，“LN4sb显影”0/5;“LN1”“LN7”及“LN12a显影”镜下为纤维、血管及脂肪组织，未找到淋巴结;“LN4sb”镜下胃一枚副脾，未找到淋巴结。",
+      "differentiation": "Mod-Poorly Differentiated",
+      "lauren": "",
+      "pT": "",
+      "pN": "3",
+      "pM": "0",
+      "pStage": "3"
+    }
+  },
+  "727": {
+    "age": 56.0,
+    "sex": "Female",
+    "tumorSize": {
+      "length": 8.8,
+      "thickness": 1.4
+    },
+    "location": "Multiple Sites",
+    "biomarkers": {
+      "cea": null,
+      "ca199": null,
+      "cea_positive": true,
+      "ca199_positive": true
+    },
+    "pathology": {
+      "type": "(全胃)胃体-胃窦瘤床经多处取材，可见较多低分化腺癌残留，部分为印戒细胞癌，侵及浆膜，可见脉管内瘤栓及神经侵犯，肿瘤细胞肿胀、变性，部分坏死、消失，间质纤维组织增生及炎细胞浸润，结合病史，新辅助化疗后反应呈 TRG 2 级。“上、下切端”及大网膜未见肿瘤。 淋巴结可见转移癌，具体如下:“LN1”2/5,“LN2”0/4,“LN3”1/2,“LN4”3/6,“LN5”/1“LN6”4/4,“LN8a”0/2,“LN12a”0/3,“LN4sb”0/1:“LN7”、“LN9”、“LN11”见纤维脂肪组织，未\n\n见淋巴结。",
+      "differentiation": "Poorly Differentiated",
+      "lauren": "",
+      "pT": "",
+      "pN": "3",
+      "pM": "0",
+      "pStage": "3"
+    }
+  },
+  "735": {
+    "age": 48.0,
+    "sex": "Male",
+    "tumorSize": {
+      "length": 10.8,
+      "thickness": 2.9
+    },
+    "location": "Multiple Sites",
+    "biomarkers": {
+      "cea": null,
+      "ca199": null,
+      "cea_positive": false,
+      "ca199_positive": false
+    },
+    "pathology": {
+      "type": "(全胃标本)肉眼于贲门-胃窦小弯侧见一溃疡，经充分取材，镜下见中低分化腺癌，部分为印戒细胞癌，浸润粘膜下层，间质见脉管瘤栓，未见神经没润，于胃壁各层均见无细胞粘液湖，周围纤维组织增生伴慢性炎症细胞浸润。结合临床病史，符合化疗后病理改变(TRG 2 级)。送检“上切缘”“下切缘”未见肿瘤。淋巴结见转移癌，如下:“贲门右 LN1”0/3，“贲门左LN2”0/3，“小弯侧 LN”1/7，“大弯侧 LN4”0/9，“幽门上LN5”0/3.“胃左动脉LN7”0/2“月总动脉LN8a”0/3，“腹腔动脉旁LN9”0/5“脾动脉干LN11”0/1“肝十二指肠团带 LN12a”0/1，送检“门下LN6”、“胃网膜左4sb”镜下为血管、纤维及脂肪组织，未见淋巴结。免疫组化结果:CK阳性。",
+      "differentiation": "Mod-Poorly Differentiated",
+      "lauren": "",
+      "pT": "",
+      "pN": "1",
+      "pM": "0",
+      "pStage": "1"
+    }
+  },
+  "736": {
+    "age": 39.0,
+    "sex": "Female",
+    "tumorSize": {
+      "length": 8.5,
+      "thickness": 1.9
+    },
+    "location": "Antrum/Pylorus",
+    "biomarkers": {
+      "cea": null,
+      "ca199": null,
+      "cea_positive": false,
+      "ca199_positive": false
+    },
+    "pathology": {
+      "type": "(全胃)原瘤床经充分取材，镜下见大部分低分化腺癌(部分为印戒细胞癌)残余，Loren 分型为弥漫型，最深侵及浆膜层，累及食管下段，侵犯神经，间质脉管内见瘤栓，问质见纤维组织轻度增生伴炎细胞浸润，结合临床病史，其化疗反应呈TRG-3级，“上切端”及“下切端”及大网膜未见肿瘤。淋巴结见转移癌，具体如下:“贲门右LN”0/5，“贲门左LN”/3“胃小弯LN”8/11“胃大弯LN”1/5，“幽门下LN”0/11，“胃左动脉LN”3/14(周围脂肪组织中另见浸润)，“肝总动脉旁 LN8a”0/2，“腹腔干ALN”0/1，“脾动脉干LN”0/6，“肝十二指肠韧带LN12a”0/3:“幽门上LN”镜下于纤维脂肪组织中见浸润，未找到淋巴结。“胃网膜左动脉LN4sb”镜下为纤维脂肪组织及血管，未见淋巴结。免疫组化结果:淋巴结转移癌CK(pan)阳性",
+      "differentiation": "Poorly Differentiated",
+      "lauren": "",
+      "pT": "",
+      "pN": "3",
+      "pM": "1",
+      "pStage": "4"
+    }
+  },
+  "895": {
+    "age": 44.0,
+    "sex": "Male",
+    "tumorSize": {
+      "length": 2.7,
+      "thickness": 1.8
+    },
+    "location": "Body/Angle",
+    "biomarkers": {
+      "cea": null,
+      "ca199": null,
+      "cea_positive": false,
+      "ca199_positive": false
+    },
+    "pathology": {
+      "type": "(全胃)胃底病灶经充分取材，残留部分低分化腺癌，侵及浆膜下层，侵犯神经纤维，间质未见明显脉管瘤栓;肿瘤细胞部分肿胀、变性，部分消失，间质纤维组织增生伴淋巴细胞、浆细胞浸润，结合临床病史，呈新辅助化疗反应呈TRG2级，“上、下切端”未见肿瘤。淋巴结未见转移癌，具体如下:“胃小弯LN”0/10,其中3枚淋巴结见化疗后反应;“LN2”0/3,“LN3”0/1，“LN6”0/1，“LN7”0/3，“LN8a”0/3,“LN10”0/3，“LN11”0/3，“LN1显影”0/2，“LN2显影”0/1，“LN3显影”0/4，“LN4显影”0/2，“LN6 显影”0/3，“LN8a 显影”0/2,“LN10 显影”0/2，“LN11 显影”0/1，LN14 显影”0/1“LN4sb显影”0/2。“LN1、LN4、LN5、LN9、LN12a、LN4sb LN5显影、LN7显影、LN9显影、LN12a显影”为纤维脂肪组织，未找到淋巴结。免疫组化:CK7、CK20、CDX-2 部分阳性，CK5/6、p40 阴性。原位杂交:EBER 阴性。",
+      "differentiation": "Poorly Differentiated",
+      "lauren": "",
+      "pT": "",
+      "pN": "2",
+      "pM": "0",
+      "pStage": "3"
+    }
+  }
+}
