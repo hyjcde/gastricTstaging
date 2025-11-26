@@ -82,6 +82,23 @@ export const dictionary = {
         prediction_matched: 'Prediction Matched',
         available_data: 'Available Data',
         imaging_only: 'Imaging analysis and AI prediction only'
+    },
+    filters: {
+        title: 'Advanced Filters',
+        tStage: 'T-Stage',
+        nStage: 'N-Stage',
+        minConfidence: 'Min Confidence',
+        clinicalData: 'Clinical Data',
+        all: 'All',
+        hasData: 'Has Data',
+        noData: 'No Data',
+        riskLevel: 'Risk Level',
+        highRisk: 'High Risk',
+        lowRisk: 'Low Risk',
+        treatmentType: 'Treatment Type',
+        surgery: 'Surgery',
+        nac: 'Neoadjuvant',
+        reset: 'Reset All Filters'
     }
   },
   zh: {
@@ -165,6 +182,23 @@ export const dictionary = {
         prediction_matched: '预测匹配',
         available_data: '可用数据',
         imaging_only: '仅影像分析和AI预测'
+    },
+    filters: {
+        title: '高级过滤',
+        tStage: 'T分期',
+        nStage: 'N分期',
+        minConfidence: '最小置信度',
+        clinicalData: '临床数据',
+        all: '全部',
+        hasData: '有数据',
+        noData: '无数据',
+        riskLevel: '风险等级',
+        highRisk: '高风险',
+        lowRisk: '低风险',
+        treatmentType: '治疗类型',
+        surgery: '直接手术',
+        nac: '新辅助',
+        reset: '重置所有过滤'
     }
   }
 };
