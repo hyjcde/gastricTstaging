@@ -11,7 +11,7 @@ import {
   extractAnnotationBbox, 
   ImageMetrics 
 } from '@/lib/image-utils';
-import { generatePeritumoralRing } from '@/lib/morphology';
+import { generatePeritumoralRingFromAnnotation } from '@/lib/morphology';
 import { OptimizedImage } from './OptimizedImage';
 import toast from 'react-hot-toast';
 import { ImageSkeleton } from './Skeleton';
@@ -128,21 +128,30 @@ export const UltrasoundViewer: React.FC<UltrasoundViewerProps> = ({ patient }) =
   
   // Effect to generate peritumoral ring
   useEffect(() => {
-    if (showRing && patient && (patient.overlay_transparent_url || patient.overlay_url)) {
-      const maskUrl = patient.overlay_transparent_url || patient.overlay_url;
-      generatePeritumoralRing(maskUrl)
+    if (showRing && patient && patient.json_url && imageMetrics) {
+      console.log('[Ring] Generating ring from annotation:', patient.json_url);
+      console.log('[Ring] Image dimensions:', imageMetrics.naturalWidth, 'x', imageMetrics.naturalHeight);
+      
+      generatePeritumoralRingFromAnnotation(
+        patient.json_url,
+        imageMetrics.naturalWidth,
+        imageMetrics.naturalHeight,
+        20, // radius in pixels (~5mm)
+        [255, 165, 0, 200] // Orange color
+      )
         .then(url => {
+           console.log('[Ring] Generated successfully, data URL length:', url.length);
            setRingImageUrl(url);
         })
         .catch(err => {
-           console.error("Failed to generate peritumoral ring", err);
-           toast.error("Failed to generate peritumoral ring");
+           console.error("[Ring] Failed to generate peritumoral ring", err);
+           toast.error(language === 'zh' ? "生成瘤周环失败: " + err.message : "Failed to generate peritumoral ring: " + err.message);
            setShowRing(false);
         });
-    } else {
+    } else if (!showRing) {
       setRingImageUrl(null);
     }
-  }, [showRing, patient]);
+  }, [showRing, patient, imageMetrics, language]);
 
   const undoMeasurement = () => {
       setMeasurements(prev => prev.slice(0, -1));
@@ -768,13 +777,18 @@ export const UltrasoundViewer: React.FC<UltrasoundViewerProps> = ({ patient }) =
           </button>
           <button
             onClick={() => setShowRing(prev => !prev)}
-            disabled={!patient.overlay_url && !patient.overlay_transparent_url}
+            disabled={!patient.json_url}
             className={`flex shrink-0 items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium transition-colors whitespace-nowrap ${
-                showRing
-                  ? 'bg-white text-black'
-                  : 'text-gray-400 hover:text-white'
+                patient.json_url
+                  ? showRing
+                    ? 'bg-orange-500 text-black'
+                    : 'text-gray-400 hover:text-white'
+                  : 'opacity-40 cursor-not-allowed text-gray-500'
             }`}
-            title={language === 'zh' ? '显示瘤周环 (5mm)' : 'Show Peritumoral Ring (5mm)'}
+            title={patient.json_url 
+              ? (language === 'zh' ? '显示瘤周环 (5mm)' : 'Show Peritumoral Ring (5mm)')
+              : (language === 'zh' ? '需要标注数据' : 'Annotation required')
+            }
           >
             <CircleDashed size={12} /> {language === 'zh' ? '瘤周环' : 'Ring'}
           </button>

@@ -3,29 +3,192 @@
  * 用于前端图像处理，如生成瘤周环
  */
 
+export interface AnnotationShape {
+  label: string;
+  points: [number, number][];
+  shape_type?: string;
+}
+
+export interface AnnotationData {
+  shapes: AnnotationShape[];
+  imageWidth?: number;
+  imageHeight?: number;
+}
+
 /**
- * 执行形态学膨胀并生成瘤周环 (Peritumoral Ring)
+ * 从 JSON 标注文件生成瘤周环 (Peritumoral Ring)
  * 
  * 原理：
- * 1. Ring = Dilate(Mask) - Mask
- * 2. 在前端使用 Canvas 像素操作实现
+ * 1. 从 JSON 读取多边形坐标
+ * 2. 在 Canvas 上绘制填充多边形作为掩码
+ * 3. 对掩码进行形态学膨胀
+ * 4. Ring = Dilate(Mask) - Mask
  * 
- * @param maskUrl 原始分割掩码的 URL
- * @param radius 膨胀半径（像素），默认 20px (约 5mm，视分辨率而定)
+ * @param jsonUrl JSON 标注文件的 URL
+ * @param imageWidth 图像宽度
+ * @param imageHeight 图像高度
+ * @param radius 膨胀半径（像素），默认 20px (约 5mm)
  * @param color 环的颜色 [r, g, b, a]
  * @returns Promise<string> 返回生成的瘤周环图像的 Data URL (PNG)
+ */
+export async function generatePeritumoralRingFromAnnotation(
+  jsonUrl: string,
+  imageWidth: number,
+  imageHeight: number,
+  radius: number = 20,
+  color: [number, number, number, number] = [255, 165, 0, 200] // Orange color
+): Promise<string> {
+  // 1. 获取标注数据
+  const response = await fetch(jsonUrl);
+  if (!response.ok) {
+    throw new Error(`Failed to fetch annotation: ${response.status}`);
+  }
+  const annotationData: AnnotationData = await response.json();
+  
+  if (!annotationData.shapes || annotationData.shapes.length === 0) {
+    throw new Error('No shapes found in annotation');
+  }
+  
+  console.log(`[Morphology] Found ${annotationData.shapes.length} shapes in annotation`);
+  
+  // 2. 创建 Canvas 并绘制掩码
+  const canvas = document.createElement('canvas');
+  canvas.width = imageWidth;
+  canvas.height = imageHeight;
+  const ctx = canvas.getContext('2d', { willReadFrequently: true });
+  if (!ctx) {
+    throw new Error('Could not get canvas context');
+  }
+  
+  // 绘制所有多边形（填充）
+  ctx.fillStyle = 'white';
+  for (const shape of annotationData.shapes) {
+    if (shape.points && shape.points.length >= 3) {
+      ctx.beginPath();
+      ctx.moveTo(shape.points[0][0], shape.points[0][1]);
+      for (let i = 1; i < shape.points.length; i++) {
+        ctx.lineTo(shape.points[i][0], shape.points[i][1]);
+      }
+      ctx.closePath();
+      ctx.fill();
+    }
+  }
+  
+  // 3. 获取掩码数据
+  const maskImageData = ctx.getImageData(0, 0, imageWidth, imageHeight);
+  const maskData = maskImageData.data;
+  
+  // 创建二值掩码
+  const binaryMask = new Int8Array(imageWidth * imageHeight);
+  let foregroundCount = 0;
+  
+  for (let i = 0; i < maskData.length; i += 4) {
+    // 白色像素 = 前景
+    if (maskData[i] > 128) {
+      const idx = i / 4;
+      binaryMask[idx] = 1;
+      foregroundCount++;
+    }
+  }
+  
+  console.log(`[Morphology] Foreground pixels: ${foregroundCount} / ${imageWidth * imageHeight}`);
+  
+  if (foregroundCount === 0) {
+    throw new Error('No foreground pixels found in mask');
+  }
+
+  // 4. 形态学膨胀 (BFS)
+  const queue: number[] = [];
+  const distances = new Int16Array(imageWidth * imageHeight).fill(-1);
+  
+  // 找到边缘前景像素作为 BFS 起点
+  for (let y = 0; y < imageHeight; y++) {
+    for (let x = 0; x < imageWidth; x++) {
+      const idx = y * imageWidth + x;
+      if (binaryMask[idx] === 1) {
+        // 检查是否是边缘（4邻域有背景）
+        let isEdge = false;
+        if (x > 0 && binaryMask[idx - 1] === 0) isEdge = true;
+        else if (x < imageWidth - 1 && binaryMask[idx + 1] === 0) isEdge = true;
+        else if (y > 0 && binaryMask[idx - imageWidth] === 0) isEdge = true;
+        else if (y < imageHeight - 1 && binaryMask[idx + imageWidth] === 0) isEdge = true;
+        
+        if (isEdge) {
+          queue.push(idx);
+          distances[idx] = 0;
+        }
+      }
+    }
+  }
+  
+  console.log(`[Morphology] Edge pixels for BFS: ${queue.length}`);
+  
+  // BFS 扩散
+  let head = 0;
+  while (head < queue.length) {
+    const idx = queue[head++];
+    const d = distances[idx];
+    
+    if (d >= radius) continue;
+    
+    const cx = idx % imageWidth;
+    const cy = Math.floor(idx / imageWidth);
+    
+    const neighbors = [
+      { x: cx - 1, y: cy, idx: idx - 1 },
+      { x: cx + 1, y: cy, idx: idx + 1 },
+      { x: cx, y: cy - 1, idx: idx - imageWidth },
+      { x: cx, y: cy + 1, idx: idx + imageWidth }
+    ];
+    
+    for (const n of neighbors) {
+      if (n.x >= 0 && n.x < imageWidth && n.y >= 0 && n.y < imageHeight) {
+        if (binaryMask[n.idx] === 0 && distances[n.idx] === -1) {
+          distances[n.idx] = d + 1;
+          queue.push(n.idx);
+        }
+      }
+    }
+  }
+  
+  // 5. 生成环图像
+  const ringImageData = ctx.createImageData(imageWidth, imageHeight);
+  let ringPixels = 0;
+  
+  for (let i = 0; i < imageWidth * imageHeight; i++) {
+    if (distances[i] > 0 && distances[i] <= radius) {
+      const p = i * 4;
+      // 渐变效果：内圈更实，外圈更虚
+      const alpha = Math.round(color[3] * (1 - (distances[i] - 1) / radius * 0.5));
+      ringImageData.data[p] = color[0];
+      ringImageData.data[p + 1] = color[1];
+      ringImageData.data[p + 2] = color[2];
+      ringImageData.data[p + 3] = alpha;
+      ringPixels++;
+    }
+  }
+  
+  console.log(`[Morphology] Ring pixels generated: ${ringPixels}`);
+  
+  ctx.putImageData(ringImageData, 0, 0);
+  return canvas.toDataURL('image/png');
+}
+
+/**
+ * 旧版：从掩码图片生成瘤周环（保留兼容性）
+ * @deprecated 推荐使用 generatePeritumoralRingFromAnnotation
  */
 export async function generatePeritumoralRing(
   maskUrl: string, 
   radius: number = 20,
-  color: [number, number, number, number] = [255, 215, 0, 180] // Gold color
+  color: [number, number, number, number] = [255, 165, 0, 200]
 ): Promise<string> {
   return new Promise((resolve, reject) => {
     const img = new Image();
     img.crossOrigin = "Anonymous";
     img.src = maskUrl;
     
-    img.onload = () => {
+    img.onload = async () => {
       try {
         const canvas = document.createElement('canvas');
         const width = img.width;
@@ -39,142 +202,96 @@ export async function generatePeritumoralRing(
           return;
         }
 
-        // 1. 绘制原始掩码
         ctx.drawImage(img, 0, 0);
         const originalImageData = ctx.getImageData(0, 0, width, height);
         const originalData = originalImageData.data;
         
-        // 创建二值掩码 (0: 背景, 1: 前景)
-        // 使用 Int8Array 节省内存
         const binaryMask = new Int8Array(width * height);
-        const dilatedMask = new Int8Array(width * height);
         
-        // 提取前景
+        // 提取前景（支持多种格式）
         for (let i = 0; i < originalData.length; i += 4) {
-          // 只要 Alpha > 0 或 RGB 不全为黑，视为前景
-          if (originalData[i + 3] > 20) { 
-             const idx = i / 4;
-             binaryMask[idx] = 1;
-             dilatedMask[idx] = 1;
+          const r = originalData[i];
+          const g = originalData[i + 1];
+          const b = originalData[i + 2];
+          const a = originalData[i + 3];
+          
+          // 绿色轮廓检测
+          const isForeground = (a > 20 && (r + g + b) > 30) || (g > 50 && g > r && g > b);
+          
+          if (isForeground) { 
+             binaryMask[i / 4] = 1;
           }
         }
+        
+        let foregroundCount = 0;
+        for (let i = 0; i < binaryMask.length; i++) {
+          if (binaryMask[i] === 1) foregroundCount++;
+        }
+        console.log(`[Morphology] Foreground pixels from image: ${foregroundCount}`);
+        
+        if (foregroundCount === 0) {
+          reject(new Error('No foreground pixels found in mask'));
+          return;
+        }
 
-        // 2. 形态学膨胀 (Dilation)
-        // 为了性能，不使用多次迭代，而是使用距离变换的简化思想：
-        // 只需要找到所有 "背景" 像素，如果它距离任意 "前景" 像素的距离 <= radius，则标记为膨胀区域。
-        // 但最朴素的 BFS 或者多轮迭代在 JS 中可能较慢。
-        // 这里采用优化的两遍扫描算法 (Two-pass Distance Transform) 近似，或者简单的迭代膨胀。
-        // 考虑到 radius 可能较大 (20px)，迭代 20 次 3x3 会很慢。
-        // 更好的方法：不仅标记是否前景，而是通过坐标判断。
-        
-        // 方法 B: 对于每个前景点，绘制一个圆到新 Canvas？(利用 Canvas 自身的绘图能力)
-        // 这是一个非常快的方法！
-        // 1. 清空 Canvas
-        // 2. 绘制原 Mask
-        // 3. 设置 globalCompositeOperation = 'source-over'
-        // 4. 对原 Mask 应用 shadowBlur 或 filter 不太准确。
-        // 5. 正确做法：将 Mask 绘制到 Canvas，然后设置 context.shadowBlur 也不行，那是高斯模糊。
-        
-        // 回到像素操作：对于 radius 较小的情况，迭代尚可。
-        // 对于 radius=20，像素数 512x512，25万像素。
-        // 如果用 BFS：
-        // 把所有边缘像素加入队列，向外层层扩散 radius 层。
-        
+        // BFS 膨胀
         const queue: number[] = [];
-        const visited = new Int8Array(width * height); // 记录距离
+        const distances = new Int16Array(width * height).fill(-1);
         
-        // 初始化队列：所有前景像素的边界像素（即邻域有背景的）
-        // 简化：所有前景像素入队，距离设为 0
-        // 为了区分 "原始前景" 和 "扩散区域"，我们可以在 visited 中存储距离
-        // 0: 原始前景, 1..radius: 扩散区域, -1: 背景
-        
-        // 初始化
         for (let y = 0; y < height; y++) {
           for (let x = 0; x < width; x++) {
             const idx = y * width + x;
             if (binaryMask[idx] === 1) {
-               // 它是前景。检查是否是边缘？
-               // 既然要向外扩，就把所有前景当做源。
-               // 但为了减少计算，只有边缘像素才需要作为源。
-               // 简单起见，直接把所有前景设为距离 0。
-               // 等等，BFS 是从源点出发寻找未访问点。
-               // 这里源点是“前景”，目标是“背景”。
-               // 我们想要计算每个背景像素到最近前景像素的距离。
-               // 所以，把所有前景像素放入队列，距离为 0。
-               // 这种方法在 JS 大数组操作下可能导致内存压力，但 512x512 = 260k，还好。
-               // 优化：只把边缘前景像素放入队列。
-               
-               // 检查 4 邻域是否有背景
-               let isEdge = false;
-               if (x > 0 && binaryMask[idx - 1] === 0) isEdge = true;
-               else if (x < width - 1 && binaryMask[idx + 1] === 0) isEdge = true;
-               else if (y > 0 && binaryMask[idx - width] === 0) isEdge = true;
-               else if (y < height - 1 && binaryMask[idx + width] === 0) isEdge = true;
-               
-               if (isEdge) {
-                   queue.push(idx);
-                   // visited[idx] = 0; // 0 代表距离 0 (本身)
-                   // 实际上我们用 visited 记录距离，初始化为 -1 (未访问)
-                   // 前景像素不需要被访问（因为不需要变色），我们需要访问的是背景。
-                   // 所以把边缘前景放入队列，但它们本身已经是环内（不显示）。
-                   // 我们的目标是找到距离 <= radius 的背景像素。
-               }
+              let isEdge = false;
+              if (x > 0 && binaryMask[idx - 1] === 0) isEdge = true;
+              else if (x < width - 1 && binaryMask[idx + 1] === 0) isEdge = true;
+              else if (y > 0 && binaryMask[idx - width] === 0) isEdge = true;
+              else if (y < height - 1 && binaryMask[idx + width] === 0) isEdge = true;
+              
+              if (isEdge) {
+                queue.push(idx);
+                distances[idx] = 0;
+              }
             }
           }
         }
         
-        // 初始化距离数组：前景设为 0，背景设为 infinity
-        const distances = new Int16Array(width * height).fill(-1);
-        
-        // 此时 queue 里全是边缘前景像素索引
-        // 设置它们的距离为 0
-        for (const idx of queue) {
-            distances[idx] = 0;
-        }
-        
         let head = 0;
         while (head < queue.length) {
-            const idx = queue[head++];
-            const d = distances[idx];
-            
-            if (d >= radius) continue; // 达到最大半径，停止扩散
-            
-            const cx = idx % width;
-            const cy = Math.floor(idx / width);
-            
-            // 检查 4 邻域
-            const neighbors = [
-                { x: cx - 1, y: cy, idx: idx - 1 },
-                { x: cx + 1, y: cy, idx: idx + 1 },
-                { x: cx, y: cy - 1, idx: idx - width },
-                { x: cx, y: cy + 1, idx: idx + width }
-            ];
-            
-            for (const n of neighbors) {
-                if (n.x >= 0 && n.x < width && n.y >= 0 && n.y < height) {
-                    // 如果是背景（binaryMask[n.idx] == 0）且未被访问（distances[n.idx] == -1）
-                    if (binaryMask[n.idx] === 0 && distances[n.idx] === -1) {
-                        distances[n.idx] = d + 1;
-                        queue.push(n.idx);
-                    }
-                    // 或者是前景？前景不需要处理，因为我们是从前景往外扩。
-                }
+          const idx = queue[head++];
+          const d = distances[idx];
+          if (d >= radius) continue;
+          
+          const cx = idx % width;
+          const cy = Math.floor(idx / width);
+          
+          const neighbors = [
+            { x: cx - 1, y: cy, idx: idx - 1 },
+            { x: cx + 1, y: cy, idx: idx + 1 },
+            { x: cx, y: cy - 1, idx: idx - width },
+            { x: cx, y: cy + 1, idx: idx + width }
+          ];
+          
+          for (const n of neighbors) {
+            if (n.x >= 0 && n.x < width && n.y >= 0 && n.y < height) {
+              if (binaryMask[n.idx] === 0 && distances[n.idx] === -1) {
+                distances[n.idx] = d + 1;
+                queue.push(n.idx);
+              }
             }
+          }
         }
         
-        // 3. 生成环图像
-        // 遍历 distances，如果 0 < dist <= radius，则是环
         const ringImageData = ctx.createImageData(width, height);
         for (let i = 0; i < width * height; i++) {
-            if (distances[i] > 0 && distances[i] <= radius) {
-                const p = i * 4;
-                // 渐变透明度？或者固定颜色
-                ringImageData.data[p] = color[0];
-                ringImageData.data[p + 1] = color[1];
-                ringImageData.data[p + 2] = color[2];
-                // 让内圈更实，外圈更虚？可选。这里用固定透明度。
-                ringImageData.data[p + 3] = color[3];
-            }
+          if (distances[i] > 0 && distances[i] <= radius) {
+            const p = i * 4;
+            const alpha = Math.round(color[3] * (1 - (distances[i] - 1) / radius * 0.5));
+            ringImageData.data[p] = color[0];
+            ringImageData.data[p + 1] = color[1];
+            ringImageData.data[p + 2] = color[2];
+            ringImageData.data[p + 3] = alpha;
+          }
         }
         
         ctx.putImageData(ringImageData, 0, 0);
@@ -185,7 +302,7 @@ export async function generatePeritumoralRing(
       }
     };
     
-    img.onerror = (err) => reject(new Error('Failed to load mask image for processing'));
+    img.onerror = () => reject(new Error('Failed to load mask image'));
   });
 }
 
