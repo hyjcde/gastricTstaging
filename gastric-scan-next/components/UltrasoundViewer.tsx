@@ -2,7 +2,7 @@
 
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { Patient } from '@/types';
-import { Columns, Eye, Flame, Layers, Maximize2, RefreshCw, Ruler, Scan, Settings2, Undo2, XCircle } from 'lucide-react';
+import { Columns, Eye, Flame, Layers, Maximize2, RefreshCw, Ruler, Scan, Settings2, Undo2, XCircle, CircleDashed } from 'lucide-react';
 import { useSettings } from '@/contexts/SettingsContext';
 import { 
   AnnotationBbox, 
@@ -11,6 +11,7 @@ import {
   extractAnnotationBbox, 
   ImageMetrics 
 } from '@/lib/image-utils';
+import { generatePeritumoralRing } from '@/lib/morphology';
 import { OptimizedImage } from './OptimizedImage';
 import toast from 'react-hot-toast';
 import { ImageSkeleton } from './Skeleton';
@@ -42,6 +43,8 @@ export const UltrasoundViewer: React.FC<UltrasoundViewerProps> = ({ patient }) =
   const [measurements, setMeasurements] = useState<Array<{id: number, start: {x:number, y:number}, end: {x:number, y:number}}>>([]);
   const [activeMeasurement, setActiveMeasurement] = useState<{start: {x:number, y:number}, end: {x:number, y:number}} | null>(null);
   const [showDetectionBox, setShowDetectionBox] = useState(false);
+  const [showRing, setShowRing] = useState(false);
+  const [ringImageUrl, setRingImageUrl] = useState<string | null>(null);
   const [annotationBbox, setAnnotationBbox] = useState<AnnotationBbox | null>(null);
   const [imageMetrics, setImageMetrics] = useState<ImageMetrics | null>(null);
   const imageWrapperRef = useRef<HTMLDivElement>(null);
@@ -55,6 +58,7 @@ export const UltrasoundViewer: React.FC<UltrasoundViewerProps> = ({ patient }) =
       setMeasurements([]);
       setActiveMeasurement(null);
       setIsMeasuring(false);
+      setShowRing(false);
   }
 
   const updateImageMetrics = useCallback(() => {
@@ -92,6 +96,7 @@ export const UltrasoundViewer: React.FC<UltrasoundViewerProps> = ({ patient }) =
   useEffect(() => {
     if (!patient) {
       setAnnotationBbox(null);
+      setRingImageUrl(null);
       return;
     }
 
@@ -120,6 +125,24 @@ export const UltrasoundViewer: React.FC<UltrasoundViewerProps> = ({ patient }) =
 
     return () => controller.abort();
   }, [patient]);
+  
+  // Effect to generate peritumoral ring
+  useEffect(() => {
+    if (showRing && patient && (patient.overlay_transparent_url || patient.overlay_url)) {
+      const maskUrl = patient.overlay_transparent_url || patient.overlay_url;
+      generatePeritumoralRing(maskUrl)
+        .then(url => {
+           setRingImageUrl(url);
+        })
+        .catch(err => {
+           console.error("Failed to generate peritumoral ring", err);
+           toast.error("Failed to generate peritumoral ring");
+           setShowRing(false);
+        });
+    } else {
+      setRingImageUrl(null);
+    }
+  }, [showRing, patient]);
 
   const undoMeasurement = () => {
       setMeasurements(prev => prev.slice(0, -1));
@@ -445,6 +468,18 @@ export const UltrasoundViewer: React.FC<UltrasoundViewerProps> = ({ patient }) =
                       silentError={true}
                     />
                   </div>
+                  {/* Peritumoral Ring */}
+                  {ringImageUrl && (
+                    <div className="absolute inset-0 w-full h-full flex items-center justify-center pointer-events-none z-20">
+                      <OptimizedImage 
+                        src={ringImageUrl} 
+                        alt="Peritumoral Ring" 
+                        className="max-h-full max-w-full object-contain animate-in fade-in duration-500"
+                        style={{ opacity: 1 }}
+                        silentError={true}
+                      />
+                    </div>
+                  )}
                   {/* Detection Box */}
                   {showDetectionBox && detectionOverlayStyle && (
                     <div
@@ -513,6 +548,18 @@ export const UltrasoundViewer: React.FC<UltrasoundViewerProps> = ({ patient }) =
                         silentError={true}
                         />
                     </div>
+                    {/* Peritumoral Ring */}
+                    {ringImageUrl && (
+                        <div className="absolute inset-0 w-full h-full flex items-center justify-center pointer-events-none z-20">
+                            <OptimizedImage 
+                            src={ringImageUrl} 
+                            alt="Peritumoral Ring" 
+                            className="max-h-full max-w-full object-contain animate-in fade-in duration-500"
+                            style={{ opacity: 1 }}
+                            silentError={true}
+                            />
+                        </div>
+                    )}
                   </>
                 ) : (
                   <OptimizedImage 
@@ -718,6 +765,18 @@ export const UltrasoundViewer: React.FC<UltrasoundViewerProps> = ({ patient }) =
             title={annotationBbox ? (showDetectionBox ? (language === 'zh' ? '关闭检测' : 'Hide Detection Box') : (language === 'zh' ? '显示检测' : 'Show Detection Box')) : (language === 'zh' ? '注释数据缺失' : 'Annotation missing')}
           >
             <Scan size={12} /> {t.viewer.detect}
+          </button>
+          <button
+            onClick={() => setShowRing(prev => !prev)}
+            disabled={!patient.overlay_url && !patient.overlay_transparent_url}
+            className={`flex shrink-0 items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium transition-colors whitespace-nowrap ${
+                showRing
+                  ? 'bg-white text-black'
+                  : 'text-gray-400 hover:text-white'
+            }`}
+            title={language === 'zh' ? '显示瘤周环 (5mm)' : 'Show Peritumoral Ring (5mm)'}
+          >
+            <CircleDashed size={12} /> {language === 'zh' ? '瘤周环' : 'Ring'}
           </button>
           <button
             onClick={() => setMode('split')}
