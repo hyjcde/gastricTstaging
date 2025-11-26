@@ -2,9 +2,13 @@ import { ConceptState, DEFAULT_STATE, Patient, ConceptFeatures } from '@/types';
 
 /**
  * 将字符串格式的概念值转换为数字
+ * @param value 字符串值
+ * @param defaultValue 默认值（当无法解析时使用）
  */
-function parseConceptValue(value?: string): number {
-  if (!value) return 0;
+function parseConceptValue(value?: string, defaultValue?: number): number {
+  if (!value || value.trim() === '') {
+    return defaultValue ?? 0;
+  }
   
   // 移除百分号和空格
   const cleaned = value.toString().replace(/%/g, '').trim();
@@ -15,8 +19,8 @@ function parseConceptValue(value?: string): number {
     return Math.max(0, Math.min(100, num));
   }
   
-  // 如果无法解析，返回0
-  return 0;
+  // 如果无法解析，返回默认值
+  return defaultValue ?? 0;
 }
 
 /**
@@ -68,22 +72,24 @@ function parseInvasion(value?: string): number {
 /**
  * 从患者的临床数据中提取 ConceptState
  * 如果患者有 concept_features，使用它们；否则返回默认状态
+ * 对于缺失的字段，使用 DEFAULT_STATE 中的默认值
  */
 export function getConceptStateFromPatient(patient: Patient | null): ConceptState {
   if (!patient?.clinical?.concept_features) {
-    return DEFAULT_STATE;
+    return { ...DEFAULT_STATE };
   }
 
   const features = patient.clinical.concept_features;
 
   return {
-    c1: parseConceptValue(features.ki67),
-    c2: parseConceptValue(features.cps),
-    c3: parseConceptValue(features.pd1),
-    c4: parseConceptValue(features.foxp3),
-    c5: parseConceptValue(features.cd3),
-    c6: parseConceptValue(features.cd4),
-    c7: parseConceptValue(features.cd8),
+    // 使用 DEFAULT_STATE 中的值作为默认值，而不是 0
+    c1: parseConceptValue(features.ki67, DEFAULT_STATE.c1),
+    c2: parseConceptValue(features.cps, DEFAULT_STATE.c2),
+    c3: parseConceptValue(features.pd1, DEFAULT_STATE.c3),
+    c4: parseConceptValue(features.foxp3, DEFAULT_STATE.c4),
+    c5: parseConceptValue(features.cd3, DEFAULT_STATE.c5),
+    c6: parseConceptValue(features.cd4, DEFAULT_STATE.c6),
+    c7: parseConceptValue(features.cd8, DEFAULT_STATE.c7),
     differentiation: parseDifferentiation(features.differentiation),
     lauren: parseLauren(features.lauren),
     vascularInvasion: parseInvasion(features.vascular),
