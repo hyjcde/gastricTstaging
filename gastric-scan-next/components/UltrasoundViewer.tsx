@@ -2,7 +2,8 @@
 
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { Patient } from '@/types';
-import { Columns, Eye, Flame, Layers, Maximize2, RefreshCw, Ruler, Scan, Settings2, Undo2, XCircle, CircleDashed, ZoomIn, Minimize2 } from 'lucide-react';
+import { Columns, Eye, Flame, Layers, Maximize2, RefreshCw, Ruler, Scan, Settings2, Undo2, XCircle, CircleDashed, ZoomIn, Minimize2, Brain } from 'lucide-react';
+import { ExplainableAnalysis } from './ExplainableAnalysis';
 import { useSettings } from '@/contexts/SettingsContext';
 import { 
   AnnotationBbox, 
@@ -48,6 +49,7 @@ export const UltrasoundViewer: React.FC<UltrasoundViewerProps> = ({ patient }) =
   const [annotationBbox, setAnnotationBbox] = useState<AnnotationBbox | null>(null);
   const [imageMetrics, setImageMetrics] = useState<ImageMetrics | null>(null);
   const [zoomToROI, setZoomToROI] = useState(false);
+  const [showExplainableAnalysis, setShowExplainableAnalysis] = useState(false);
   const imageWrapperRef = useRef<HTMLDivElement>(null);
   const imageRef = useRef<HTMLImageElement>(null);
 
@@ -903,6 +905,21 @@ export const UltrasoundViewer: React.FC<UltrasoundViewerProps> = ({ patient }) =
           >
             <Flame size={12} /> {t.viewer.xai}
           </button>
+          <button
+            onClick={() => setShowExplainableAnalysis(true)}
+            disabled={!patient.json_url}
+            className={`flex shrink-0 items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium transition-colors whitespace-nowrap ${
+              patient.json_url
+                ? 'bg-gradient-to-r from-blue-600 to-purple-600 text-white hover:from-blue-500 hover:to-purple-500'
+                : 'opacity-40 cursor-not-allowed text-gray-500'
+            }`}
+            title={patient.json_url 
+              ? (language === 'zh' ? '可解释性 AI 分析' : 'Explainable AI Analysis')
+              : (language === 'zh' ? '需要标注数据' : 'Annotation required')
+            }
+          >
+            <Brain size={12} /> {language === 'zh' ? 'AI分析' : 'AI Analyze'}
+          </button>
           
           <div className="w-px bg-white/20 mx-1 shrink-0"></div>
           
@@ -933,6 +950,13 @@ export const UltrasoundViewer: React.FC<UltrasoundViewerProps> = ({ patient }) =
           </button>
         </div>
       </div>
+
+      {/* Explainable Analysis Modal */}
+      <ExplainableAnalysis
+        patient={patient}
+        isOpen={showExplainableAnalysis}
+        onClose={() => setShowExplainableAnalysis(false)}
+      />
     </div>
   );
 };
