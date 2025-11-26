@@ -2,7 +2,7 @@
 
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { Patient } from '@/types';
-import { Columns, Eye, Flame, Layers, Maximize2, RefreshCw, Ruler, Scan, Settings2, Undo2, XCircle, CircleDashed } from 'lucide-react';
+import { Columns, Eye, Flame, Layers, Maximize2, RefreshCw, Ruler, Scan, Settings2, Undo2, XCircle, CircleDashed, ZoomIn, Minimize2 } from 'lucide-react';
 import { useSettings } from '@/contexts/SettingsContext';
 import { 
   AnnotationBbox, 
@@ -47,6 +47,7 @@ export const UltrasoundViewer: React.FC<UltrasoundViewerProps> = ({ patient }) =
   const [ringImageUrl, setRingImageUrl] = useState<string | null>(null);
   const [annotationBbox, setAnnotationBbox] = useState<AnnotationBbox | null>(null);
   const [imageMetrics, setImageMetrics] = useState<ImageMetrics | null>(null);
+  const [zoomToROI, setZoomToROI] = useState(false);
   const imageWrapperRef = useRef<HTMLDivElement>(null);
   const imageRef = useRef<HTMLImageElement>(null);
 
@@ -59,7 +60,76 @@ export const UltrasoundViewer: React.FC<UltrasoundViewerProps> = ({ patient }) =
       setActiveMeasurement(null);
       setIsMeasuring(false);
       setShowRing(false);
+      setZoomToROI(false);
   }
+  
+  // 计算 ROI 放大参数
+  const roiZoomParams = useMemo(() => {
+    if (!zoomToROI || !annotationBbox || !imageMetrics) return null;
+    
+    // ROI 在原始图像中的坐标
+    const roiX = annotationBbox.x1;
+    const roiY = annotationBbox.y1;
+    const roiWidth = annotationBbox.x2 - annotationBbox.x1;
+    const roiHeight = annotationBbox.y2 - annotationBbox.y1;
+    
+    // 添加 20% 的边距
+    const padding = 0.2;
+    const paddedWidth = roiWidth * (1 + padding * 2);
+    const paddedHeight = roiHeight * (1 + padding * 2);
+    const paddedX = roiX - roiWidth * padding;
+    const paddedY = roiY - roiHeight * padding;
+    
+    // 计算需要的缩放比例（使 ROI 填充显示区域）
+    const scaleX = imageMetrics.naturalWidth / paddedWidth;
+    const scaleY = imageMetrics.naturalHeight / paddedHeight;
+    const targetScale = Math.min(scaleX, scaleY, 4); // 最大 4x
+    
+    // 计算 ROI 中心点在原始图像中的位置
+    const roiCenterX = paddedX + paddedWidth / 2;
+    const roiCenterY = paddedY + paddedHeight / 2;
+    
+    // 计算偏移量（使 ROI 中心对齐到显示区域中心）
+    const imageCenterX = imageMetrics.naturalWidth / 2;
+    const imageCenterY = imageMetrics.naturalHeight / 2;
+    
+    // 显示尺寸下的偏移
+    const offsetX = (imageCenterX - roiCenterX) * (imageMetrics.displayWidth / imageMetrics.naturalWidth);
+    const offsetY = (imageCenterY - roiCenterY) * (imageMetrics.displayHeight / imageMetrics.naturalHeight);
+    
+    return {
+      scale: targetScale,
+      offsetX: offsetX * targetScale,
+      offsetY: offsetY * targetScale
+    };
+  }, [zoomToROI, annotationBbox, imageMetrics]);
+  
+  // 切换 ROI 放大模式
+  const toggleZoomToROI = useCallback(() => {
+    if (!annotationBbox) return;
+    
+    if (zoomToROI) {
+      // 退出 ROI 放大模式，恢复正常
+      setZoomToROI(false);
+      setScale(1);
+      setPosition({ x: 0, y: 0 });
+    } else {
+      // 进入 ROI 放大模式
+      setZoomToROI(true);
+      if (roiZoomParams) {
+        setScale(roiZoomParams.scale);
+        setPosition({ x: roiZoomParams.offsetX, y: roiZoomParams.offsetY });
+      }
+    }
+  }, [annotationBbox, zoomToROI, roiZoomParams]);
+  
+  // 当 roiZoomParams 变化且处于 ROI 模式时，更新缩放和位置
+  useEffect(() => {
+    if (zoomToROI && roiZoomParams) {
+      setScale(roiZoomParams.scale);
+      setPosition({ x: roiZoomParams.offsetX, y: roiZoomParams.offsetY });
+    }
+  }, [zoomToROI, roiZoomParams]);
 
   const updateImageMetrics = useCallback(() => {
     const img = imageRef.current;
@@ -390,6 +460,11 @@ export const UltrasoundViewer: React.FC<UltrasoundViewerProps> = ({ patient }) =
              </div>
            ) : (
              <div className="text-[10px] font-mono text-gray-500">{t.viewer.detection_missing}</div>
+           )}
+           {zoomToROI && (
+             <div className="text-[10px] font-mono text-cyan-400 animate-pulse">
+               {language === 'zh' ? '🔍 ROI 放大模式' : '🔍 ROI ZOOM MODE'}
+             </div>
            )}
         </div>
       </div>
@@ -774,6 +849,26 @@ export const UltrasoundViewer: React.FC<UltrasoundViewerProps> = ({ patient }) =
             title={annotationBbox ? (showDetectionBox ? (language === 'zh' ? '关闭检测' : 'Hide Detection Box') : (language === 'zh' ? '显示检测' : 'Show Detection Box')) : (language === 'zh' ? '注释数据缺失' : 'Annotation missing')}
           >
             <Scan size={12} /> {t.viewer.detect}
+          </button>
+          <button
+            onClick={toggleZoomToROI}
+            disabled={!annotationBbox}
+            className={`flex shrink-0 items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium transition-colors whitespace-nowrap ${
+              annotationBbox
+                ? zoomToROI
+                  ? 'bg-cyan-500 text-black'
+                  : 'text-gray-400 hover:text-white'
+                : 'opacity-40 cursor-not-allowed text-gray-500'
+            }`}
+            title={annotationBbox 
+              ? (zoomToROI 
+                  ? (language === 'zh' ? '退出ROI放大' : 'Exit ROI Zoom') 
+                  : (language === 'zh' ? '放大查看ROI区域' : 'Zoom to ROI'))
+              : (language === 'zh' ? '需要标注数据' : 'Annotation required')
+            }
+          >
+            {zoomToROI ? <Minimize2 size={12} /> : <ZoomIn size={12} />}
+            {language === 'zh' ? 'ROI放大' : 'ROI Zoom'}
           </button>
           <button
             onClick={() => setShowRing(prev => !prev)}
