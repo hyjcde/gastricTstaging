@@ -1,12 +1,12 @@
 "use client";
 
-import React, { useEffect, useState, useMemo, useCallback, useRef } from 'react';
-import { Patient } from '@/types';
-import { Search, Database, ChevronDown, ChevronRight, Folder, FileImage, AlertTriangle, CheckCircle, Circle } from 'lucide-react';
 import { useSettings } from '@/contexts/SettingsContext';
+import { Patient } from '@/types';
+import { ChevronDown, ChevronRight, Database, FileImage, Folder, Search } from 'lucide-react';
+import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import toast from 'react-hot-toast';
-import { PatientListGroupSkeleton } from './Skeleton';
 import { AdvancedFilters } from './AdvancedFilters';
+import { PatientListGroupSkeleton } from './Skeleton';
 
 // 从文件名解析 T 分期
 const parseTStageFromId = (id: string): string | null => {
@@ -20,11 +20,11 @@ const parseTStageFromId = (id: string): string | null => {
 
 // 获取 T 分期的风险等级颜色
 const getTStageColor = (tStage: string | null) => {
-  if (!tStage) return { bg: 'bg-gray-500/20', text: 'text-gray-400', border: 'border-gray-500/30', dot: 'bg-gray-400' };
-  if (tStage === 'T4') return { bg: 'bg-red-500/20', text: 'text-red-400', border: 'border-red-500/30', dot: 'bg-red-400' };
-  if (tStage === 'T3') return { bg: 'bg-amber-500/20', text: 'text-amber-400', border: 'border-amber-500/30', dot: 'bg-amber-400' };
-  if (tStage === 'T2') return { bg: 'bg-yellow-500/20', text: 'text-yellow-400', border: 'border-yellow-500/30', dot: 'bg-yellow-400' };
-  return { bg: 'bg-emerald-500/20', text: 'text-emerald-400', border: 'border-emerald-500/30', dot: 'bg-emerald-400' };
+  if (!tStage) return { bg: 'bg-gray-500/20', text: 'text-gray-400', border: 'border-gray-500/30' };
+  if (tStage === 'T4') return { bg: 'bg-red-500/20', text: 'text-red-400', border: 'border-red-500/30' };
+  if (tStage === 'T3') return { bg: 'bg-amber-500/20', text: 'text-amber-400', border: 'border-amber-500/30' };
+  if (tStage === 'T2') return { bg: 'bg-yellow-500/20', text: 'text-yellow-400', border: 'border-yellow-500/30' };
+  return { bg: 'bg-emerald-500/20', text: 'text-emerald-400', border: 'border-emerald-500/30' };
 };
 
 interface PatientListProps {
@@ -305,13 +305,6 @@ export const PatientList: React.FC<PatientListProps> = ({ onSelect, selectedId, 
               const groupTStage = parseTStageFromId(group.items[0]?.id || '');
               const groupStageColors = getTStageColor(groupTStage);
               
-              // 检查是否有高风险标记
-              const hasHighRisk = group.items.some(p => 
-                p.clinical?.biomarkers?.cea_positive || 
-                p.clinical?.biomarkers?.ca199_positive ||
-                groupTStage === 'T4'
-              );
-              
               return (
                 <div key={groupKey} className="bg-[#0b0b0d]">
                   {/* Group Header */}
@@ -324,8 +317,6 @@ export const PatientList: React.FC<PatientListProps> = ({ onSelect, selectedId, 
                   >
                     <div className="flex items-center gap-2 overflow-hidden">
                         {isExpanded ? <ChevronDown size={12} className="text-gray-500" /> : <ChevronRight size={12} className="text-gray-500" />}
-                        {/* 风险指示点 */}
-                        <div className={`w-2 h-2 rounded-full ${groupStageColors.dot} ${hasHighRisk ? 'animate-pulse' : ''}`}></div>
                         <Folder size={12} className={isGroupSelected ? "text-blue-400" : "text-gray-600"} />
                         <span className={`text-[11px] font-mono truncate ${isGroupSelected ? 'text-gray-200' : 'text-gray-400'}`}>
                             {cohortYear === '2019' ? `Patient ${group.baseId}` : group.baseId}
@@ -361,37 +352,24 @@ export const PatientList: React.FC<PatientListProps> = ({ onSelect, selectedId, 
                         {group.items.map((p, index) => {
                             const isSelected = selectedId === p.id;
                             const uniqueKey = `${groupKey}_${index}_${p.id}`;
-                            const tStage = parseTStageFromId(p.id);
-                            const stageColors = getTStageColor(tStage);
                             
                             return (
                                 <div 
                                     key={uniqueKey}
                                     onClick={() => onSelect(p)}
                                     className={`
-                                        flex items-center gap-2 pl-7 pr-3 py-2 cursor-pointer border-l-2 transition-all group/item
+                                        flex items-center gap-3 pl-8 pr-3 py-2 cursor-pointer border-l-2 transition-all
                                         ${isSelected 
                                             ? 'border-blue-500 bg-blue-500/10 text-blue-100' 
                                             : 'border-transparent text-gray-500 hover:text-gray-300 hover:bg-white/5'}
                                     `}
                                 >
-                                    {/* T分期指示点 */}
-                                    <div className={`w-1.5 h-1.5 rounded-full ${stageColors.dot} shrink-0`} title={tStage || 'Unknown'}></div>
-                                    
                                     <FileImage size={10} className="shrink-0" />
                                     
                                     <div className="flex flex-col min-w-0 flex-1">
-                                        <div className="flex items-center gap-2">
-                                            <span className="text-[10px] font-mono truncate flex-1">
-                                                {p.id_short}
-                                            </span>
-                                            {/* T分期标签 */}
-                                            {tStage && (
-                                                <span className={`text-[8px] font-bold px-1.5 py-0.5 rounded ${stageColors.bg} ${stageColors.text} border ${stageColors.border}`}>
-                                                    {tStage}
-                                                </span>
-                                            )}
-                                        </div>
+                                        <span className="text-[10px] font-mono truncate">
+                                            {p.id_short}
+                                        </span>
                                         {p.clinical && (
                                             <div className="flex items-center gap-1.5 mt-0.5 flex-wrap">
                                                 {/* 病理分期 */}
