@@ -335,11 +335,6 @@ export const PatientList: React.FC<PatientListProps> = ({ onSelect, selectedId, 
                         `}>
                             {group.groupType === 'NAC' ? 'NAC' : 'SURG'}
                         </span>
-                        {group.items.some(p => p.clinical) && (
-                            <span className="text-[8px] bg-blue-500/20 text-blue-400 px-1 py-0.5 rounded border border-blue-500/30" title="Has clinical data">
-                                CLIN
-                            </span>
-                        )}
                         <span className="text-[9px] text-gray-600 bg-white/5 px-1.5 rounded-full">
                             {group.items.length}
                         </span>
