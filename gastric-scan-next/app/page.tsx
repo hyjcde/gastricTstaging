@@ -22,6 +22,13 @@ export default function Home() {
   const [allPatients, setAllPatients] = useState<Patient[]>([]);
   const [patientConceptStates, setPatientConceptStates] = useState<Map<string, ConceptState>>(new Map());
 
+  // 获取同一患者的所有图片
+  const siblingImages = useMemo(() => {
+    if (!selectedPatient || !allPatients.length) return [];
+    const patientId = selectedPatient.patient_id;
+    return allPatients.filter(p => p.patient_id === patientId);
+  }, [selectedPatient, allPatients]);
+
   const handleStateChange = useCallback((key: keyof ConceptState, value: number) => {
     setConceptState(prev => {
       const newState = {
@@ -101,7 +108,12 @@ export default function Home() {
 
         {/* Middle: Viewer (Flexible, Darkest Background) */}
         <div className="flex-1 flex flex-col min-h-0 bg-black relative min-w-0 shadow-[inset_0_0_20px_rgba(0,0,0,0.5)]">
-          <UltrasoundViewer key={selectedPatient?.id} patient={selectedPatient} />
+          <UltrasoundViewer 
+            key={selectedPatient?.id} 
+            patient={selectedPatient} 
+            siblingImages={siblingImages}
+            onSelectSibling={setSelectedPatient}
+          />
         </div>
 
         {/* Right: Analysis (Fixed Width, Split Vertically) */}

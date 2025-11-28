@@ -2,7 +2,7 @@
 
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { Patient } from '@/types';
-import { Columns, Eye, Layers, Maximize2, RefreshCw, Ruler, Scan, Settings2, Undo2, XCircle, CircleDashed, ZoomIn, Minimize2, Brain } from 'lucide-react';
+import { Columns, Eye, Layers, Maximize2, RefreshCw, Ruler, Scan, Settings2, Undo2, XCircle, CircleDashed, ZoomIn, Minimize2, Brain, Grid2X2, ChevronLeft, ChevronRight } from 'lucide-react';
 import { ExplainableAnalysis } from './ExplainableAnalysis';
 import { useSettings } from '@/contexts/SettingsContext';
 import { 
@@ -19,11 +19,13 @@ import { ImageSkeleton } from './Skeleton';
 
 interface UltrasoundViewerProps {
   patient: Patient | null;
+  siblingImages?: Patient[];
+  onSelectSibling?: (patient: Patient) => void;
 }
 
-type ViewMode = 'original' | 'overlay' | 'heatmap' | 'split';
+type ViewMode = 'original' | 'overlay' | 'heatmap' | 'split' | 'multi';
 
-export const UltrasoundViewer: React.FC<UltrasoundViewerProps> = ({ patient }) => {
+export const UltrasoundViewer: React.FC<UltrasoundViewerProps> = ({ patient, siblingImages = [], onSelectSibling }) => {
   const { t, language } = useSettings();
   const containerRef = useRef<HTMLDivElement>(null);
   const [mode, setMode] = useState<ViewMode>('original');
@@ -418,10 +420,26 @@ export const UltrasoundViewer: React.FC<UltrasoundViewerProps> = ({ patient }) =
 
   const getModeLabel = () => {
       if (mode === 'split') return 'SPLIT COMPARISON';
+      if (mode === 'multi') return `MULTI-IMAGE (${siblingImages.length})`;
       if (mode === 'original') return t.viewer.bmode;
       if (mode === 'overlay') return t.viewer.mask;
       return t.viewer.heatmap;
   }
+  
+  // 当前图片在兄弟图片中的索引
+  const currentImageIndex = useMemo(() => {
+    if (!patient) return -1;
+    return siblingImages.findIndex(p => p.id === patient.id);
+  }, [patient, siblingImages]);
+  
+  // 导航到上一张/下一张
+  const navigateImage = useCallback((direction: 'prev' | 'next') => {
+    if (!onSelectSibling || siblingImages.length <= 1) return;
+    const newIndex = direction === 'prev' 
+      ? (currentImageIndex - 1 + siblingImages.length) % siblingImages.length
+      : (currentImageIndex + 1) % siblingImages.length;
+    onSelectSibling(siblingImages[newIndex]);
+  }, [currentImageIndex, siblingImages, onSelectSibling]);
 
   const getStatusColor = () => {
       if (mode === 'original') return 'bg-blue-500 text-blue-500';
@@ -511,8 +529,94 @@ export const UltrasoundViewer: React.FC<UltrasoundViewerProps> = ({ patient }) =
       {/* Main Image Area */}
       <div className="flex-1 flex items-center justify-center overflow-hidden p-4 relative z-10 bg-black">
         
+        {/* Multi-Image Navigation (when multiple images exist) */}
+        {siblingImages.length > 1 && mode !== 'multi' && (
+          <div className="absolute bottom-20 left-1/2 -translate-x-1/2 z-30 flex items-center gap-3 bg-black/80 backdrop-blur border border-white/10 rounded-full px-4 py-2">
+            <button 
+              onClick={() => navigateImage('prev')}
+              className="p-1 text-gray-400 hover:text-white transition-colors"
+            >
+              <ChevronLeft size={16} />
+            </button>
+            <div className="flex items-center gap-1.5">
+              {siblingImages.map((img, idx) => (
+                <button
+                  key={img.id}
+                  onClick={() => onSelectSibling?.(img)}
+                  className={`w-2 h-2 rounded-full transition-all ${
+                    img.id === patient?.id 
+                      ? 'bg-blue-500 scale-125' 
+                      : 'bg-gray-600 hover:bg-gray-400'
+                  }`}
+                  title={img.id_short}
+                />
+              ))}
+            </div>
+            <button 
+              onClick={() => navigateImage('next')}
+              className="p-1 text-gray-400 hover:text-white transition-colors"
+            >
+              <ChevronRight size={16} />
+            </button>
+            <span className="text-[10px] text-gray-500 font-mono ml-1">
+              {currentImageIndex + 1}/{siblingImages.length}
+            </span>
+          </div>
+        )}
+        
         {/* Image Container */}
-        {mode === 'split' ? (
+        {mode === 'multi' && siblingImages.length > 1 ? (
+          /* Multi-Image Mode: Grid View */
+          <div className={`grid w-full h-full gap-2 p-2 ${
+            siblingImages.length <= 2 ? 'grid-cols-2' :
+            siblingImages.length <= 4 ? 'grid-cols-2' :
+            siblingImages.length <= 6 ? 'grid-cols-3' :
+            'grid-cols-4'
+          }`}>
+            {siblingImages.map((img, idx) => (
+              <div 
+                key={img.id}
+                onClick={() => onSelectSibling?.(img)}
+                className={`relative flex items-center justify-center bg-[#0a0a0a] rounded-lg overflow-hidden cursor-pointer transition-all hover:ring-2 hover:ring-blue-500/50 ${
+                  img.id === patient?.id ? 'ring-2 ring-blue-500' : ''
+                }`}
+              >
+                <OptimizedImage 
+                  src={img.image_url} 
+                  alt={img.id_short} 
+                  className="max-h-full max-w-full object-contain"
+                  priority={idx < 4}
+                />
+                {/* Overlay if available */}
+                {img.overlay_transparent_url && (
+                  <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                    <OptimizedImage 
+                      src={img.overlay_transparent_url} 
+                      alt="Overlay" 
+                      className="max-h-full max-w-full object-contain opacity-80"
+                      silentError={true}
+                    />
+                  </div>
+                )}
+                {/* Label */}
+                <div className="absolute bottom-1 left-1 right-1 flex items-center justify-between">
+                  <span className={`text-[8px] font-bold px-1.5 py-0.5 rounded ${
+                    img.id === patient?.id 
+                      ? 'bg-blue-500 text-white' 
+                      : 'bg-black/60 text-gray-300'
+                  }`}>
+                    {img.id_short}
+                  </span>
+                  {idx + 1 <= siblingImages.length && (
+                    <span className="text-[8px] font-mono text-gray-500 bg-black/60 px-1 rounded">
+                      {idx + 1}/{siblingImages.length}
+                    </span>
+                  )}
+                </div>
+              </div>
+            ))}
+          </div>
+        ) : mode === 'split' ? (
           /* Split Mode: Side by Side */
           <div className="grid grid-cols-2 w-full h-full gap-1">
             {/* Left: Original Image */}
@@ -848,6 +952,17 @@ export const UltrasoundViewer: React.FC<UltrasoundViewerProps> = ({ patient }) =
           >
             <Columns size={12} /> {t.viewer.contrast}
           </button>
+          {siblingImages.length > 1 && (
+            <button
+              onClick={() => setMode(mode === 'multi' ? 'original' : 'multi')}
+              className={`flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-medium transition-colors ${
+                mode === 'multi' ? 'bg-purple-500 text-white' : 'text-gray-400 hover:text-white'
+              }`}
+              title={language === 'zh' ? `查看全部 ${siblingImages.length} 张图片` : `View all ${siblingImages.length} images`}
+            >
+              <Grid2X2 size={12} /> {siblingImages.length}
+            </button>
+          )}
 
           <div className="w-px h-4 bg-white/20 mx-1"></div>
 

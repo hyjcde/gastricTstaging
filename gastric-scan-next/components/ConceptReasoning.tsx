@@ -1,10 +1,9 @@
 "use client";
 
-import React from 'react';
+import React, { useCallback } from 'react';
 import { CONCEPT_CONFIGS, getConceptBarGradient } from '@/lib/medical-config';
 import { ConceptState } from '@/types';
-import { Activity, RotateCcw, ShieldAlert, Sliders } from 'lucide-react';
-import React from 'react';
+import { Activity, RotateCcw, ShieldAlert, Sliders, ChevronDown, ChevronUp } from 'lucide-react';
 import { useSettings } from '@/contexts/SettingsContext';
 import { RadarChart } from './RadarChart';
 
@@ -16,57 +15,103 @@ interface ConceptReasoningProps {
 
 export const ConceptReasoning: React.FC<ConceptReasoningProps> = React.memo(({ state, onChange, onReset }) => {
   const { t, language } = useSettings();
+  const [showTME, setShowTME] = React.useState(false);
+  
+  // 快速调节按钮
+  const quickAdjust = useCallback((key: keyof ConceptState, delta: number) => {
+    const current = state[key] ?? 50;
+    const newVal = Math.max(0, Math.min(100, current + delta));
+    onChange(key, newVal);
+  }, [state, onChange]);
   
   const renderSlider = (key: keyof ConceptState) => {
     const config = CONCEPT_CONFIGS[key as string];
-    if (!config) return null; // Should not happen for configured keys
+    if (!config) return null;
 
-    // Ensure val is never undefined to avoid uncontrolled input warning
     const val = state[key] ?? 50;
-    
-    // Dynamic color logic from config
     const barGradient = getConceptBarGradient(val, config.thresholds);
+    
+    // 判断是否超过阈值
+    const isHigh = val > config.thresholds.warning;
+    const isDanger = val > config.thresholds.danger;
 
     return (
-      <div className="group py-1.5">
-        <div className="flex justify-between items-end mb-1.5">
-          <span className="text-[10px] font-bold text-gray-400 group-hover:text-gray-200 transition-colors uppercase tracking-tight">
+      <div className="group py-2 px-2 rounded-lg hover:bg-white/5 transition-colors">
+        <div className="flex justify-between items-center mb-2">
+          <span className="text-[11px] font-bold text-gray-300 group-hover:text-white transition-colors uppercase tracking-tight">
             {config.label[language as 'zh' | 'en']}
           </span>
-          <div className="flex items-baseline gap-1">
-             <span className={`text-[10px] font-mono font-bold ${val > config.thresholds.warning ? 'text-gray-100' : 'text-gray-500'}`}>{val}%</span>
+          <div className="flex items-center gap-2">
+            {/* 快速调节按钮 */}
+            <div className="flex items-center gap-0.5 opacity-0 group-hover:opacity-100 transition-opacity">
+              <button 
+                onClick={() => quickAdjust(key, -10)}
+                className="w-5 h-5 flex items-center justify-center text-gray-500 hover:text-white hover:bg-white/10 rounded text-xs"
+              >
+                -
+              </button>
+              <button 
+                onClick={() => quickAdjust(key, 10)}
+                className="w-5 h-5 flex items-center justify-center text-gray-500 hover:text-white hover:bg-white/10 rounded text-xs"
+              >
+                +
+              </button>
+            </div>
+            {/* 数值显示 */}
+            <span className={`text-sm font-mono font-bold min-w-[3ch] text-right ${
+              isDanger ? 'text-red-400' : isHigh ? 'text-amber-400' : 'text-gray-400'
+            }`}>
+              {val}
+            </span>
+            <span className="text-[10px] text-gray-600">%</span>
           </div>
         </div>
         
-        <div className="relative h-3 flex items-center select-none mb-1">
-           <input 
+        {/* 滑块轨道 */}
+        <div className="relative h-6 flex items-center select-none group/track">
+          <input 
             type="range" 
             min="0" 
             max="100" 
             value={val}
             onChange={(e) => onChange(key, parseInt(e.target.value))}
-            className="z-20 opacity-0 w-full h-full absolute cursor-pointer"
+            className="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-20"
           />
-          {/* Track Background */}
-          <div className="w-full h-1 bg-[#1a1a1a] rounded-full overflow-hidden relative shadow-inner border border-border-col">
-             {/* Fill */}
-             <div 
-               className={`h-full bg-linear-to-r ${barGradient} transition-all duration-300 ease-out opacity-90 group-hover:opacity-100`} 
-               style={{ width: `${val}%` }}
-             ></div>
+          
+          {/* 轨道背景 */}
+          <div className="w-full h-2 bg-[#1a1a1a] rounded-full overflow-hidden relative shadow-inner border border-white/5">
+            {/* 填充条 */}
+            <div 
+              className={`h-full bg-gradient-to-r ${barGradient} transition-all duration-150 ease-out`} 
+              style={{ width: `${val}%` }}
+            />
+            {/* 刻度线 */}
+            <div className="absolute inset-0 flex justify-between px-0.5 pointer-events-none">
+              {[25, 50, 75].map(tick => (
+                <div 
+                  key={tick} 
+                  className="w-px h-full bg-white/10"
+                  style={{ marginLeft: `${tick}%` }}
+                />
+              ))}
+            </div>
           </div>
           
-          {/* Thumb (Visual Only) */}
+          {/* 滑块手柄 */}
           <div 
-            className="absolute h-2.5 w-2.5 bg-[#e4e4e7] rounded-full shadow-[0_2px_5px_rgba(0,0,0,0.5)] border border-border-col pointer-events-none transition-all duration-75 ease-out group-hover:scale-110"
-            style={{ left: `calc(${val}% - 5px)` }}
-          ></div>
+            className={`absolute h-4 w-4 rounded-full shadow-lg border-2 pointer-events-none transition-all duration-75 ease-out ${
+              isDanger ? 'bg-red-500 border-red-300' : 
+              isHigh ? 'bg-amber-500 border-amber-300' : 
+              'bg-white border-gray-300'
+            } group-hover/track:scale-110`}
+            style={{ left: `calc(${val}% - 8px)` }}
+          />
         </div>
         
-        {/* Labels */}
-        <div className="flex justify-between text-[8px] text-gray-600 font-mono uppercase">
-            <span>{config.minLabel}</span>
-            <span>{config.maxLabel}</span>
+        {/* 标签 */}
+        <div className="flex justify-between text-[9px] text-gray-600 font-mono mt-1">
+          <span>{config.minLabel}</span>
+          <span>{config.maxLabel}</span>
         </div>
       </div>
     );
@@ -77,25 +122,23 @@ export const ConceptReasoning: React.FC<ConceptReasoningProps> = React.memo(({ s
     label: string,
     options: { value: number; label: string }[]
   ) => {
-    // Ensure val is never undefined
     const val = state[key] ?? options[0]?.value ?? 0;
 
     return (
-      <div className="py-2 border-t border-white/5">
-        <div className="text-[10px] font-bold text-gray-400 mb-2 uppercase tracking-tight">{label}</div>
-        <div className="grid grid-cols-1 gap-1">
+      <div className="py-2 px-2 rounded-lg hover:bg-white/5 transition-colors">
+        <div className="text-[11px] font-bold text-gray-300 mb-2 uppercase tracking-tight">{label}</div>
+        <div className="flex flex-wrap gap-1">
           {options.map((opt) => (
             <button
               key={opt.value}
               onClick={() => onChange(key, opt.value)}
-              className={`text-[10px] py-1.5 px-2 rounded border transition-all text-left flex items-center justify-between ${
+              className={`text-[10px] py-1.5 px-2.5 rounded-lg border transition-all ${
                 val === opt.value
                   ? "bg-blue-500/20 text-blue-400 border-blue-500/40 shadow-[0_0_10px_rgba(59,130,246,0.15)]"
-                  : "bg-white/5 text-gray-500 border-white/5 hover:border-white/10 hover:bg-white/10"
+                  : "bg-white/5 text-gray-500 border-white/5 hover:border-white/20 hover:bg-white/10 hover:text-gray-300"
               }`}
             >
-              <span>{opt.label}</span>
-              {val === opt.value && <div className="w-1.5 h-1.5 rounded-full bg-blue-400 shadow-[0_0_5px_currentColor]"></div>}
+              {opt.label}
             </button>
           ))}
         </div>
@@ -104,16 +147,15 @@ export const ConceptReasoning: React.FC<ConceptReasoningProps> = React.memo(({ s
   };
 
   const renderToggle = (key: keyof ConceptState, label: string) => {
-    // Ensure val is never undefined
     const val = state[key] ?? 0;
 
     return (
-      <div className="py-2 flex items-center justify-between border-t border-white/5">
-        <span className="text-[10px] font-bold text-gray-400 uppercase tracking-tight">{label}</span>
+      <div className="py-2 px-2 flex items-center justify-between rounded-lg hover:bg-white/5 transition-colors">
+        <span className="text-[11px] font-bold text-gray-300 uppercase tracking-tight">{label}</span>
         <div className="flex bg-black/40 rounded-lg p-0.5 border border-white/5">
           <button
             onClick={() => onChange(key, 0)}
-            className={`px-3 py-1 rounded-md text-[9px] font-bold transition-all ${
+            className={`px-4 py-1.5 rounded-md text-[10px] font-bold transition-all ${
               val === 0
                 ? "bg-gray-700 text-gray-200 shadow-sm"
                 : "text-gray-600 hover:text-gray-400"
@@ -123,7 +165,7 @@ export const ConceptReasoning: React.FC<ConceptReasoningProps> = React.memo(({ s
           </button>
           <button
             onClick={() => onChange(key, 1)}
-            className={`px-3 py-1 rounded-md text-[9px] font-bold transition-all ${
+            className={`px-4 py-1.5 rounded-md text-[10px] font-bold transition-all ${
               val === 1
                 ? "bg-red-500/80 text-white shadow-[0_0_10px_rgba(239,68,68,0.3)]"
                 : "text-gray-600 hover:text-gray-400"
@@ -138,38 +180,46 @@ export const ConceptReasoning: React.FC<ConceptReasoningProps> = React.memo(({ s
 
   return (
     <div className="flex flex-col h-full w-full bg-panel-bg">
-      <div className="h-9 shrink-0 border-b border-white/5 flex items-center justify-between px-4 bg-panel-bg">
+      {/* Header */}
+      <div className="h-10 shrink-0 border-b border-white/5 flex items-center justify-between px-4 bg-panel-bg">
         <span className="flex items-center gap-2 text-[11px] font-bold text-gray-300 uppercase tracking-widest">
           <Sliders size={12} className="text-blue-500" /> 
-          {language === 'zh' ? '病理特征推理 (CBM)' : 'Pathology CBM Reasoning'}
+          {language === 'zh' ? '病理特征' : 'Pathology Features'}
         </span>
-        <button onClick={onReset} className="text-gray-600 hover:text-white transition-colors" title="Reset">
-            <RotateCcw size={12} />
+        <button 
+          onClick={onReset} 
+          className="flex items-center gap-1 text-[10px] text-gray-600 hover:text-white transition-colors px-2 py-1 rounded hover:bg-white/10"
+          title="Reset"
+        >
+          <RotateCcw size={10} />
+          <span className="hidden sm:inline">{language === 'zh' ? '重置' : 'Reset'}</span>
         </button>
       </div>
       
-      <div className="flex-1 overflow-y-auto min-h-0 p-3 custom-scrollbar space-y-4">
-        {/* Radar Chart Section */}
-        <div className="border-b border-white/5 pb-4 flex justify-center">
-           <div className="w-[80%]">
-           <RadarChart 
-              data={[state.c1 ?? 50, state.c2 ?? 50, state.c3 ?? 50, state.c4 ?? 50]} 
-              labels={[
+      <div className="flex-1 overflow-y-auto min-h-0 custom-scrollbar">
+        {/* Radar Chart - 更紧凑 */}
+        <div className="p-3 border-b border-white/5">
+          <div className="flex justify-center">
+            <div className="w-[70%]">
+              <RadarChart 
+                data={[state.c1 ?? 50, state.c2 ?? 50, state.c3 ?? 50, state.c4 ?? 50]} 
+                labels={[
                   CONCEPT_CONFIGS.c1.label[language as 'zh' | 'en'], 
                   CONCEPT_CONFIGS.c2.label[language as 'zh' | 'en'], 
                   CONCEPT_CONFIGS.c3.label[language as 'zh' | 'en'], 
                   CONCEPT_CONFIGS.c4.label[language as 'zh' | 'en']
-              ]}
-              color={(state.c1 ?? 50) > CONCEPT_CONFIGS.c1.thresholds.danger ? '#ef4444' : '#3b82f6'}
-           />
-           </div>
+                ]}
+                color={(state.c1 ?? 50) > CONCEPT_CONFIGS.c1.thresholds.danger ? '#ef4444' : '#3b82f6'}
+              />
+            </div>
+          </div>
         </div>
 
-        {/* IHC Markers */}
-        <div className="space-y-1">
-          <div className="flex items-center gap-1.5 mb-2 text-[10px] font-bold text-blue-400/80 uppercase tracking-wider">
-             <Activity size={10} />
-             {language === 'zh' ? '免疫组化 (IHC)' : 'IHC Markers'}
+        {/* IHC Markers - 主要指标 */}
+        <div className="p-2">
+          <div className="flex items-center gap-1.5 px-2 mb-1 text-[10px] font-bold text-blue-400/80 uppercase tracking-wider">
+            <Activity size={10} />
+            {language === 'zh' ? '免疫组化' : 'IHC Markers'}
           </div>
           {renderSlider('c1')}
           {renderSlider('c2')}
@@ -177,40 +227,51 @@ export const ConceptReasoning: React.FC<ConceptReasoningProps> = React.memo(({ s
           {renderSlider('c4')}
         </div>
 
-        {/* TME Markers */}
-        <div className="space-y-1 pt-2 border-t border-white/5">
-          <div className="flex items-center gap-1.5 mb-2 text-[10px] font-bold text-emerald-400/80 uppercase tracking-wider">
-             <Activity size={10} />
-             {language === 'zh' ? '免疫微环境 (TME)' : 'TME Status'}
-          </div>
-          {renderSlider('c5')}
-          {renderSlider('c6')}
-          {renderSlider('c7')}
+        {/* TME Markers - 可折叠 */}
+        <div className="border-t border-white/5">
+          <button 
+            onClick={() => setShowTME(!showTME)}
+            className="w-full flex items-center justify-between px-4 py-2 text-[10px] font-bold text-emerald-400/80 uppercase tracking-wider hover:bg-white/5 transition-colors"
+          >
+            <div className="flex items-center gap-1.5">
+              <Activity size={10} />
+              {language === 'zh' ? '免疫微环境 (TME)' : 'TME Status'}
+            </div>
+            {showTME ? <ChevronUp size={12} /> : <ChevronDown size={12} />}
+          </button>
+          {showTME && (
+            <div className="p-2 pt-0 animate-in slide-in-from-top-2 duration-200">
+              {renderSlider('c5')}
+              {renderSlider('c6')}
+              {renderSlider('c7')}
+            </div>
+          )}
         </div>
 
         {/* Pathology Type & Invasion */}
-        <div className="space-y-1 pt-2 border-t border-white/5">
-          <div className="flex items-center gap-1.5 mb-2 text-[10px] font-bold text-purple-400/80 uppercase tracking-wider">
-             <ShieldAlert size={10} />
-             {language === 'zh' ? '病理分型 & 侵犯' : 'Type & Invasion'}
+        <div className="p-2 border-t border-white/5">
+          <div className="flex items-center gap-1.5 px-2 mb-1 text-[10px] font-bold text-purple-400/80 uppercase tracking-wider">
+            <ShieldAlert size={10} />
+            {language === 'zh' ? '病理分型' : 'Pathology'}
           </div>
           
           {renderSelect("differentiation", language === 'zh' ? "分化程度" : "Differentiation", [
-            { value: 1, label: language === 'zh' ? "1: 高分化 (Well)" : "1: Well Diff" },
-            { value: 2, label: language === 'zh' ? "2: 中分化 (Mod)" : "2: Mod Diff" },
-            { value: 3, label: language === 'zh' ? "3: 中-低分化" : "3: Mod-Poor" },
-            { value: 4, label: language === 'zh' ? "4: 低分化 (Poor)" : "4: Poorly Diff" },
-            { value: 5, label: language === 'zh' ? "5: 不确定" : "5: Unknown" },
+            { value: 1, label: language === 'zh' ? "高分化" : "Well" },
+            { value: 2, label: language === 'zh' ? "中分化" : "Mod" },
+            { value: 3, label: language === 'zh' ? "中-低" : "Mod-Poor" },
+            { value: 4, label: language === 'zh' ? "低分化" : "Poor" },
           ])}
 
-          {renderSelect("lauren", "Lauren 分型", [
-            { value: 1, label: language === 'zh' ? "1: 肠型 (Intestinal)" : "1: Intestinal" },
-            { value: 0, label: language === 'zh' ? "0: 弥漫型 (Diffuse)" : "0: Diffuse" },
-            { value: 4, label: language === 'zh' ? "4: 混合/不确定" : "4: Mixed/Unk" },
+          {renderSelect("lauren", "Lauren", [
+            { value: 1, label: language === 'zh' ? "肠型" : "Intestinal" },
+            { value: 0, label: language === 'zh' ? "弥漫型" : "Diffuse" },
+            { value: 4, label: language === 'zh' ? "混合" : "Mixed" },
           ])}
 
-          {renderToggle("vascularInvasion", language === 'zh' ? "脉管侵犯 (LVI)" : "Vascular Inv")}
-          {renderToggle("neuralInvasion", language === 'zh' ? "神经侵犯 (PNI)" : "Neural Inv")}
+          <div className="mt-2 space-y-1">
+            {renderToggle("vascularInvasion", language === 'zh' ? "脉管侵犯" : "Vascular Inv")}
+            {renderToggle("neuralInvasion", language === 'zh' ? "神经侵犯" : "Neural Inv")}
+          </div>
         </div>
       </div>
     </div>
