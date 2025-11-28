@@ -8,8 +8,7 @@ import {
   AlertTriangle, 
   CheckCircle, 
   Loader2, 
-  X, 
-  Zap,
+  X,
   TrendingUp,
   Shield,
   Target
@@ -58,8 +57,13 @@ export const ExplainableAnalysis: React.FC<ExplainableAnalysisProps> = ({
 
     try {
       // 从 patient 的 image_url 中提取文件名
+      // URL 格式: /api/images/Chemo_2MC_1396900%20(2).jpg?cohort=2025&treatment=nac
       const imageUrl = patient.image_url;
-      const imageName = imageUrl.split('/').pop() || '';
+      // 先移除查询参数，再提取文件名
+      const urlWithoutParams = imageUrl.split('?')[0];
+      const encodedName = urlWithoutParams.split('/').pop() || '';
+      // 解码 URL 编码（%20 -> 空格）
+      const imageName = decodeURIComponent(encodedName);
       
       const response = await fetch(`${API_BASE_URL}/analyze`, {
         method: 'POST',
@@ -117,19 +121,19 @@ export const ExplainableAnalysis: React.FC<ExplainableAnalysisProps> = ({
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm">
       <div className="bg-[#0a0a0a] border border-white/10 rounded-2xl w-[95vw] max-w-6xl max-h-[90vh] overflow-hidden flex flex-col shadow-2xl">
         {/* Header */}
-        <div className="flex items-center justify-between px-6 py-4 border-b border-white/10 bg-gradient-to-r from-blue-900/20 to-purple-900/20">
+        <div className="flex items-center justify-between px-6 py-4 border-b border-white/10 bg-[#111]">
           <div className="flex items-center gap-3">
-            <div className="p-2 bg-blue-500/20 rounded-lg">
-              <Zap className="w-5 h-5 text-blue-400" />
+            <div className="p-2 bg-emerald-500/20 rounded-lg">
+              <Activity className="w-5 h-5 text-emerald-400" />
             </div>
             <div>
               <h2 className="text-lg font-bold text-white">
-                {language === 'zh' ? '可解释性 AI 分析' : 'Explainable AI Analysis'}
+                {language === 'zh' ? '边界可解释性分析' : 'Boundary Explainability Analysis'}
               </h2>
               <p className="text-xs text-gray-400">
                 {language === 'zh' 
-                  ? '基于法向梯度的边界验证算法' 
-                  : 'Normal-gradient based boundary verification'}
+                  ? '法向梯度边界验证' 
+                  : 'Normal-gradient boundary verification'}
               </p>
             </div>
           </div>
@@ -145,8 +149,8 @@ export const ExplainableAnalysis: React.FC<ExplainableAnalysisProps> = ({
         <div className="flex-1 overflow-auto p-6">
           {!result && !loading && !error && (
             <div className="flex flex-col items-center justify-center h-full min-h-[400px] gap-6">
-              <div className="p-6 bg-gradient-to-br from-blue-500/10 to-purple-500/10 rounded-full">
-                <Activity className="w-16 h-16 text-blue-400" />
+              <div className="p-6 bg-emerald-500/10 rounded-full">
+                <Activity className="w-16 h-16 text-emerald-400" />
               </div>
               <div className="text-center">
                 <h3 className="text-xl font-semibold text-white mb-2">
@@ -154,16 +158,16 @@ export const ExplainableAnalysis: React.FC<ExplainableAnalysisProps> = ({
                 </h3>
                 <p className="text-gray-400 max-w-md">
                   {language === 'zh' 
-                    ? '点击下方按钮开始可解释性分析。算法将验证肿瘤边界的完整性，检测可能的浆膜侵犯。'
-                    : 'Click the button below to start explainable analysis. The algorithm will verify tumor boundary integrity and detect potential serosal invasion.'}
+                    ? '点击下方按钮开始边界分析。算法将验证肿瘤边界的完整性，检测可能的浆膜侵犯。'
+                    : 'Click the button below to start boundary analysis. The algorithm will verify tumor boundary integrity and detect potential serosal invasion.'}
                 </p>
               </div>
               <button
                 onClick={runAnalysis}
                 disabled={!patient}
-                className="px-8 py-3 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-500 hover:to-purple-500 text-white font-medium rounded-xl transition-all transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100 flex items-center gap-2"
+                className="px-8 py-3 bg-emerald-600 hover:bg-emerald-500 text-white font-medium rounded-xl transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2"
               >
-                <Zap className="w-5 h-5" />
+                <Activity className="w-5 h-5" />
                 {language === 'zh' ? '开始分析' : 'Start Analysis'}
               </button>
             </div>

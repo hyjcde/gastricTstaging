@@ -6,6 +6,7 @@ import { Search, Database, ChevronDown, ChevronRight, Folder, FileImage } from '
 import { useSettings } from '@/contexts/SettingsContext';
 import toast from 'react-hot-toast';
 import { PatientListGroupSkeleton } from './Skeleton';
+import { AdvancedFilters } from './AdvancedFilters';
 
 interface PatientListProps {
   onSelect: (patient: Patient) => void;
@@ -23,10 +24,12 @@ interface PatientGroup {
 export const PatientList: React.FC<PatientListProps> = ({ onSelect, selectedId, onPatientsLoaded }) => {
   const { dataset, cohortYear, t } = useSettings();
   const [patients, setPatients] = useState<Patient[]>([]);
+  const [filteredPatients, setFilteredPatients] = useState<Patient[]>([]);
   const [loading, setLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState('');
   const [expandedGroups, setExpandedGroups] = useState<Set<string>>(new Set());
   const [displayLimit, setDisplayLimit] = useState(50);
+  const [filtersOpen, setFiltersOpen] = useState(false);
   const scrollContainerRef = useRef<HTMLDivElement>(null);
   const isLoadingMore = useRef(false);
 
@@ -77,6 +80,7 @@ export const PatientList: React.FC<PatientListProps> = ({ onSelect, selectedId, 
       });
 
       setPatients(merged);
+      setFilteredPatients(merged);
       setLoading(false);
       onPatientsLoaded?.(merged);
 
@@ -114,10 +118,11 @@ export const PatientList: React.FC<PatientListProps> = ({ onSelect, selectedId, 
   }, [dataset, cohortYear, onSelect, selectedId]); // Removed treatmentType dependency
 
   // Grouping Logic - Group by patient_id and treatment type
+  // Use filteredPatients instead of patients for grouping
   const groupedPatients = useMemo(() => {
     const groups: Record<string, PatientGroup> = {};
     
-    patients.forEach(p => {
+    filteredPatients.forEach(p => {
         // Use patient_id for grouping (this is the actual patient ID from Excel)
         // For 2019: patient_id is extracted from filename (e.g., "127" from "1-127-3")
         // For 2025: patient_id is the numeric ID (e.g., "1424711")
@@ -188,7 +193,7 @@ export const PatientList: React.FC<PatientListProps> = ({ onSelect, selectedId, 
     );
 
     return result;
-  }, [patients, searchTerm]);
+  }, [filteredPatients, searchTerm]);
 
   const visibleGroups = groupedPatients.slice(0, displayLimit);
 
@@ -248,6 +253,14 @@ export const PatientList: React.FC<PatientListProps> = ({ onSelect, selectedId, 
           />
         </div>
       </div>
+
+      {/* Advanced Filters */}
+      <AdvancedFilters
+        patients={patients}
+        onFilterChange={setFilteredPatients}
+        isOpen={filtersOpen}
+        onToggle={() => setFiltersOpen(!filtersOpen)}
+      />
 
       {/* Grouped List */}
       <div 

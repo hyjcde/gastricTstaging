@@ -910,15 +910,15 @@ export const UltrasoundViewer: React.FC<UltrasoundViewerProps> = ({ patient }) =
             disabled={!patient.json_url}
             className={`flex shrink-0 items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium transition-colors whitespace-nowrap ${
               patient.json_url
-                ? 'bg-gradient-to-r from-blue-600 to-purple-600 text-white hover:from-blue-500 hover:to-purple-500'
+                ? 'bg-emerald-600 text-white hover:bg-emerald-500'
                 : 'opacity-40 cursor-not-allowed text-gray-500'
             }`}
             title={patient.json_url 
-              ? (language === 'zh' ? '可解释性 AI 分析' : 'Explainable AI Analysis')
+              ? (language === 'zh' ? '可解释性分析' : 'Explainable Analysis')
               : (language === 'zh' ? '需要标注数据' : 'Annotation required')
             }
           >
-            <Brain size={12} /> {language === 'zh' ? 'AI分析' : 'AI Analyze'}
+            <Brain size={12} /> {language === 'zh' ? '分析' : 'Analyze'}
           </button>
           
           <div className="w-px bg-white/20 mx-1 shrink-0"></div>
