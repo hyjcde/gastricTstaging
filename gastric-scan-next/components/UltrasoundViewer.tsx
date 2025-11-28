@@ -2,7 +2,7 @@
 
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { Patient } from '@/types';
-import { Columns, Eye, Flame, Layers, Maximize2, RefreshCw, Ruler, Scan, Settings2, Undo2, XCircle, CircleDashed, ZoomIn, Minimize2, Brain } from 'lucide-react';
+import { Columns, Eye, Layers, Maximize2, RefreshCw, Ruler, Scan, Settings2, Undo2, XCircle, CircleDashed, ZoomIn, Minimize2, Brain } from 'lucide-react';
 import { ExplainableAnalysis } from './ExplainableAnalysis';
 import { useSettings } from '@/contexts/SettingsContext';
 import { 
@@ -819,134 +819,120 @@ export const UltrasoundViewer: React.FC<UltrasoundViewerProps> = ({ patient }) =
         </div>
       </div>
 
-      {/* Bottom Controls */}
-      <div className="absolute top-4 left-1/2 -translate-x-1/2 z-30 w-max max-w-[90%]">
-        <div className="bg-black/80 backdrop-blur border border-white/10 rounded-full p-1 flex gap-1 shadow-lg transition-opacity duration-300 opacity-0 group-hover:opacity-100 overflow-x-auto scrollbar-hide">
-          <button
-            onClick={() => setMode('original')}
-            className={`flex shrink-0 items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium transition-colors whitespace-nowrap ${
-              mode === 'original' ? 'bg-white text-black' : 'text-gray-400 hover:text-white'
-            }`}
-          >
-            <Eye size={12} /> {t.viewer.source}
-          </button>
-          <button
-            onClick={() => setMode('overlay')}
-            className={`flex shrink-0 items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium transition-colors whitespace-nowrap ${
-              mode === 'overlay' ? 'bg-white text-black' : 'text-gray-400 hover:text-white'
-            }`}
-          >
-            <Layers size={12} /> {t.viewer.seg}
-          </button>
-          <button
-            onClick={() => annotationBbox && setShowDetectionBox(prev => !prev)}
-            disabled={!annotationBbox}
-            className={`flex shrink-0 items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium transition-colors whitespace-nowrap ${
-              annotationBbox
-                ? showDetectionBox
-                  ? 'bg-white text-black'
-                  : 'text-gray-400 hover:text-white'
-                : 'opacity-40 cursor-not-allowed text-gray-500'
-            }`}
-            title={annotationBbox ? (showDetectionBox ? (language === 'zh' ? '关闭检测' : 'Hide Detection Box') : (language === 'zh' ? '显示检测' : 'Show Detection Box')) : (language === 'zh' ? '注释数据缺失' : 'Annotation missing')}
-          >
-            <Scan size={12} /> {t.viewer.detect}
-          </button>
-          <button
-            onClick={toggleZoomToROI}
-            disabled={!annotationBbox}
-            className={`flex shrink-0 items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium transition-colors whitespace-nowrap ${
-              annotationBbox
-                ? zoomToROI
-                  ? 'bg-cyan-500 text-black'
-                  : 'text-gray-400 hover:text-white'
-                : 'opacity-40 cursor-not-allowed text-gray-500'
-            }`}
-            title={annotationBbox 
-              ? (zoomToROI 
-                  ? (language === 'zh' ? '退出ROI放大' : 'Exit ROI Zoom') 
-                  : (language === 'zh' ? '放大查看ROI区域' : 'Zoom to ROI'))
-              : (language === 'zh' ? '需要标注数据' : 'Annotation required')
-            }
-          >
-            {zoomToROI ? <Minimize2 size={12} /> : <ZoomIn size={12} />}
-            {language === 'zh' ? 'ROI放大' : 'ROI Zoom'}
-          </button>
-          <button
-            onClick={() => setShowRing(prev => !prev)}
-            disabled={!patient.json_url}
-            className={`flex shrink-0 items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium transition-colors whitespace-nowrap ${
-                patient.json_url
-                  ? showRing
-                    ? 'bg-orange-500 text-black'
-                    : 'text-gray-400 hover:text-white'
-                  : 'opacity-40 cursor-not-allowed text-gray-500'
-            }`}
-            title={patient.json_url 
-              ? (language === 'zh' ? '显示瘤周环 (5mm)' : 'Show Peritumoral Ring (5mm)')
-              : (language === 'zh' ? '需要标注数据' : 'Annotation required')
-            }
-          >
-            <CircleDashed size={12} /> {language === 'zh' ? '瘤周环' : 'Ring'}
-          </button>
-          <button
-            onClick={() => setMode('split')}
-            className={`flex shrink-0 items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium transition-colors whitespace-nowrap ${
-              mode === 'split' ? 'bg-white text-black' : 'text-gray-400 hover:text-white'
-            }`}
-          >
-            <Columns size={12} /> {t.viewer.contrast}
-          </button>
-          <button
-            onClick={() => setMode('heatmap')}
-            className={`flex shrink-0 items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium transition-colors whitespace-nowrap ${
-              mode === 'heatmap' ? 'bg-white text-black' : 'text-gray-400 hover:text-white'
-            }`}
-          >
-            <Flame size={12} /> {t.viewer.xai}
-          </button>
+      {/* Compact Toolbar */}
+      <div className="absolute top-4 left-1/2 -translate-x-1/2 z-30">
+        <div className="bg-black/80 backdrop-blur border border-white/10 rounded-xl p-1.5 flex gap-1 shadow-lg transition-opacity duration-300 opacity-0 group-hover:opacity-100">
+          
+          {/* View Mode Group */}
+          <div className="flex bg-white/5 rounded-lg p-0.5">
+            <button
+              onClick={() => setMode('original')}
+              className={`p-2 rounded-md transition-colors ${mode === 'original' ? 'bg-white text-black' : 'text-gray-400 hover:text-white'}`}
+              title={t.viewer.source}
+            >
+              <Eye size={14} />
+            </button>
+            <button
+              onClick={() => setMode('overlay')}
+              className={`p-2 rounded-md transition-colors ${mode === 'overlay' ? 'bg-white text-black' : 'text-gray-400 hover:text-white'}`}
+              title={t.viewer.seg}
+            >
+              <Layers size={14} />
+            </button>
+            <button
+              onClick={() => setMode('split')}
+              className={`p-2 rounded-md transition-colors ${mode === 'split' ? 'bg-white text-black' : 'text-gray-400 hover:text-white'}`}
+              title={t.viewer.contrast}
+            >
+              <Columns size={14} />
+            </button>
+          </div>
+
+          <div className="w-px bg-white/10 mx-0.5"></div>
+
+          {/* Overlay Toggle Group */}
+          <div className="flex bg-white/5 rounded-lg p-0.5">
+            <button
+              onClick={() => annotationBbox && setShowDetectionBox(prev => !prev)}
+              disabled={!annotationBbox}
+              className={`p-2 rounded-md transition-colors ${
+                !annotationBbox ? 'opacity-30 cursor-not-allowed' :
+                showDetectionBox ? 'bg-blue-500 text-white' : 'text-gray-400 hover:text-white'
+              }`}
+              title={language === 'zh' ? '检测框' : 'Detection'}
+            >
+              <Scan size={14} />
+            </button>
+            <button
+              onClick={() => setShowRing(prev => !prev)}
+              disabled={!patient.json_url}
+              className={`p-2 rounded-md transition-colors ${
+                !patient.json_url ? 'opacity-30 cursor-not-allowed' :
+                showRing ? 'bg-orange-500 text-white' : 'text-gray-400 hover:text-white'
+              }`}
+              title={language === 'zh' ? '瘤周环' : 'Ring'}
+            >
+              <CircleDashed size={14} />
+            </button>
+            <button
+              onClick={toggleZoomToROI}
+              disabled={!annotationBbox}
+              className={`p-2 rounded-md transition-colors ${
+                !annotationBbox ? 'opacity-30 cursor-not-allowed' :
+                zoomToROI ? 'bg-cyan-500 text-white' : 'text-gray-400 hover:text-white'
+              }`}
+              title={language === 'zh' ? 'ROI放大' : 'ROI Zoom'}
+            >
+              {zoomToROI ? <Minimize2 size={14} /> : <ZoomIn size={14} />}
+            </button>
+          </div>
+
+          <div className="w-px bg-white/10 mx-0.5"></div>
+
+          {/* Tools Group */}
+          <div className="flex bg-white/5 rounded-lg p-0.5">
+            <button 
+              onClick={() => setIsMeasuring(!isMeasuring)}
+              className={`p-2 rounded-md transition-colors ${isMeasuring ? 'bg-amber-500 text-black' : 'text-gray-400 hover:text-white'}`}
+              title={language === 'zh' ? '测量' : 'Measure'}
+            >
+              <Ruler size={14} />
+            </button>
+            <button 
+              onClick={() => setShowControls(!showControls)}
+              className={`p-2 rounded-md transition-colors ${showControls ? 'bg-blue-600 text-white' : 'text-gray-400 hover:text-white'}`}
+              title={language === 'zh' ? '调节' : 'Adjust'}
+            >
+              <Settings2 size={14} />
+            </button>
+          </div>
+
+          <div className="w-px bg-white/10 mx-0.5"></div>
+
+          {/* Analysis Button - Highlighted */}
           <button
             onClick={() => setShowExplainableAnalysis(true)}
             disabled={!patient.json_url}
-            className={`flex shrink-0 items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium transition-colors whitespace-nowrap ${
+            className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium transition-colors ${
               patient.json_url
                 ? 'bg-emerald-600 text-white hover:bg-emerald-500'
-                : 'opacity-40 cursor-not-allowed text-gray-500'
+                : 'opacity-30 cursor-not-allowed bg-white/5 text-gray-500'
             }`}
-            title={patient.json_url 
-              ? (language === 'zh' ? '可解释性分析' : 'Explainable Analysis')
-              : (language === 'zh' ? '需要标注数据' : 'Annotation required')
-            }
+            title={language === 'zh' ? '边界分析' : 'Analyze'}
           >
-            <Brain size={12} /> {language === 'zh' ? '分析' : 'Analyze'}
-          </button>
-          
-          <div className="w-px bg-white/20 mx-1 shrink-0"></div>
-          
-          <button 
-            onClick={() => setShowControls(!showControls)}
-            className={`flex shrink-0 items-center justify-center w-7 h-7 rounded-full transition-colors ${showControls ? 'bg-blue-600 text-white' : 'text-gray-400 hover:text-white'}`}
-            title="Image Adjustments"
-          >
-             <Settings2 size={14} />
-          </button>
-          
-          <button 
-            onClick={() => setIsMeasuring(!isMeasuring)}
-            className={`flex shrink-0 items-center justify-center w-7 h-7 rounded-full transition-colors ${isMeasuring ? 'bg-amber-500 text-black' : 'text-gray-400 hover:text-white'}`}
-            title="Measurement Tool"
-          >
-             <Ruler size={14} />
+            <Brain size={14} />
+            <span className="hidden sm:inline">{language === 'zh' ? '分析' : 'Analyze'}</span>
           </button>
 
-          <div className="w-px bg-white/20 mx-1 shrink-0"></div>
+          <div className="w-px bg-white/10 mx-0.5"></div>
 
+          {/* Fullscreen */}
           <button 
             onClick={toggleFullscreen}
-            className="flex shrink-0 items-center justify-center w-7 h-7 text-gray-400 hover:text-white transition-colors"
-            title="Toggle Fullscreen"
+            className="p-2 text-gray-400 hover:text-white transition-colors rounded-md"
+            title={language === 'zh' ? '全屏' : 'Fullscreen'}
           >
-             <Maximize2 size={14} />
+            <Maximize2 size={14} />
           </button>
         </div>
       </div>

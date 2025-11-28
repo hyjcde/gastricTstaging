@@ -70,6 +70,14 @@ class AnalysisRequest(BaseModel):
     image_name: Optional[str] = None
 
 
+class MorphologyData(BaseModel):
+    """形态学数据"""
+    diameter_mm: Optional[float] = None
+    area_mm2: Optional[float] = None
+    circularity: Optional[float] = None
+    irregularity: Optional[float] = None
+
+
 class AnalysisResponse(BaseModel):
     """分析响应"""
     success: bool
@@ -80,6 +88,7 @@ class AnalysisResponse(BaseModel):
     bci: Optional[float] = None
     cri: Optional[float] = None
     composite_score: Optional[float] = None
+    morphology: Optional[MorphologyData] = None
     explanation: Optional[str] = None
     total_danger_regions: Optional[int] = None
     visualization_base64: Optional[str] = None
@@ -198,6 +207,7 @@ def generate_visualization_base64(
     ax6 = fig.add_subplot(2, 3, 6)
     ax6.axis('off')
     
+    morph = results.get('morphology', {})
     report = f"""
 DIAGNOSIS SUMMARY
 {'='*35}
@@ -205,18 +215,22 @@ DIAGNOSIS SUMMARY
 Predicted: {results['predicted_t_stage']}
 Confidence: {results['confidence']}
 
-METRICS:
-- SII (Gradient): {results['sii']:.3f}
-- BCI (Boundary): {results['bci']:.3f}  
-- CRI (Curvature): {results['cri']:.3f}
-- Composite: {results['composite_score']:.3f}
+MORPHOLOGY:
+- Diameter: {morph.get('equivalent_diameter_mm', 0):.1f} mm
+- Area: {morph.get('area_mm2', 0):.1f} mm²
+- Circularity: {morph.get('circularity', 0):.2f}
+
+BOUNDARY METRICS:
+- SII: {results['sii']:.3f}
+- BCI: {results['bci']:.3f}  
+- CRI: {results['cri']:.3f}
 
 Danger Zones: {results['total_danger_regions']}
 
-{results['explanation']}
+{results['explanation'][:80]}...
 """
-    ax6.text(0.05, 0.95, report, transform=ax6.transAxes, 
-            fontsize=9, verticalalignment='top', fontfamily='monospace',
+    ax6.text(0.02, 0.98, report, transform=ax6.transAxes, 
+            fontsize=8, verticalalignment='top', fontfamily='monospace',
             bbox=dict(boxstyle='round', facecolor='lightyellow', alpha=0.8))
     
     plt.tight_layout()
@@ -347,6 +361,9 @@ async def analyze_patient(request: AnalysisRequest):
         normals = extractor.compute_normals(contour)
         curvatures = extractor.compute_curvature(contour)
         
+        # 计算形态学特征
+        morphology = extractor.compute_morphology_features(mask, contour)
+        
         # 运行三个算法
         result1 = extractor.algorithm1_normal_gradient(gray, contour, normals)
         result2 = extractor.algorithm2_bilinear_correlation(gray, contour, normals)
@@ -366,27 +383,83 @@ async def analyze_patient(request: AnalysisRequest):
             result3['num_high_risk_regions']
         )
         
-        # T 分期预测
-        if sii < 0.15:
-            predicted_stage = 'T4'
-            confidence = 'High'
-            explanation = f'Boundary gradient very weak (SII:{sii:.2f}), highly suspected serosal invasion'
-        elif sii < 0.25:
-            predicted_stage = 'T4'
-            confidence = 'Medium'
-            explanation = f'Boundary gradient weak (SII:{sii:.2f}), possible serosal invasion'
-        elif sii < 0.35:
-            predicted_stage = 'T3-T4'
-            confidence = 'Medium'
-            explanation = f'Boundary partially blurred (SII:{sii:.2f}), further examination recommended'
-        elif sii < 0.45:
-            predicted_stage = 'T3'
-            confidence = 'Medium'
-            explanation = f'Local weak points exist (SII:{sii:.2f}), tends to T3'
+        # 改进的 T 分期预测（结合形态学特征）
+        tumor_size = morphology['equivalent_diameter_mm']
+        circularity = morphology['circularity']
+        irregularity = morphology['irregularity']
+        
+        SMALL_THRESHOLD = 15
+        MEDIUM_THRESHOLD = 30
+        LARGE_THRESHOLD = 50
+        
+        if tumor_size < SMALL_THRESHOLD:
+            if circularity > 0.7 and irregularity < 1.3:
+                if sii > 0.2:
+                    predicted_stage = 'T1-T2'
+                    confidence = 'Medium'
+                    explanation = f'Small tumor (Ø{tumor_size:.1f}mm), regular shape, visible boundary (SII:{sii:.2f}), likely early stage'
+                else:
+                    predicted_stage = 'T2-T3'
+                    confidence = 'Low'
+                    explanation = f'Small tumor (Ø{tumor_size:.1f}mm), weak boundary (SII:{sii:.2f}), needs further evaluation'
+            else:
+                predicted_stage = 'T2-T3'
+                confidence = 'Low'
+                explanation = f'Small tumor (Ø{tumor_size:.1f}mm), irregular shape, comprehensive evaluation recommended'
+        elif tumor_size < MEDIUM_THRESHOLD:
+            if sii > 0.35 and circularity > 0.6:
+                predicted_stage = 'T2'
+                confidence = 'Medium'
+                explanation = f'Medium tumor (Ø{tumor_size:.1f}mm), clear boundary (SII:{sii:.2f}), tends to T2'
+            elif sii > 0.25:
+                predicted_stage = 'T3'
+                confidence = 'Medium'
+                explanation = f'Medium tumor (Ø{tumor_size:.1f}mm), moderate boundary (SII:{sii:.2f}), tends to T3'
+            elif sii > 0.15:
+                predicted_stage = 'T3-T4'
+                confidence = 'Medium'
+                explanation = f'Medium tumor (Ø{tumor_size:.1f}mm), weak boundary (SII:{sii:.2f}), possible serosal invasion'
+            else:
+                predicted_stage = 'T4'
+                confidence = 'High'
+                explanation = f'Medium tumor (Ø{tumor_size:.1f}mm), blurred boundary (SII:{sii:.2f}), highly suspected T4'
+        elif tumor_size < LARGE_THRESHOLD:
+            if sii > 0.3:
+                predicted_stage = 'T3'
+                confidence = 'Medium'
+                explanation = f'Large tumor (Ø{tumor_size:.1f}mm), visible boundary (SII:{sii:.2f}), tends to T3'
+            elif sii > 0.2:
+                predicted_stage = 'T3-T4'
+                confidence = 'Medium'
+                explanation = f'Large tumor (Ø{tumor_size:.1f}mm), weak boundary (SII:{sii:.2f}), possible serosal invasion'
+            else:
+                predicted_stage = 'T4'
+                confidence = 'High'
+                explanation = f'Large tumor (Ø{tumor_size:.1f}mm), blurred boundary (SII:{sii:.2f}), highly suspected serosal breach'
         else:
-            predicted_stage = 'T2'
-            confidence = 'Medium'
-            explanation = f'Boundary clear and intact (SII:{sii:.2f}), tends to T2'
+            if sii > 0.25:
+                predicted_stage = 'T3-T4'
+                confidence = 'Medium'
+                explanation = f'Very large tumor (Ø{tumor_size:.1f}mm), partially visible boundary (SII:{sii:.2f})'
+            else:
+                predicted_stage = 'T4'
+                confidence = 'High'
+                explanation = f'Very large tumor (Ø{tumor_size:.1f}mm), blurred boundary (SII:{sii:.2f}), highly suspected T4'
+        
+        # 危险区域修正
+        if total_danger_regions >= 5 and 'T4' not in predicted_stage:
+            if predicted_stage == 'T2':
+                predicted_stage = 'T2-T3'
+            elif predicted_stage == 'T3':
+                predicted_stage = 'T3-T4'
+            explanation += f'; {total_danger_regions} danger zones detected'
+        
+        morphology_data = MorphologyData(
+            diameter_mm=morphology['equivalent_diameter_mm'],
+            area_mm2=morphology['area_mm2'],
+            circularity=morphology['circularity'],
+            irregularity=morphology['irregularity']
+        )
         
         results = {
             'sii': float(sii),
@@ -397,6 +470,7 @@ async def analyze_patient(request: AnalysisRequest):
             'confidence': confidence,
             'explanation': explanation,
             'total_danger_regions': total_danger_regions,
+            'morphology': morphology,
         }
         
         # 生成可视化
@@ -413,6 +487,7 @@ async def analyze_patient(request: AnalysisRequest):
             bci=float(bci),
             cri=float(cri),
             composite_score=float(composite_score),
+            morphology=morphology_data,
             explanation=explanation,
             total_danger_regions=total_danger_regions,
             visualization_base64=viz_base64
