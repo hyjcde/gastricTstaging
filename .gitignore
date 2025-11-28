@@ -17,3 +17,8 @@ splits/
 *.nii
 *.dcm
 .DS_Store
+
+# Video files
+胃癌视频/
+video_convert.log
+*.wmv

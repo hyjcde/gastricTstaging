@@ -2,8 +2,9 @@
 
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { Patient } from '@/types';
-import { Columns, Eye, Layers, Maximize2, RefreshCw, Ruler, Scan, Settings2, Undo2, XCircle, CircleDashed, ZoomIn, Minimize2, Brain, Grid2X2, ChevronLeft, ChevronRight } from 'lucide-react';
+import { Columns, Eye, Layers, Maximize2, RefreshCw, Ruler, Scan, Settings2, Undo2, XCircle, CircleDashed, ZoomIn, Minimize2, Brain, Grid2X2, ChevronLeft, ChevronRight, Video } from 'lucide-react';
 import { ExplainableAnalysis } from './ExplainableAnalysis';
+import { VideoPlayer } from './VideoPlayer';
 import { useSettings } from '@/contexts/SettingsContext';
 import { 
   AnnotationBbox, 
@@ -23,7 +24,7 @@ interface UltrasoundViewerProps {
   onSelectSibling?: (patient: Patient) => void;
 }
 
-type ViewMode = 'original' | 'overlay' | 'heatmap' | 'split' | 'multi';
+type ViewMode = 'original' | 'overlay' | 'heatmap' | 'split' | 'multi' | 'video';
 
 export const UltrasoundViewer: React.FC<UltrasoundViewerProps> = ({ patient, siblingImages = [], onSelectSibling }) => {
   const { t, language } = useSettings();
@@ -421,6 +422,7 @@ export const UltrasoundViewer: React.FC<UltrasoundViewerProps> = ({ patient, sib
   const getModeLabel = () => {
       if (mode === 'split') return 'SPLIT COMPARISON';
       if (mode === 'multi') return `MULTI-IMAGE (${siblingImages.length})`;
+      if (mode === 'video') return `VIDEO (${patient?.video_urls?.length || 0})`;
       if (mode === 'original') return t.viewer.bmode;
       if (mode === 'overlay') return t.viewer.mask;
       return t.viewer.heatmap;
@@ -445,6 +447,7 @@ export const UltrasoundViewer: React.FC<UltrasoundViewerProps> = ({ patient, sib
       if (mode === 'original') return 'bg-blue-500 text-blue-500';
       if (mode === 'overlay') return 'bg-amber-500 text-amber-500';
       if (mode === 'split') return 'bg-purple-500 text-purple-500';
+      if (mode === 'video') return 'bg-rose-500 text-rose-500';
       return 'bg-red-500 text-red-500';
   }
 
@@ -565,7 +568,15 @@ export const UltrasoundViewer: React.FC<UltrasoundViewerProps> = ({ patient, sib
         )}
         
         {/* Image Container */}
-        {mode === 'multi' && siblingImages.length > 1 ? (
+        {mode === 'video' ? (
+          /* Video Mode */
+          <div className="w-full h-full">
+            <VideoPlayer 
+              videos={patient?.video_urls || []} 
+              language={language}
+            />
+          </div>
+        ) : mode === 'multi' && siblingImages.length > 1 ? (
           /* Multi-Image Mode: Grid View */
           <div className={`grid w-full h-full gap-2 p-2 ${
             siblingImages.length <= 2 ? 'grid-cols-2' :
@@ -961,6 +972,17 @@ export const UltrasoundViewer: React.FC<UltrasoundViewerProps> = ({ patient, sib
               title={language === 'zh' ? `查看全部 ${siblingImages.length} 张图片` : `View all ${siblingImages.length} images`}
             >
               <Grid2X2 size={12} /> {siblingImages.length}
+            </button>
+          )}
+          {patient?.video_urls && patient.video_urls.length > 0 && (
+            <button
+              onClick={() => setMode(mode === 'video' ? 'original' : 'video')}
+              className={`flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-medium transition-colors ${
+                mode === 'video' ? 'bg-rose-500 text-white' : 'text-gray-400 hover:text-white'
+              }`}
+              title={language === 'zh' ? `查看 ${patient.video_urls.length} 个视频` : `View ${patient.video_urls.length} videos`}
+            >
+              <Video size={12} /> {patient.video_urls.length}
             </button>
           )}
 

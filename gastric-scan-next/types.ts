@@ -74,6 +74,13 @@ export interface ClinicalData {
   concept_features?: ConceptFeatures;
 }
 
+export interface VideoInfo {
+  url: string;
+  filename: string;
+  treatment: 'direct_surgery' | 'neoadjuvant';
+  water_filled: boolean;
+}
+
 export interface Patient {
   id: string;
   id_short: string;
@@ -85,4 +92,5 @@ export interface Patient {
   overlay_transparent_url?: string;
   json_url: string;
   clinical?: ClinicalData;
+  video_urls?: VideoInfo[]; // Associated videos
 }

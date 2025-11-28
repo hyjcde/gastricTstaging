@@ -3,6 +3,62 @@ import fs from 'fs';
 import path from 'path';
 import { getDatasetPaths, DatasetType, CohortYear, TreatmentType, getClinicalDataPath } from '@/lib/config';
 
+// Video index cache
+let videoIndexCache: Record<string, any[]> | null = null;
+let videoIndexLoadTime = 0;
+const VIDEO_INDEX_CACHE_TTL = 60000; // 1 minute
+
+function loadVideoIndex(): Record<string, any[]> {
+  const now = Date.now();
+  if (videoIndexCache && (now - videoIndexLoadTime) < VIDEO_INDEX_CACHE_TTL) {
+    return videoIndexCache;
+  }
+  
+  const videoIndex: Record<string, any[]> = {};
+  const videoDirs = [
+    { path: path.join(process.cwd(), 'public/videos/direct_surgery'), treatment: 'direct_surgery', waterFilled: false },
+    { path: path.join(process.cwd(), 'public/videos/direct_surgery/water_filled'), treatment: 'direct_surgery', waterFilled: true },
+    { path: path.join(process.cwd(), 'public/videos/neoadjuvant'), treatment: 'neoadjuvant', waterFilled: false },
+    { path: path.join(process.cwd(), 'public/videos/neoadjuvant/water_filled'), treatment: 'neoadjuvant', waterFilled: true },
+  ];
+  
+  for (const dir of videoDirs) {
+    if (!fs.existsSync(dir.path)) continue;
+    
+    const files = fs.readdirSync(dir.path).filter(f => f.endsWith('.mp4'));
+    for (const file of files) {
+      // Extract patient ID from filename: "1048931-1.mp4" -> "1048931"
+      const match = file.match(/^([A-Za-z]?\d+)/);
+      if (!match) continue;
+      
+      const patientId = match[1];
+      if (!videoIndex[patientId]) {
+        videoIndex[patientId] = [];
+      }
+      
+      const relativePath = dir.waterFilled 
+        ? `/videos/${dir.treatment}/water_filled/${file}`
+        : `/videos/${dir.treatment}/${file}`;
+      
+      videoIndex[patientId].push({
+        url: relativePath,
+        filename: file,
+        treatment: dir.treatment,
+        water_filled: dir.waterFilled
+      });
+    }
+  }
+  
+  // Sort videos for each patient
+  for (const patientId in videoIndex) {
+    videoIndex[patientId].sort((a, b) => a.filename.localeCompare(b.filename));
+  }
+  
+  videoIndexCache = videoIndex;
+  videoIndexLoadTime = now;
+  return videoIndex;
+}
+
 export async function GET(request: NextRequest) {
   try {
     const { searchParams } = new URL(request.url);
@@ -79,6 +135,9 @@ export async function GET(request: NextRequest) {
         }
     } catch (e) { console.warn("Failed to list annotations directory", e); }
 
+    // Load video index
+    const videoIndex = loadVideoIndex();
+
     const patients = filteredFiles.map(filename => {
       // Filename format for 2025: Group_Phase_PatientID.jpg or Group_Phase_PatientID (X).jpg
       // Filename format for 2019: Surgery_2019_1-1-2(13).jpg
@@ -153,6 +212,9 @@ export async function GET(request: NextRequest) {
       const hasTransparentOverlay = availableTransparentOverlays.has(overlayFilename);
       const hasAnnotation = availableAnnotations.has(jsonFilename);
 
+      // Get videos for this patient
+      const videos = videoIndex[pureId] || [];
+
       return {
         id: filename,
         id_short: filename.replace(".jpg", ""), 
@@ -164,7 +226,8 @@ export async function GET(request: NextRequest) {
         overlay_url: hasOverlay ? `/api/images/${dataset}/overlays/${encodedOverlayFilename}?cohort=${cohortYear}&treatment=${treatmentType}` : "",
         overlay_transparent_url: hasTransparentOverlay ? `/api/images/${dataset}/lymph_node_analysis/${encodedOverlayFilename}?cohort=${cohortYear}&treatment=${treatmentType}` : "",
         json_url: hasAnnotation ? `/api/images/${dataset}/annotations/${encodedJsonFilename}?cohort=${cohortYear}&treatment=${treatmentType}` : "",
-        clinical: clinicalData[pureId] || null
+        clinical: clinicalData[pureId] || null,
+        video_urls: videos.length > 0 ? videos : undefined
       };
     });
 
