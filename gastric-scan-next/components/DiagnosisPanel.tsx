@@ -176,31 +176,30 @@ export const DiagnosisPanel: React.FC<DiagnosisPanelProps> = React.memo(({ state
     </div>
   );
 
-  // Risk Gauge Render Function - 紧凑版
+  // Risk Gauge Render Function - 超紧凑版
   const renderRiskGauge = (score: number) => {
       const color = score > 80 ? 'text-red-500' : score > 50 ? 'text-amber-500' : 'text-emerald-500';
       
       return (
           <div className="flex flex-col items-center">
-              <div className="relative w-14 h-7 overflow-hidden">
-                  <svg viewBox="0 0 100 50" className="absolute top-0 left-1/2 -translate-x-1/2 w-14 h-7 overflow-visible">
-                      <path d="M 10 50 A 40 40 0 0 1 90 50" fill="none" stroke="#333" strokeWidth="10" strokeLinecap="round" />
+              <div className="relative w-10 h-5 overflow-hidden">
+                  <svg viewBox="0 0 100 50" className="absolute top-0 left-1/2 -translate-x-1/2 w-10 h-5 overflow-visible">
+                      <path d="M 10 50 A 40 40 0 0 1 90 50" fill="none" stroke="#333" strokeWidth="12" strokeLinecap="round" />
                       <path 
                         d="M 10 50 A 40 40 0 0 1 90 50" 
                         fill="none" 
                         stroke={score > 80 ? '#ef4444' : score > 50 ? '#f59e0b' : '#10b981'} 
-                        strokeWidth="10" 
+                        strokeWidth="12" 
                         strokeLinecap="round"
                         strokeDasharray="126"
                         strokeDashoffset={126 - (126 * score / 100)}
                         className="transition-all duration-500 ease-out"
                       />
                   </svg>
-                  <div className={`absolute bottom-0 left-1/2 -translate-x-1/2 text-xs font-bold ${color}`}>
+                  <div className={`absolute bottom-0 left-1/2 -translate-x-1/2 text-[10px] font-bold ${color}`}>
                       {score}
                   </div>
               </div>
-              <div className="text-[7px] text-gray-600 uppercase mt-0.5">Risk</div>
           </div>
       )
   }
@@ -533,33 +532,6 @@ export const DiagnosisPanel: React.FC<DiagnosisPanelProps> = React.memo(({ state
                     </div>
                   </div>
 
-                  {/* 病理对比 - 仅在有病理数据时显示（术后回顾模式） */}
-                  {validation?.groundTruth && (
-                    <div className="mt-2 pt-2 border-t border-neutral-700/50">
-                      <div className="flex items-center justify-between">
-                        <div className="text-xs text-gray-500 uppercase">
-                          {language === 'zh' ? '术后病理对照' : 'Post-op Pathology'}
-                        </div>
-                        <div className="flex items-center gap-2">
-                          <span className="text-sm font-mono font-bold text-blue-400">
-                            p{validation.groundTruth.t}{validation.groundTruth.n}
-                          </span>
-                          <span className={`text-xs px-2 py-0.5 rounded font-bold ${
-                            validation.discrepancy === 'none' ? 'bg-emerald-500/20 text-emerald-400' : 
-                            validation.discrepancy === 'minor' ? 'bg-yellow-500/20 text-yellow-400' : 
-                            'bg-red-500/20 text-red-400'
-                          }`}>
-                            {validation.discrepancy === 'none' ? '✓' : validation.discrepancy === 'minor' ? '≈' : '≠'}
-                          </span>
-                        </div>
-                      </div>
-                      {validation.discrepancy === 'major' && (
-                        <div className="text-xs text-red-400 mt-1 font-medium">
-                          {language === 'zh' ? '⚠️ 存在显著差异' : '⚠️ Major discrepancy'}
-                        </div>
-                      )}
-                    </div>
-                  )}
                 </div>
 
                 {/* 术前决策建议 - 核心模块 */}
