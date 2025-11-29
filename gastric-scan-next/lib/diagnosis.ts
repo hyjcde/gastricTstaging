@@ -27,7 +27,7 @@ export interface DiagnosisResult {
     hasMetastasis: boolean;
     highRisk: boolean;
   };
-  // 新增：与病理金标准的对比
+  // 与病理金标准的对比（仅在有病理数据时存在）
   validation?: {
     groundTruth: { t: string; n: string; m: string; stage: string } | null;
     tMatch: boolean;
@@ -35,12 +35,21 @@ export interface DiagnosisResult {
     discrepancy: 'none' | 'minor' | 'major';
     discrepancyExplanation: string;
   };
-  // 新增：详细推理过程
+  // 详细推理过程
   reasoning: {
     tStageFactors: Array<{ factor: string; contribution: string; impact: 'positive' | 'negative' | 'neutral' }>;
     nStageFactors: Array<{ factor: string; contribution: string; impact: 'positive' | 'negative' | 'neutral' }>;
     limitations: string[];
     clinicalSuggestions: string[];
+  };
+  // 新增：术前决策建议（核心临床价值）
+  preoperativeAdvice: {
+    overallAssessment: string;  // 综合评估
+    urgency: 'routine' | 'priority' | 'urgent';  // 紧迫程度
+    recommendedWorkup: string[];  // 建议完善检查
+    treatmentConsiderations: string[];  // 治疗考量
+    mdtRequired: boolean;  // 是否需要MDT
+    uncertaintyNotes: string[];  // 不确定性说明
   };
 }
 
@@ -193,6 +202,12 @@ export function calculateDiagnosis(state: ConceptState, patient?: Patient | null
     clinicalSuggestions.push('术后定期随访监测');
   }
 
+  // 术前决策建议（核心临床价值）
+  const preoperativeAdvice = generatePreoperativeAdvice(
+    tStage, nStage, tScore, nScore, highRisk, 
+    state, tStageFactors, nStageFactors
+  );
+
   // 与病理金标准对比
   let validation: DiagnosisResult['validation'] = undefined;
   if (patient?.clinical?.pathology) {
@@ -285,7 +300,106 @@ export function calculateDiagnosis(state: ConceptState, patient?: Patient | null
       nStageFactors,
       limitations,
       clinicalSuggestions
-    }
+    },
+    preoperativeAdvice
+  };
+}
+
+// 生成术前决策建议
+function generatePreoperativeAdvice(
+  tStage: string,
+  nStage: string,
+  tScore: number,
+  nScore: number,
+  highRisk: boolean,
+  state: ConceptState,
+  tFactors: DiagnosisResult['reasoning']['tStageFactors'],
+  nFactors: DiagnosisResult['reasoning']['nStageFactors']
+): DiagnosisResult['preoperativeAdvice'] {
+  
+  const isAdvanced = tStage.includes('3') || tStage.includes('4') || nStage !== 'N0';
+  const isEarly = tStage === 'T1/T2' && nStage === 'N0';
+  
+  // 综合评估
+  let overallAssessment = '';
+  if (isEarly) {
+    overallAssessment = `倾向早期胃癌 (c${tStage}${nStage})，预后较好。建议评估内镜下切除或腹腔镜手术可行性。`;
+  } else if (highRisk || tStage.includes('4')) {
+    overallAssessment = `进展期胃癌可能性大 (c${tStage}${nStage})，存在多项高危因素。强烈建议多学科讨论，评估新辅助治疗获益。`;
+  } else {
+    overallAssessment = `局部进展期胃癌 (c${tStage}${nStage})，需综合评估手术时机和方案。`;
+  }
+  
+  // 紧迫程度
+  let urgency: 'routine' | 'priority' | 'urgent' = 'routine';
+  if (tStage.includes('4') || state.vascularInvasion) {
+    urgency = 'urgent';
+  } else if (isAdvanced || highRisk) {
+    urgency = 'priority';
+  }
+  
+  // 建议完善检查
+  const recommendedWorkup: string[] = [];
+  if (isAdvanced) {
+    recommendedWorkup.push('腹部增强 CT 评估浸润深度及远处转移');
+    recommendedWorkup.push('内镜超声 (EUS) 精确评估 T 分期');
+  }
+  if (nStage !== 'N0' || nScore > 30) {
+    recommendedWorkup.push('PET-CT 排除远处转移');
+  }
+  if (state.c2 > 5) {
+    recommendedWorkup.push('完善 HER2 检测，评估靶向治疗可能');
+  }
+  if (recommendedWorkup.length === 0) {
+    recommendedWorkup.push('常规术前检查（血常规、生化、肿瘤标志物）');
+    recommendedWorkup.push('胃镜复查确认病变范围');
+  }
+  
+  // 治疗考量
+  const treatmentConsiderations: string[] = [];
+  if (isEarly) {
+    treatmentConsiderations.push('符合 ESD 指征可考虑内镜下切除');
+    treatmentConsiderations.push('腹腔镜远端/近端胃切除术');
+  } else if (highRisk) {
+    treatmentConsiderations.push('新辅助化疗 (SOX/XELOX/FLOT) 后再评估手术');
+    treatmentConsiderations.push('术后辅助化疗必要性高');
+  } else {
+    treatmentConsiderations.push('根治性胃切除 + D2 淋巴结清扫');
+    treatmentConsiderations.push('术后根据病理结果决定辅助治疗');
+  }
+  if (state.c2 > 10) {
+    treatmentConsiderations.push('CPS ≥ 10，可考虑免疫联合化疗');
+  }
+  
+  // 是否需要MDT
+  const mdtRequired = highRisk || tStage.includes('4') || nStage === 'N3';
+  
+  // 不确定性说明
+  const uncertaintyNotes: string[] = [
+    '术前分期准确率约 70-85%，最终以术后病理为准',
+    '超声对微小淋巴结转移检出率有限，可能存在低估'
+  ];
+  
+  // 根据置信度添加不确定性说明
+  const avgConfidence = (tScore + nScore) / 2;
+  if (avgConfidence < 50) {
+    uncertaintyNotes.push('当前预测置信度偏低，建议结合其他影像学检查综合判断');
+  }
+  
+  // 根据高危因素数量
+  const highRiskFactorCount = tFactors.filter(f => f.impact === 'negative').length + 
+                              nFactors.filter(f => f.impact === 'negative').length;
+  if (highRiskFactorCount >= 3) {
+    uncertaintyNotes.push(`存在 ${highRiskFactorCount} 项高危因素，实际分期可能偏晚`);
+  }
+  
+  return {
+    overallAssessment,
+    urgency,
+    recommendedWorkup,
+    treatmentConsiderations,
+    mdtRequired,
+    uncertaintyNotes
   };
 }
 

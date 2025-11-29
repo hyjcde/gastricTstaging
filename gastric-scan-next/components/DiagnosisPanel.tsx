@@ -489,111 +489,192 @@ export const DiagnosisPanel: React.FC<DiagnosisPanelProps> = React.memo(({ state
                 </div>
                 </div>
 
-                {/* Prediction Header with Pathology Comparison */}
+                {/* Prediction Header - 术前评估模式 */}
                 <div className="shrink-0 p-3 border-b border-neutral-800 bg-neutral-900/50 relative overflow-hidden">
+                  {/* 顶部状态条 - 根据紧迫程度显示颜色 */}
                   <div className={`absolute top-0 left-0 w-full h-1 ${
-                    validation?.discrepancy === 'major' ? 'bg-red-500 animate-pulse' : 
-                    flags.isT4 || flags.hasMetastasis ? 'bg-amber-500' : 'bg-emerald-500'
+                    diagnosis.preoperativeAdvice?.urgency === 'urgent' ? 'bg-red-500 animate-pulse' : 
+                    diagnosis.preoperativeAdvice?.urgency === 'priority' ? 'bg-amber-500' : 'bg-emerald-500'
                   } shadow-[0_0_15px_currentColor]`}></div>
                         
                   <div className="flex items-center justify-between w-full">
-                    {/* Left: AI Prediction */}
+                    {/* Left: AI Prediction - 临床分期 */}
                     <div className="flex flex-col items-center flex-1">
-                      <div className="text-[8px] font-mono uppercase text-gray-500 mb-0.5">AI {t.diagnosis.predicted}</div>
-                      <div className={`text-2xl font-black tracking-tighter ${flags.isT4 || flags.hasMetastasis ? 'text-amber-400' : 'text-emerald-400'}`}>
-                        {tStage}{nStage}
+                      <div className="text-[8px] font-mono uppercase text-gray-500 mb-0.5">
+                        {language === 'zh' ? '临床分期预测' : 'Clinical Stage'}
                       </div>
-                      <div className="text-[8px] font-mono text-gray-500">{confidence.overall}%</div>
+                      <div className={`text-2xl font-black tracking-tighter ${flags.isT4 || flags.hasMetastasis ? 'text-amber-400' : 'text-emerald-400'}`}>
+                        c{tStage}{nStage}
+                      </div>
+                      <div className="text-[8px] font-mono text-gray-500">
+                        {language === 'zh' ? '置信度' : 'Confidence'}: {confidence.overall}%
+                      </div>
                     </div>
 
-                    {/* Middle: Comparison Arrow */}
-                    {validation && (
-                      <div className="flex flex-col items-center px-2">
-                        <div className={`text-lg ${
-                          validation.discrepancy === 'none' ? 'text-emerald-400' : 
-                          validation.discrepancy === 'minor' ? 'text-yellow-400' : 'text-red-400'
-                        }`}>
-                          {validation.discrepancy === 'none' ? '=' : validation.discrepancy === 'minor' ? '≈' : '≠'}
-                        </div>
-                        <div className={`text-[7px] font-bold uppercase ${
-                          validation.discrepancy === 'none' ? 'text-emerald-500' : 
-                          validation.discrepancy === 'minor' ? 'text-yellow-500' : 'text-red-500'
-                        }`}>
-                          {validation.discrepancy === 'none' ? 'MATCH' : validation.discrepancy === 'minor' ? 'CLOSE' : 'DIFF'}
-                        </div>
+                    {/* Middle: Urgency Badge */}
+                    <div className="flex flex-col items-center px-3">
+                      <div className={`px-2 py-1 rounded text-[9px] font-bold uppercase ${
+                        diagnosis.preoperativeAdvice?.urgency === 'urgent' ? 'bg-red-500/20 text-red-400 border border-red-500/30' : 
+                        diagnosis.preoperativeAdvice?.urgency === 'priority' ? 'bg-amber-500/20 text-amber-400 border border-amber-500/30' : 
+                        'bg-emerald-500/20 text-emerald-400 border border-emerald-500/30'
+                      }`}>
+                        {diagnosis.preoperativeAdvice?.urgency === 'urgent' 
+                          ? (language === 'zh' ? '紧急' : 'URGENT')
+                          : diagnosis.preoperativeAdvice?.urgency === 'priority' 
+                            ? (language === 'zh' ? '优先' : 'PRIORITY')
+                            : (language === 'zh' ? '常规' : 'ROUTINE')}
                       </div>
-                    )}
+                      {diagnosis.preoperativeAdvice?.mdtRequired && (
+                        <div className="text-[7px] text-amber-400 mt-1">MDT</div>
+                      )}
+                    </div>
 
-                    {/* Right: Ground Truth */}
-                    {validation?.groundTruth && (
-                      <div className="flex flex-col items-center flex-1">
-                        <div className="text-[8px] font-mono uppercase text-gray-500 mb-0.5">{language === 'zh' ? '病理金标准' : 'PATHOLOGY'}</div>
-                        <div className="text-2xl font-black tracking-tighter text-blue-400">
-                          p{validation.groundTruth.t}{validation.groundTruth.n}
-                        </div>
-                        <div className="text-[8px] font-mono text-gray-500">Stage {validation.groundTruth.stage}</div>
-                      </div>
-                    )}
-
-                    {/* Gauge (smaller) */}
-                    <div className="ml-2 scale-75 origin-right">
+                    {/* Right: Risk Gauge */}
+                    <div className="scale-75 origin-right">
                       {renderRiskGauge(Math.floor((scores.t + scores.n)/2))}
                     </div>
                   </div>
 
-                  {/* Discrepancy Warning */}
-                  {validation?.discrepancy === 'major' && (
-                    <div className="mt-2 p-2 bg-red-500/10 border border-red-500/30 rounded-lg">
-                      <div className="text-[9px] text-red-400 font-medium leading-relaxed">
-                        ⚠️ {language === 'zh' ? '预测与病理存在显著差异，请结合临床综合判断' : 'Significant discrepancy detected. Please correlate clinically.'}
+                  {/* 病理对比 - 仅在有病理数据时显示（术后回顾模式） */}
+                  {validation?.groundTruth && (
+                    <div className="mt-2 pt-2 border-t border-neutral-700/50">
+                      <div className="flex items-center justify-between">
+                        <div className="text-[8px] text-gray-500 uppercase">
+                          {language === 'zh' ? '术后病理对照' : 'Post-op Pathology'}
+                        </div>
+                        <div className="flex items-center gap-2">
+                          <span className="text-[10px] font-mono text-blue-400">
+                            p{validation.groundTruth.t}{validation.groundTruth.n}
+                          </span>
+                          <span className={`text-[8px] px-1.5 py-0.5 rounded ${
+                            validation.discrepancy === 'none' ? 'bg-emerald-500/20 text-emerald-400' : 
+                            validation.discrepancy === 'minor' ? 'bg-yellow-500/20 text-yellow-400' : 
+                            'bg-red-500/20 text-red-400'
+                          }`}>
+                            {validation.discrepancy === 'none' ? '✓' : validation.discrepancy === 'minor' ? '≈' : '≠'}
+                          </span>
+                        </div>
                       </div>
+                      {validation.discrepancy === 'major' && (
+                        <div className="text-[8px] text-red-400/80 mt-1">
+                          {language === 'zh' ? '⚠️ 存在显著差异' : '⚠️ Major discrepancy'}
+                        </div>
+                      )}
                     </div>
                   )}
                 </div>
 
-                {/* Reasoning Factors (Collapsible) */}
+                {/* 术前决策建议 - 核心模块 */}
+                {diagnosis.preoperativeAdvice && (
+                  <div className="shrink-0 border-b border-neutral-800 bg-neutral-900/30">
+                    <details className="group" open>
+                      <summary className="px-3 py-2 cursor-pointer flex items-center justify-between text-[10px] font-bold text-gray-400 uppercase tracking-wider hover:bg-white/5">
+                        <span className="flex items-center gap-1.5">
+                          <FileText size={10} className="text-blue-400" />
+                          {language === 'zh' ? '术前决策建议' : 'Preop Advice'}
+                        </span>
+                        <ChevronDown size={12} className="group-open:rotate-180 transition-transform" />
+                      </summary>
+                      <div className="px-3 pb-3 space-y-2">
+                        {/* 综合评估 */}
+                        <div className="text-[9px] p-2 bg-blue-500/10 border border-blue-500/20 rounded">
+                          <div className="text-blue-300 leading-relaxed">
+                            {diagnosis.preoperativeAdvice.overallAssessment}
+                          </div>
+                        </div>
+                        
+                        {/* 建议检查 */}
+                        <div className="text-[9px]">
+                          <div className="text-amber-400 mb-1 flex items-center gap-1">
+                            <Ruler size={9} />
+                            {language === 'zh' ? '建议完善检查:' : 'Recommended Workup:'}
+                          </div>
+                          {diagnosis.preoperativeAdvice.recommendedWorkup.map((item, i) => (
+                            <div key={i} className="text-gray-400 py-0.5 pl-3">• {item}</div>
+                          ))}
+                        </div>
+                        
+                        {/* 治疗考量 */}
+                        <div className="text-[9px]">
+                          <div className="text-emerald-400 mb-1 flex items-center gap-1">
+                            <Activity size={9} />
+                            {language === 'zh' ? '治疗考量:' : 'Treatment Options:'}
+                          </div>
+                          {diagnosis.preoperativeAdvice.treatmentConsiderations.map((item, i) => (
+                            <div key={i} className="text-gray-400 py-0.5 pl-3">• {item}</div>
+                          ))}
+                        </div>
+                        
+                        {/* 不确定性说明 */}
+                        <div className="text-[8px] pt-2 border-t border-neutral-800 text-gray-500">
+                          <div className="flex items-center gap-1 mb-1">
+                            <Tag size={8} />
+                            {language === 'zh' ? '注意事项:' : 'Notes:'}
+                          </div>
+                          {diagnosis.preoperativeAdvice.uncertaintyNotes.map((note, i) => (
+                            <div key={i} className="py-0.5 pl-3 text-gray-600">• {note}</div>
+                          ))}
+                        </div>
+                      </div>
+                    </details>
+                  </div>
+                )}
+
+                {/* 推理依据 (Collapsible) - 次要信息 */}
                 {reasoning && (
                   <div className="shrink-0 border-b border-neutral-800 bg-neutral-900/30">
                     <details className="group">
                       <summary className="px-3 py-2 cursor-pointer flex items-center justify-between text-[10px] font-bold text-gray-400 uppercase tracking-wider hover:bg-white/5">
                         <span className="flex items-center gap-1.5">
                           <Activity size={10} />
-                          {language === 'zh' ? '推理依据' : 'Reasoning'}
+                          {language === 'zh' ? '分期推理依据' : 'Staging Rationale'}
                         </span>
                         <ChevronDown size={12} className="group-open:rotate-180 transition-transform" />
                       </summary>
                       <div className="px-3 pb-3 space-y-2">
+                        {/* 高危因素汇总 */}
+                        {(reasoning.tStageFactors.some(f => f.impact === 'negative') || 
+                          reasoning.nStageFactors.some(f => f.impact === 'negative')) && (
+                          <div className="text-[9px] p-2 bg-red-500/10 border border-red-500/20 rounded mb-2">
+                            <div className="text-red-400 font-medium mb-1">
+                              {language === 'zh' ? '高危因素:' : 'Risk Factors:'}
+                            </div>
+                            <div className="flex flex-wrap gap-1">
+                              {[...reasoning.tStageFactors, ...reasoning.nStageFactors]
+                                .filter(f => f.impact === 'negative')
+                                .map((f, i) => (
+                                  <span key={i} className="px-1.5 py-0.5 bg-red-500/20 text-red-300 rounded text-[8px]">
+                                    {f.factor.split(' ')[0]}
+                                  </span>
+                                ))}
+                            </div>
+                          </div>
+                        )}
+                        
                         {/* T-Stage Factors */}
                         <div className="text-[9px]">
-                          <div className="text-gray-500 mb-1">T分期因素:</div>
-                          {reasoning.tStageFactors.slice(0, 3).map((f, i) => (
+                          <div className="text-gray-500 mb-1">T{language === 'zh' ? '分期因素' : '-Stage'}:</div>
+                          {reasoning.tStageFactors.slice(0, 4).map((f, i) => (
                             <div key={i} className={`flex items-start gap-1 py-0.5 ${
                               f.impact === 'negative' ? 'text-red-400' : 
                               f.impact === 'positive' ? 'text-emerald-400' : 'text-gray-400'
                             }`}>
-                              <span>{f.impact === 'negative' ? '↑' : f.impact === 'positive' ? '↓' : '→'}</span>
+                              <span className="shrink-0">{f.impact === 'negative' ? '↑' : f.impact === 'positive' ? '↓' : '→'}</span>
                               <span>{f.factor}</span>
                             </div>
                           ))}
                         </div>
                         {/* N-Stage Factors */}
                         <div className="text-[9px]">
-                          <div className="text-gray-500 mb-1">N分期因素:</div>
-                          {reasoning.nStageFactors.slice(0, 3).map((f, i) => (
+                          <div className="text-gray-500 mb-1">N{language === 'zh' ? '分期因素' : '-Stage'}:</div>
+                          {reasoning.nStageFactors.slice(0, 4).map((f, i) => (
                             <div key={i} className={`flex items-start gap-1 py-0.5 ${
                               f.impact === 'negative' ? 'text-red-400' : 
                               f.impact === 'positive' ? 'text-emerald-400' : 'text-gray-400'
                             }`}>
-                              <span>{f.impact === 'negative' ? '↑' : f.impact === 'positive' ? '↓' : '→'}</span>
+                              <span className="shrink-0">{f.impact === 'negative' ? '↑' : f.impact === 'positive' ? '↓' : '→'}</span>
                               <span>{f.factor}</span>
                             </div>
-                          ))}
-                        </div>
-                        {/* Clinical Suggestions */}
-                        <div className="text-[9px] mt-2 pt-2 border-t border-neutral-800">
-                          <div className="text-blue-400 mb-1">{language === 'zh' ? '临床建议:' : 'Suggestions:'}</div>
-                          {reasoning.clinicalSuggestions.map((s, i) => (
-                            <div key={i} className="text-gray-400 py-0.5">• {s}</div>
                           ))}
                         </div>
                       </div>
