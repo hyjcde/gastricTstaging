@@ -166,7 +166,7 @@ export const ExplainableAnalysis: React.FC<ExplainableAnalysisProps> = ({
     const offset = circumference - (percentage / 100) * circumference;
 
     return (
-      <div className="flex flex-col items-center p-4 bg-neutral-800/50 backdrop-blur-sm rounded-xl border border-white/10">
+      <div className="flex flex-col items-center p-4 bg-neutral-800/30 rounded-xl border border-white/10">
         <div className="relative w-24 h-24">
           <svg className="w-24 h-24 transform -rotate-90">
             <circle
@@ -225,12 +225,12 @@ export const ExplainableAnalysis: React.FC<ExplainableAnalysisProps> = ({
   );
 
   return (
-    <div className={`fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-xl ${isFullscreen ? 'p-0' : 'p-4'}`}>
-      <div className={`bg-neutral-900/85 backdrop-blur-2xl border border-white/15 rounded-2xl overflow-hidden flex flex-col shadow-2xl shadow-black/50 transition-all duration-300 ${
+    <div className={`fixed inset-0 z-50 flex items-center justify-center bg-black/40 backdrop-blur-sm ${isFullscreen ? 'p-0' : 'p-4'}`}>
+      <div className={`bg-neutral-900/70 backdrop-blur-xl border border-white/20 rounded-2xl overflow-hidden flex flex-col shadow-2xl shadow-black/50 transition-all duration-300 ${
         isFullscreen ? 'w-full h-full rounded-none' : 'w-[95vw] max-w-7xl max-h-[95vh]'
       }`}>
         {/* Header - 科研风格 */}
-        <div className="flex items-center justify-between px-6 py-3 border-b border-white/10 bg-gradient-to-r from-neutral-900/80 to-neutral-800/60">
+        <div className="flex items-center justify-between px-6 py-3 border-b border-white/15 bg-neutral-800/50">
           <div className="flex items-center gap-4">
             <div className="flex items-center gap-3">
               <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-blue-600 to-cyan-600 flex items-center justify-center shadow-lg">
@@ -422,7 +422,7 @@ export const ExplainableAnalysis: React.FC<ExplainableAnalysisProps> = ({
               {/* 主要内容区 */}
               <div className="grid grid-cols-1 xl:grid-cols-3 gap-6">
                 {/* 左侧：可视化图像 */}
-                <div className="xl:col-span-2 bg-neutral-800/40 backdrop-blur-sm rounded-2xl border border-white/5 overflow-hidden">
+                <div className="xl:col-span-2 bg-neutral-800/30 rounded-2xl border border-white/5 overflow-hidden">
                   <div className="px-5 py-3 border-b border-white/5 flex items-center justify-between bg-[#111]">
                     <div className="flex items-center gap-2">
                       <Target className="w-4 h-4 text-blue-400" />
@@ -446,7 +446,7 @@ export const ExplainableAnalysis: React.FC<ExplainableAnalysisProps> = ({
                 {/* 右侧：指标面板 */}
                 <div className="space-y-4">
                   {/* 三大指标 */}
-                  <div className="bg-neutral-800/40 backdrop-blur-sm rounded-2xl border border-white/5 p-5">
+                  <div className="bg-neutral-800/30 rounded-2xl border border-white/5 p-5">
                     <div className="flex items-center gap-2 mb-4">
                       <BarChart3 className="w-4 h-4 text-blue-400" />
                       <span className="text-sm font-bold text-gray-200 uppercase tracking-wider">
@@ -480,7 +480,7 @@ export const ExplainableAnalysis: React.FC<ExplainableAnalysisProps> = ({
 
                   {/* 形态学特征 */}
                   {result.morphology && (
-                    <div className="bg-neutral-800/40 backdrop-blur-sm rounded-2xl border border-white/5 p-5">
+                    <div className="bg-neutral-800/30 rounded-2xl border border-white/5 p-5">
                       <div className="flex items-center gap-2 mb-4">
                         <Layers className="w-4 h-4 text-purple-400" />
                         <span className="text-sm font-bold text-gray-200 uppercase tracking-wider">
@@ -525,7 +525,7 @@ export const ExplainableAnalysis: React.FC<ExplainableAnalysisProps> = ({
                   )}
 
                   {/* 方法说明 */}
-                  <div className="bg-neutral-800/40 backdrop-blur-sm rounded-2xl border border-white/5 p-5">
+                  <div className="bg-neutral-800/30 rounded-2xl border border-white/5 p-5">
                     <div className="flex items-center gap-2 mb-3">
                       <FileText className="w-4 h-4 text-gray-400" />
                       <span className="text-xs font-bold text-gray-400 uppercase tracking-wider">
@@ -563,7 +563,7 @@ export const ExplainableAnalysis: React.FC<ExplainableAnalysisProps> = ({
               </div>
 
               {/* 底部：论文引用格式 */}
-              <div className="bg-neutral-800/40 backdrop-blur-sm rounded-xl border border-white/5 p-4">
+              <div className="bg-neutral-800/30 rounded-xl border border-white/5 p-4">
                 <div className="flex items-center gap-2 text-[10px] text-gray-500">
                   <FileText size={12} />
                   <span className="uppercase tracking-wider font-bold">{language === 'zh' ? '引用格式' : 'Citation'}</span>
