@@ -176,33 +176,31 @@ export const DiagnosisPanel: React.FC<DiagnosisPanelProps> = React.memo(({ state
     </div>
   );
 
-  // Risk Gauge Render Function
+  // Risk Gauge Render Function - 紧凑版
   const renderRiskGauge = (score: number) => {
-      const rotation = (score / 100) * 180 - 90;
       const color = score > 80 ? 'text-red-500' : score > 50 ? 'text-amber-500' : 'text-emerald-500';
       
       return (
-          <div className="flex flex-col items-center mt-2">
-              <div className="relative w-40 h-20 overflow-hidden">
-                  <div className="absolute top-0 left-1/2 -translate-x-1/2 w-36 h-36 rounded-full border-neutral-800 box-border" style={{ borderWidth: '15px', clipPath: 'polygon(0 0, 100% 0, 100% 50%, 0 50%)' }}></div>
-                  <svg viewBox="0 0 100 50" className="absolute top-0 left-1/2 -translate-x-1/2 w-36 h-18 overflow-visible">
-                      <path d="M 10 50 A 40 40 0 0 1 90 50" fill="none" stroke="#333" strokeWidth="8" strokeLinecap="round" />
+          <div className="flex flex-col items-center">
+              <div className="relative w-14 h-7 overflow-hidden">
+                  <svg viewBox="0 0 100 50" className="absolute top-0 left-1/2 -translate-x-1/2 w-14 h-7 overflow-visible">
+                      <path d="M 10 50 A 40 40 0 0 1 90 50" fill="none" stroke="#333" strokeWidth="10" strokeLinecap="round" />
                       <path 
                         d="M 10 50 A 40 40 0 0 1 90 50" 
                         fill="none" 
                         stroke={score > 80 ? '#ef4444' : score > 50 ? '#f59e0b' : '#10b981'} 
-                        strokeWidth="8" 
+                        strokeWidth="10" 
                         strokeLinecap="round"
                         strokeDasharray="126"
                         strokeDashoffset={126 - (126 * score / 100)}
-                        className="transition-all duration-1000 ease-out"
+                        className="transition-all duration-500 ease-out"
                       />
                   </svg>
-                  <div className={`absolute bottom-0 left-1/2 -translate-x-1/2 text-2xl font-black tracking-tighter ${color} drop-shadow-lg`}>
+                  <div className={`absolute bottom-0 left-1/2 -translate-x-1/2 text-xs font-bold ${color}`}>
                       {score}
                   </div>
               </div>
-              <div className="text-[9px] font-bold text-gray-500 uppercase tracking-widest mt-1">Malignancy Risk</div>
+              <div className="text-[7px] text-gray-600 uppercase mt-0.5">Risk</div>
           </div>
       )
   }
@@ -530,7 +528,7 @@ export const DiagnosisPanel: React.FC<DiagnosisPanelProps> = React.memo(({ state
                     </div>
 
                     {/* Right: Risk Gauge */}
-                    <div className="scale-75 origin-right">
+                    <div>
                       {renderRiskGauge(Math.floor((scores.t + scores.n)/2))}
                     </div>
                   </div>
