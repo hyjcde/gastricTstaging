@@ -197,10 +197,10 @@ export const ConceptReasoning: React.FC<ConceptReasoningProps> = React.memo(({ s
       </div>
       
       <div className="flex-1 overflow-y-auto min-h-0 custom-scrollbar">
-        {/* Radar Chart - 更紧凑 */}
-        <div className="p-3 border-b border-white/5">
+        {/* Radar Chart - 紧凑版 */}
+        <div className="p-2 border-b border-white/5">
           <div className="flex justify-center">
-            <div className="w-[70%]">
+            <div className="w-[50%] max-w-[160px]">
               <RadarChart 
                 data={[state.c1 ?? 50, state.c2 ?? 50, state.c3 ?? 50, state.c4 ?? 50]} 
                 labels={[
