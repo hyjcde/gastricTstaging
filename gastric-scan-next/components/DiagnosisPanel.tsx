@@ -537,14 +537,14 @@ export const DiagnosisPanel: React.FC<DiagnosisPanelProps> = React.memo(({ state
                   {validation?.groundTruth && (
                     <div className="mt-2 pt-2 border-t border-neutral-700/50">
                       <div className="flex items-center justify-between">
-                        <div className="text-[8px] text-gray-500 uppercase">
+                        <div className="text-xs text-gray-500 uppercase">
                           {language === 'zh' ? '术后病理对照' : 'Post-op Pathology'}
                         </div>
                         <div className="flex items-center gap-2">
-                          <span className="text-[10px] font-mono text-blue-400">
+                          <span className="text-sm font-mono font-bold text-blue-400">
                             p{validation.groundTruth.t}{validation.groundTruth.n}
                           </span>
-                          <span className={`text-[8px] px-1.5 py-0.5 rounded ${
+                          <span className={`text-xs px-2 py-0.5 rounded font-bold ${
                             validation.discrepancy === 'none' ? 'bg-emerald-500/20 text-emerald-400' : 
                             validation.discrepancy === 'minor' ? 'bg-yellow-500/20 text-yellow-400' : 
                             'bg-red-500/20 text-red-400'
@@ -554,7 +554,7 @@ export const DiagnosisPanel: React.FC<DiagnosisPanelProps> = React.memo(({ state
                         </div>
                       </div>
                       {validation.discrepancy === 'major' && (
-                        <div className="text-[8px] text-red-400/80 mt-1">
+                        <div className="text-xs text-red-400 mt-1 font-medium">
                           {language === 'zh' ? '⚠️ 存在显著差异' : '⚠️ Major discrepancy'}
                         </div>
                       )}
@@ -566,51 +566,51 @@ export const DiagnosisPanel: React.FC<DiagnosisPanelProps> = React.memo(({ state
                 {diagnosis.preoperativeAdvice && (
                   <div className="shrink-0 border-b border-neutral-800 bg-neutral-900/30">
                     <details className="group" open>
-                      <summary className="px-3 py-2 cursor-pointer flex items-center justify-between text-[10px] font-bold text-gray-400 uppercase tracking-wider hover:bg-white/5">
-                        <span className="flex items-center gap-1.5">
-                          <FileText size={10} className="text-blue-400" />
+                      <summary className="px-3 py-2.5 cursor-pointer flex items-center justify-between text-xs font-bold text-gray-400 uppercase tracking-wider hover:bg-white/5">
+                        <span className="flex items-center gap-2">
+                          <FileText size={14} className="text-blue-400" />
                           {language === 'zh' ? '术前决策建议' : 'Preop Advice'}
                         </span>
-                        <ChevronDown size={12} className="group-open:rotate-180 transition-transform" />
+                        <ChevronDown size={14} className="group-open:rotate-180 transition-transform" />
                       </summary>
-                      <div className="px-3 pb-3 space-y-2">
+                      <div className="px-3 pb-3 space-y-3">
                         {/* 综合评估 */}
-                        <div className="text-[9px] p-2 bg-blue-500/10 border border-blue-500/20 rounded">
+                        <div className="text-xs p-2.5 bg-blue-500/10 border border-blue-500/20 rounded">
                           <div className="text-blue-300 leading-relaxed">
                             {diagnosis.preoperativeAdvice.overallAssessment}
                           </div>
                         </div>
                         
                         {/* 建议检查 */}
-                        <div className="text-[9px]">
-                          <div className="text-amber-400 mb-1 flex items-center gap-1">
-                            <Ruler size={9} />
+                        <div className="text-xs">
+                          <div className="text-amber-400 mb-1.5 flex items-center gap-1.5 font-medium">
+                            <Ruler size={12} />
                             {language === 'zh' ? '建议完善检查:' : 'Recommended Workup:'}
                           </div>
                           {diagnosis.preoperativeAdvice.recommendedWorkup.map((item, i) => (
-                            <div key={i} className="text-gray-400 py-0.5 pl-3">• {item}</div>
+                            <div key={i} className="text-gray-400 py-0.5 pl-4">• {item}</div>
                           ))}
                         </div>
                         
                         {/* 治疗考量 */}
-                        <div className="text-[9px]">
-                          <div className="text-emerald-400 mb-1 flex items-center gap-1">
-                            <Activity size={9} />
+                        <div className="text-xs">
+                          <div className="text-emerald-400 mb-1.5 flex items-center gap-1.5 font-medium">
+                            <Activity size={12} />
                             {language === 'zh' ? '治疗考量:' : 'Treatment Options:'}
                           </div>
                           {diagnosis.preoperativeAdvice.treatmentConsiderations.map((item, i) => (
-                            <div key={i} className="text-gray-400 py-0.5 pl-3">• {item}</div>
+                            <div key={i} className="text-gray-400 py-0.5 pl-4">• {item}</div>
                           ))}
                         </div>
                         
                         {/* 不确定性说明 */}
-                        <div className="text-[8px] pt-2 border-t border-neutral-800 text-gray-500">
-                          <div className="flex items-center gap-1 mb-1">
-                            <Tag size={8} />
+                        <div className="text-[11px] pt-2 border-t border-neutral-800 text-gray-500">
+                          <div className="flex items-center gap-1.5 mb-1">
+                            <Tag size={11} />
                             {language === 'zh' ? '注意事项:' : 'Notes:'}
                           </div>
                           {diagnosis.preoperativeAdvice.uncertaintyNotes.map((note, i) => (
-                            <div key={i} className="py-0.5 pl-3 text-gray-600">• {note}</div>
+                            <div key={i} className="py-0.5 pl-4 text-gray-500">• {note}</div>
                           ))}
                         </div>
                       </div>
@@ -622,26 +622,26 @@ export const DiagnosisPanel: React.FC<DiagnosisPanelProps> = React.memo(({ state
                 {reasoning && (
                   <div className="shrink-0 border-b border-neutral-800 bg-neutral-900/30">
                     <details className="group">
-                      <summary className="px-3 py-2 cursor-pointer flex items-center justify-between text-[10px] font-bold text-gray-400 uppercase tracking-wider hover:bg-white/5">
-                        <span className="flex items-center gap-1.5">
-                          <Activity size={10} />
+                      <summary className="px-3 py-2.5 cursor-pointer flex items-center justify-between text-xs font-bold text-gray-400 uppercase tracking-wider hover:bg-white/5">
+                        <span className="flex items-center gap-2">
+                          <Activity size={14} />
                           {language === 'zh' ? '分期推理依据' : 'Staging Rationale'}
                         </span>
-                        <ChevronDown size={12} className="group-open:rotate-180 transition-transform" />
+                        <ChevronDown size={14} className="group-open:rotate-180 transition-transform" />
                       </summary>
-                      <div className="px-3 pb-3 space-y-2">
+                      <div className="px-3 pb-3 space-y-3">
                         {/* 高危因素汇总 */}
                         {(reasoning.tStageFactors.some(f => f.impact === 'negative') || 
                           reasoning.nStageFactors.some(f => f.impact === 'negative')) && (
-                          <div className="text-[9px] p-2 bg-red-500/10 border border-red-500/20 rounded mb-2">
-                            <div className="text-red-400 font-medium mb-1">
+                          <div className="text-xs p-2.5 bg-red-500/10 border border-red-500/20 rounded mb-2">
+                            <div className="text-red-400 font-medium mb-1.5">
                               {language === 'zh' ? '高危因素:' : 'Risk Factors:'}
                             </div>
-                            <div className="flex flex-wrap gap-1">
+                            <div className="flex flex-wrap gap-1.5">
                               {[...reasoning.tStageFactors, ...reasoning.nStageFactors]
                                 .filter(f => f.impact === 'negative')
                                 .map((f, i) => (
-                                  <span key={i} className="px-1.5 py-0.5 bg-red-500/20 text-red-300 rounded text-[8px]">
+                                  <span key={i} className="px-2 py-1 bg-red-500/20 text-red-300 rounded text-[11px]">
                                     {f.factor.split(' ')[0]}
                                   </span>
                                 ))}
@@ -650,10 +650,10 @@ export const DiagnosisPanel: React.FC<DiagnosisPanelProps> = React.memo(({ state
                         )}
                         
                         {/* T-Stage Factors */}
-                        <div className="text-[9px]">
-                          <div className="text-gray-500 mb-1">T{language === 'zh' ? '分期因素' : '-Stage'}:</div>
+                        <div className="text-xs">
+                          <div className="text-gray-500 mb-1.5 font-medium">T{language === 'zh' ? '分期因素' : '-Stage'}:</div>
                           {reasoning.tStageFactors.slice(0, 4).map((f, i) => (
-                            <div key={i} className={`flex items-start gap-1 py-0.5 ${
+                            <div key={i} className={`flex items-start gap-1.5 py-0.5 ${
                               f.impact === 'negative' ? 'text-red-400' : 
                               f.impact === 'positive' ? 'text-emerald-400' : 'text-gray-400'
                             }`}>
@@ -663,10 +663,10 @@ export const DiagnosisPanel: React.FC<DiagnosisPanelProps> = React.memo(({ state
                           ))}
                         </div>
                         {/* N-Stage Factors */}
-                        <div className="text-[9px]">
-                          <div className="text-gray-500 mb-1">N{language === 'zh' ? '分期因素' : '-Stage'}:</div>
+                        <div className="text-xs">
+                          <div className="text-gray-500 mb-1.5 font-medium">N{language === 'zh' ? '分期因素' : '-Stage'}:</div>
                           {reasoning.nStageFactors.slice(0, 4).map((f, i) => (
-                            <div key={i} className={`flex items-start gap-1 py-0.5 ${
+                            <div key={i} className={`flex items-start gap-1.5 py-0.5 ${
                               f.impact === 'negative' ? 'text-red-400' : 
                               f.impact === 'positive' ? 'text-emerald-400' : 'text-gray-400'
                             }`}>
@@ -680,8 +680,8 @@ export const DiagnosisPanel: React.FC<DiagnosisPanelProps> = React.memo(({ state
                   </div>
                 )}
 
-                {/* Terminal */}
-                <div className="flex-1 bg-black p-3 font-mono text-[10px] leading-relaxed text-gray-400 overflow-y-auto min-h-0 relative group custom-scrollbar" onClick={toggleExpanded}>
+                {/* Terminal - 详细报告 */}
+                <div className="flex-1 bg-black p-3 font-mono text-xs leading-relaxed text-gray-400 overflow-y-auto min-h-0 relative group custom-scrollbar" onClick={toggleExpanded}>
                 <div className="absolute top-2 right-2 opacity-20 group-hover:opacity-50 transition-opacity cursor-pointer">
                     <Maximize2 size={12} />
                 </div>
