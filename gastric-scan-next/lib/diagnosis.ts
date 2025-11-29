@@ -27,18 +27,79 @@ export interface DiagnosisResult {
     hasMetastasis: boolean;
     highRisk: boolean;
   };
+  // 新增：与病理金标准的对比
+  validation?: {
+    groundTruth: { t: string; n: string; m: string; stage: string } | null;
+    tMatch: boolean;
+    nMatch: boolean;
+    discrepancy: 'none' | 'minor' | 'major';
+    discrepancyExplanation: string;
+  };
+  // 新增：详细推理过程
+  reasoning: {
+    tStageFactors: Array<{ factor: string; contribution: string; impact: 'positive' | 'negative' | 'neutral' }>;
+    nStageFactors: Array<{ factor: string; contribution: string; impact: 'positive' | 'negative' | 'neutral' }>;
+    limitations: string[];
+    clinicalSuggestions: string[];
+  };
 }
 
-export function calculateDiagnosis(state: ConceptState): DiagnosisResult {
+export function calculateDiagnosis(state: ConceptState, patient?: Patient | null): DiagnosisResult {
   // ---------------------------------------------------------
   // Enhanced Logic for Probabilities (Based on updated CBM)
   // ---------------------------------------------------------
   
-  // T-Stage Logic
+  // T-Stage Logic with detailed factor tracking
+  const tStageFactors: DiagnosisResult['reasoning']['tStageFactors'] = [];
+  
   const proliferationScore = state.c1 * 0.4 + state.c3 * 0.3;
+  if (state.c1 > 50) {
+    tStageFactors.push({ 
+      factor: `Ki-67 高表达 (${state.c1}%)`, 
+      contribution: '提示高增殖活性，倾向进展期', 
+      impact: 'negative' 
+    });
+  } else if (state.c1 > 30) {
+    tStageFactors.push({ 
+      factor: `Ki-67 中等 (${state.c1}%)`, 
+      contribution: '增殖活性中等', 
+      impact: 'neutral' 
+    });
+  } else {
+    tStageFactors.push({ 
+      factor: `Ki-67 低表达 (${state.c1}%)`, 
+      contribution: '增殖活性低，倾向早期', 
+      impact: 'positive' 
+    });
+  }
+
   const invasionScore = (state.vascularInvasion ? 30 : 0) + (state.neuralInvasion ? 20 : 0);
+  if (state.vascularInvasion) {
+    tStageFactors.push({ 
+      factor: '脉管侵犯 (LVI+)', 
+      contribution: '显著增加局部进展风险 (+30分)', 
+      impact: 'negative' 
+    });
+  }
+  if (state.neuralInvasion) {
+    tStageFactors.push({ 
+      factor: '神经侵犯 (PNI+)', 
+      contribution: '增加局部复发风险 (+20分)', 
+      impact: 'negative' 
+    });
+  }
+
   const diffVal = state.differentiation || 2;
-  const differentiationPenalty = (diffVal - 1) * 8; 
+  const differentiationPenalty = (diffVal - 1) * 8;
+  const diffLabels = ['高分化', '中分化', '中-低分化', '低分化', '未知'];
+  if (diffVal >= 3) {
+    tStageFactors.push({ 
+      factor: `分化程度: ${diffLabels[diffVal - 1] || '低分化'}`, 
+      contribution: '低分化与更深浸润相关', 
+      impact: 'negative' 
+    });
+  }
+
   const tScore = Math.min(100, proliferationScore * 0.5 + invasionScore + differentiationPenalty);
   
   const probT4 = Math.max(0, Math.min(100, tScore));
@@ -49,17 +110,57 @@ export function calculateDiagnosis(state: ConceptState): DiagnosisResult {
   const tStage = isT4 ? "T4a" : (probT3 > 45 ? "T3" : "T1/T2");
   const tConf = Math.floor(Math.max(probT4, probT3, probT2));
 
-  // N-Stage Logic
+  // N-Stage Logic with detailed factor tracking
+  const nStageFactors: DiagnosisResult['reasoning']['nStageFactors'] = [];
+  
   const immuneScore = state.c4 * 0.5 + state.c2 * 0.3;
-  const microEnvScore = (state.c6 > state.c7) ? 20 : 0; 
+  if (state.c4 > 30) {
+    nStageFactors.push({ 
+      factor: `FoxP3 高 (${state.c4}%)`, 
+      contribution: 'Treg 浸润增加，免疫抑制微环境', 
+      impact: 'negative' 
+    });
+  }
+  if (state.c2 > 10) {
+    nStageFactors.push({ 
+      factor: `CPS 阳性 (${state.c2})`, 
+      contribution: 'PD-L1 表达，可能对免疫治疗敏感', 
+      impact: 'neutral' 
+    });
+  }
+
+  const microEnvScore = (state.c6 > state.c7) ? 20 : 0;
+  if (state.c6 > state.c7) {
+    nStageFactors.push({ 
+      factor: 'CD4/CD8 比值倒置', 
+      contribution: 'CD4 > CD8，可能提示免疫失调', 
+      impact: 'negative' 
+    });
+  }
+
   const laurenVal = state.lauren ?? 1;
   const laurenRisk = (laurenVal === 0) ? 30 : (laurenVal === 4 ? 15 : 0);
+  const laurenLabels = ['弥漫型', '肠型', '混合型', '未知'];
+  if (laurenVal === 0) {
+    nStageFactors.push({ 
+      factor: `Lauren 分型: 弥漫型`, 
+      contribution: '弥漫型与更高淋巴结转移率相关', 
+      impact: 'negative' 
+    });
+  } else if (laurenVal === 1) {
+    nStageFactors.push({ 
+      factor: `Lauren 分型: 肠型`, 
+      contribution: '肠型预后相对较好', 
+      impact: 'positive' 
+    });
+  }
+
   const nScore = Math.min(100, immuneScore + microEnvScore + laurenRisk);
   
   const probN3 = Math.max(0, Math.min(100, nScore * 0.8));
   const probN2 = Math.max(0, Math.min(100, (nScore - 30) * 0.6));
   const probN1 = Math.max(0, Math.min(100, (nScore - 20) * 0.5));
-  const probN0 = 100 - probN3 - probN2 - probN1;
+  const probN0 = Math.max(0, 100 - probN3 - probN2 - probN1);
   
   const nStage = probN3 > 50 ? "N3" : (probN2 > 40 ? "N2" : (probN1 > 30 ? "N1" : "N0"));
   const nConf = Math.floor(Math.max(probN0, probN1, probN2, probN3));
@@ -67,6 +168,90 @@ export function calculateDiagnosis(state: ConceptState): DiagnosisResult {
   const hasMetastasis = nStage !== "N0";
   const highRisk = isT4 || state.c4 > 60 || state.c3 > 60 || state.vascularInvasion === 1;
   const stageConfidence = Math.floor((tConf + nConf) / 2);
+
+  // 模型局限性说明
+  const limitations: string[] = [
+    '本模型基于免疫组化特征推断，未整合影像学深度信息',
+    '超声图像分辨率可能影响边界判断准确性',
+    '模型训练数据以中国人群为主，跨人群泛化性待验证'
+  ];
+
+  // 临床建议
+  const clinicalSuggestions: string[] = [];
+  if (highRisk) {
+    clinicalSuggestions.push('建议多学科会诊 (MDT) 讨论治疗方案');
+    clinicalSuggestions.push('考虑新辅助化疗评估');
+  }
+  if (state.vascularInvasion || state.neuralInvasion) {
+    clinicalSuggestions.push('术后需密切随访，警惕局部复发');
+  }
+  if (state.c2 > 5) {
+    clinicalSuggestions.push('CPS 阳性，可考虑免疫检查点抑制剂');
+  }
+  if (clinicalSuggestions.length === 0) {
+    clinicalSuggestions.push('倾向早期病变，建议规范手术切除');
+    clinicalSuggestions.push('术后定期随访监测');
+  }
+
+  // 与病理金标准对比
+  let validation: DiagnosisResult['validation'] = undefined;
+  if (patient?.clinical?.pathology) {
+    const pT = patient.clinical.pathology.pT;
+    const pN = patient.clinical.pathology.pN;
+    const pM = patient.clinical.pathology.pM;
+    const pStage = patient.clinical.pathology.pStage;
+    
+    if (pT && pN) {
+      const groundTruth = { t: `T${pT}`, n: `N${pN}`, m: `M${pM || '0'}`, stage: pStage || '' };
+      
+      // T分期匹配判断
+      const predictedTNum = tStage.includes('4') ? 4 : tStage.includes('3') ? 3 : 2;
+      const actualTNum = parseInt(pT) || 0;
+      const tMatch = Math.abs(predictedTNum - actualTNum) <= 1;
+      
+      // N分期匹配判断
+      const predictedNNum = nStage.includes('3') ? 3 : nStage.includes('2') ? 2 : nStage.includes('1') ? 1 : 0;
+      const actualNNum = parseInt(pN) || 0;
+      const nMatch = Math.abs(predictedNNum - actualNNum) <= 1;
+      
+      // 差异程度
+      const tDiff = Math.abs(predictedTNum - actualTNum);
+      const nDiff = Math.abs(predictedNNum - actualNNum);
+      const totalDiff = tDiff + nDiff;
+      
+      let discrepancy: 'none' | 'minor' | 'major' = 'none';
+      let discrepancyExplanation = '';
+      
+      if (totalDiff === 0) {
+        discrepancy = 'none';
+        discrepancyExplanation = '模型预测与病理金标准完全一致';
+      } else if (totalDiff <= 2) {
+        discrepancy = 'minor';
+        discrepancyExplanation = `存在轻微差异：预测 ${tStage}${nStage} vs 实际 pT${pT}N${pN}。差异在临床可接受范围内。`;
+      } else {
+        discrepancy = 'major';
+        discrepancyExplanation = `⚠️ 显著差异：预测 ${tStage}${nStage} vs 实际 pT${pT}N${pN}。`;
+        
+        // 分析差异原因
+        if (actualTNum > predictedTNum) {
+          discrepancyExplanation += ' 模型低估了浸润深度，可能原因：(1) 超声图像未充分显示深层浸润；(2) 免疫组化指标未能反映真实侵袭性。';
+        } else if (actualTNum < predictedTNum) {
+          discrepancyExplanation += ' 模型高估了浸润深度，可能原因：免疫组化指标偏高但肿瘤实际体积较小。';
+        }
+        if (actualNNum > predictedNNum) {
+          discrepancyExplanation += ' 模型低估了淋巴结转移，建议重点关注 FoxP3/Lauren 分型等高危因素。';
+        }
+      }
+      
+      validation = {
+        groundTruth,
+        tMatch,
+        nMatch,
+        discrepancy,
+        discrepancyExplanation
+      };
+    }
+  }
 
   return {
     tStage,
@@ -93,6 +278,13 @@ export function calculateDiagnosis(state: ConceptState): DiagnosisResult {
       isT4,
       hasMetastasis,
       highRisk
+    },
+    validation,
+    reasoning: {
+      tStageFactors,
+      nStageFactors,
+      limitations,
+      clinicalSuggestions
     }
   };
 }
@@ -123,72 +315,164 @@ export function generateNarrativeReport(
   patient: Patient | null, 
   language: 'zh' | 'en'
 ): string[] {
-  const { tStage, nStage, confidence, flags } = diagnosis;
+  const { tStage, nStage, confidence, flags, validation, reasoning } = diagnosis;
   const lines: string[] = [];
   const timeStr = new Date().toISOString().split('T')[1].substring(0, 8);
+  const dateStr = new Date().toLocaleDateString(language === 'zh' ? 'zh-CN' : 'en-US');
   const clin = patient?.clinical;
 
   const descriptions = getFeatureDescriptions(state, language);
 
-  if (language === 'en') {
-    lines.push(`PATIENT ID: ${patient?.id_short ?? 'N/A'}`);
-    if (clin) {
-        lines.push(`DEMOGRAPHICS: ${clin.sex}, ${clin.age}y | Loc: ${clin.location}`);
-    }
-    lines.push(`ACQUIRED : ${timeStr} UTC`);
-    lines.push(`----------------------------------------`);
-    lines.push(`• Ki-67: ${descriptions.ki67}`);
-    lines.push(`• CPS: ${descriptions.cps}`);
-    lines.push(`• PD-1: ${descriptions.pd1}`);
-    lines.push(`• FoxP3: ${descriptions.foxp3}`);
-    if (state.vascularInvasion) lines.push(`• Vascular Invasion detected.`);
-    if (state.neuralInvasion) lines.push(`• Neural Invasion detected.`);
+  if (language === 'zh') {
+    // ==================== 报告头 ====================
+    lines.push(`╔══════════════════════════════════════════════════════════════╗`);
+    lines.push(`║           胃癌 T/N 分期 AI 辅助诊断报告                       ║`);
+    lines.push(`╚══════════════════════════════════════════════════════════════╝`);
     lines.push(``);
-    lines.push(`T-Stage Assessment: ${tStage} (${confidence.t}% confidence)`);
-    lines.push(`N-Stage Assessment: ${nStage} (${confidence.n}% confidence)`);
     
-    if (flags.highRisk || flags.hasMetastasis) {
-      lines.push(`High-risk flags: consider neoadjuvant protocol.`);
-    } else {
-      lines.push(`Current signal leans toward localized disease.`);
+    // ==================== 患者信息 ====================
+    lines.push(`【患者信息】`);
+    lines.push(`  病例号: ${patient?.id_short ?? '未知'}`);
+    if (clin) {
+      lines.push(`  性  别: ${clin.sex === 'Male' ? '男' : '女'}    年龄: ${clin.age}岁`);
+      lines.push(`  部  位: ${clin.location || '未记录'}`);
+      if (clin.tumorSize?.length || clin.tumorSize?.thickness) {
+        lines.push(`  肿瘤大小: ${clin.tumorSize.length ?? '?'} × ${clin.tumorSize.thickness ?? '?'} cm`);
+      }
     }
-    lines.push(`>>> FINAL ASSESSMENT: ${tStage}${nStage} (${confidence.overall}% confidence)`);
+    lines.push(`  报告时间: ${dateStr} ${timeStr}`);
+    lines.push(``);
+
+    // ==================== AI 预测结果 ====================
+    lines.push(`【AI 预测结果】`);
+    lines.push(`  ┌─────────────────────────────────────────────────────────┐`);
+    lines.push(`  │  预测分期: ${tStage}${nStage}                                          │`);
+    lines.push(`  │  置信度: T分期 ${confidence.t}% | N分期 ${confidence.n}% | 综合 ${confidence.overall}%  │`);
+    lines.push(`  │  风险等级: ${flags.highRisk ? '⚠️ 高危' : '✓ 低危'}                                    │`);
+    lines.push(`  └─────────────────────────────────────────────────────────┘`);
+    lines.push(``);
+
+    // ==================== 与病理金标准对比 ====================
+    if (validation) {
+      lines.push(`【病理金标准对比】`);
+      lines.push(`  术后病理: p${validation.groundTruth?.t}${validation.groundTruth?.n}${validation.groundTruth?.m} (Stage ${validation.groundTruth?.stage})`);
+      lines.push(`  AI 预测: ${tStage}${nStage}`);
+      
+      if (validation.discrepancy === 'none') {
+        lines.push(`  ✓ 预测与病理一致`);
+      } else if (validation.discrepancy === 'minor') {
+        lines.push(`  △ 轻微差异 (临床可接受)`);
+        lines.push(`    ${validation.discrepancyExplanation}`);
+      } else {
+        lines.push(`  ⚠️ 显著差异 - 需关注`);
+        lines.push(`    ${validation.discrepancyExplanation}`);
+      }
+      lines.push(``);
+    }
+
+    // ==================== 推理依据 ====================
+    lines.push(`【T 分期推理依据】`);
+    reasoning.tStageFactors.forEach(f => {
+      const icon = f.impact === 'negative' ? '↑' : f.impact === 'positive' ? '↓' : '→';
+      lines.push(`  ${icon} ${f.factor}`);
+      lines.push(`    └─ ${f.contribution}`);
+    });
+    lines.push(``);
+
+    lines.push(`【N 分期推理依据】`);
+    reasoning.nStageFactors.forEach(f => {
+      const icon = f.impact === 'negative' ? '↑' : f.impact === 'positive' ? '↓' : '→';
+      lines.push(`  ${icon} ${f.factor}`);
+      lines.push(`    └─ ${f.contribution}`);
+    });
+    lines.push(``);
+
+    // ==================== 免疫组化特征 ====================
+    lines.push(`【免疫组化特征分析】`);
+    lines.push(`  • Ki-67: ${descriptions.ki67}`);
+    lines.push(`  • CPS:   ${descriptions.cps}`);
+    lines.push(`  • PD-1:  ${descriptions.pd1}`);
+    lines.push(`  • FoxP3: ${descriptions.foxp3}`);
+    if (state.vascularInvasion) lines.push(`  • 脉管侵犯: 阳性 (LVI+) ⚠️`);
+    if (state.neuralInvasion) lines.push(`  • 神经侵犯: 阳性 (PNI+) ⚠️`);
+    lines.push(``);
+
+    // ==================== 临床建议 ====================
+    lines.push(`【临床建议】`);
+    reasoning.clinicalSuggestions.forEach((s, i) => {
+      lines.push(`  ${i + 1}. ${s}`);
+    });
+    lines.push(``);
+
+    // ==================== 模型局限性 ====================
+    lines.push(`【模型局限性说明】`);
+    reasoning.limitations.forEach(l => {
+      lines.push(`  • ${l}`);
+    });
+    lines.push(``);
+
+    // ==================== 免责声明 ====================
+    lines.push(`────────────────────────────────────────────────────────────────`);
+    lines.push(`⚕️ 本报告由 AI 辅助生成，仅供临床参考，不能替代医生诊断。`);
+    lines.push(`   最终诊断请结合病理、影像及临床综合判断。`);
+    lines.push(`────────────────────────────────────────────────────────────────`);
+
   } else {
-    lines.push(`病人ID: ${patient?.id_short ?? '未知'}`);
-    if (clin) {
-        lines.push(`基本信息: ${clin.sex === 'Male' ? '男' : '女'}, ${clin.age}岁 | 部位: ${clin.location}`);
-    }
-    lines.push(`采集时间: ${timeStr} UTC`);
-    lines.push(`----------------------------------------`);
-    lines.push(`• Ki-67：${descriptions.ki67}`);
-    lines.push(`• CPS：${descriptions.cps}`);
-    lines.push(`• PD-1：${descriptions.pd1}`);
-    lines.push(`• FoxP3：${descriptions.foxp3}`);
-    if (state.vascularInvasion) lines.push(`• 存在脉管侵犯 (LVI)`);
-    if (state.neuralInvasion) lines.push(`• 存在神经侵犯 (PNI)`);
+    // English version
+    lines.push(`╔══════════════════════════════════════════════════════════════╗`);
+    lines.push(`║      Gastric Cancer T/N Staging AI Diagnostic Report         ║`);
+    lines.push(`╚══════════════════════════════════════════════════════════════╝`);
     lines.push(``);
-    lines.push(`T分期评估：${tStage}（置信度 ${confidence.t}%）`);
-    lines.push(`N分期评估：${nStage}（置信度 ${confidence.n}%）`);
-    if (flags.hasMetastasis) {
-      lines.push(`[!] 检测到淋巴结转移风险。风险等级：${nStage === 'N3' ? '高危' : nStage === 'N2' ? '中危' : '低危'}`);
-    } else {
-      lines.push(`[✓] 未发现显著淋巴结转移特征（N0）。`);
-    }
-    lines.push(``);
+    
+    lines.push(`[PATIENT INFORMATION]`);
+    lines.push(`  Case ID: ${patient?.id_short ?? 'N/A'}`);
     if (clin) {
-        lines.push(`临床相关性分析:`);
-        lines.push(`病理提示${clin.pathology.differentiation}腺癌 (${clin.pathology.lauren})。`);
-        lines.push(`术后病理金标准: pT${clin.pathology.pT} pN${clin.pathology.pN} pM${clin.pathology.pM} (Stage ${clin.pathology.pStage})`);
-        lines.push(``);
+      lines.push(`  Sex: ${clin.sex}    Age: ${clin.age}y`);
+      lines.push(`  Location: ${clin.location || 'Not recorded'}`);
     }
-    lines.push(`模型综合推断分期 ${tStage}${nStage}，综合置信度 ${confidence.overall}%。`);
-    if (flags.highRisk || flags.hasMetastasis) {
-      lines.push(`高危提示：建议补充增强CT，并尽快评估是否进入新辅助方案。`);
-    } else {
-      lines.push(`倾向局限病灶，建议密切随访。`);
+    lines.push(`  Report Time: ${dateStr} ${timeStr}`);
+    lines.push(``);
+
+    lines.push(`[AI PREDICTION]`);
+    lines.push(`  Predicted Stage: ${tStage}${nStage}`);
+    lines.push(`  Confidence: T ${confidence.t}% | N ${confidence.n}% | Overall ${confidence.overall}%`);
+    lines.push(`  Risk Level: ${flags.highRisk ? '⚠️ HIGH RISK' : '✓ LOW RISK'}`);
+    lines.push(``);
+
+    if (validation) {
+      lines.push(`[PATHOLOGY COMPARISON]`);
+      lines.push(`  Ground Truth: p${validation.groundTruth?.t}${validation.groundTruth?.n}${validation.groundTruth?.m}`);
+      lines.push(`  AI Prediction: ${tStage}${nStage}`);
+      lines.push(`  ${validation.discrepancy === 'none' ? '✓ Match' : validation.discrepancy === 'minor' ? '△ Minor discrepancy' : '⚠️ Major discrepancy'}`);
+      if (validation.discrepancyExplanation) {
+        lines.push(`  Note: ${validation.discrepancyExplanation}`);
+      }
+      lines.push(``);
     }
-    lines.push(`>>> 综合诊断结论：${tStage}${nStage}（置信度 ${confidence.overall}%）`);
+
+    lines.push(`[REASONING FACTORS]`);
+    lines.push(`T-Stage:`);
+    reasoning.tStageFactors.forEach(f => {
+      lines.push(`  • ${f.factor}: ${f.contribution}`);
+    });
+    lines.push(`N-Stage:`);
+    reasoning.nStageFactors.forEach(f => {
+      lines.push(`  • ${f.factor}: ${f.contribution}`);
+    });
+    lines.push(``);
+
+    lines.push(`[CLINICAL RECOMMENDATIONS]`);
+    reasoning.clinicalSuggestions.forEach((s, i) => {
+      lines.push(`  ${i + 1}. ${s}`);
+    });
+    lines.push(``);
+
+    lines.push(`────────────────────────────────────────────────────────────────`);
+    lines.push(`⚕️ AI-assisted report for reference only. Final diagnosis`);
+    lines.push(`   requires clinical, pathological, and imaging correlation.`);
+    lines.push(`────────────────────────────────────────────────────────────────`);
   }
+
   return lines;
 }
 

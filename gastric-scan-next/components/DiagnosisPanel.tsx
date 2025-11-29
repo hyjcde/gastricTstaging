@@ -4,7 +4,7 @@ import React from 'react';
 import { useSettings } from '@/contexts/SettingsContext';
 import { calculateDiagnosis, generateNarrativeReport, generateSummaryPoints, getFeatureDescriptions } from '@/lib/diagnosis';
 import { ConceptState, Patient } from '@/types';
-import { Activity, AlignLeft, BarChart2, FileText, Maximize2, Ruler, Tag, Terminal, User, X, Download, FileDown } from 'lucide-react';
+import { Activity, AlignLeft, BarChart2, ChevronDown, FileText, Maximize2, Ruler, Tag, Terminal, User, X, Download, FileDown } from 'lucide-react';
 import React, { useEffect, useMemo, useState } from 'react';
 import { exportReportToPDF, exportSinglePatientToCSV } from '@/lib/export-utils';
 import toast from 'react-hot-toast';
@@ -27,8 +27,8 @@ export const DiagnosisPanel: React.FC<DiagnosisPanelProps> = React.memo(({ state
     onExpandedChange?.(newExpanded);
   };
 
-  const diagnosis = useMemo(() => calculateDiagnosis(state), [state]);
-  const { tStage, nStage, probabilities, confidence, scores, flags } = diagnosis;
+  const diagnosis = useMemo(() => calculateDiagnosis(state, patient), [state, patient]);
+  const { tStage, nStage, probabilities, confidence, scores, flags, validation, reasoning } = diagnosis;
   
   const descriptions = useMemo(() => getFeatureDescriptions(state, language as 'zh' | 'en'), [state, language]);
 
@@ -489,24 +489,117 @@ export const DiagnosisPanel: React.FC<DiagnosisPanelProps> = React.memo(({ state
                 </div>
                 </div>
 
-                {/* Prediction Header */}
-                <div className="shrink-0 p-4 border-b border-neutral-800 bg-neutral-900/50 flex flex-col items-center justify-center relative overflow-hidden">
-                  <div className={`absolute top-0 left-0 w-full h-1 ${flags.isT4 || flags.hasMetastasis ? 'bg-red-500' : 'bg-emerald-500'} shadow-[0_0_15px_currentColor]`}></div>
+                {/* Prediction Header with Pathology Comparison */}
+                <div className="shrink-0 p-3 border-b border-neutral-800 bg-neutral-900/50 relative overflow-hidden">
+                  <div className={`absolute top-0 left-0 w-full h-1 ${
+                    validation?.discrepancy === 'major' ? 'bg-red-500 animate-pulse' : 
+                    flags.isT4 || flags.hasMetastasis ? 'bg-amber-500' : 'bg-emerald-500'
+                  } shadow-[0_0_15px_currentColor]`}></div>
                         
-                        <div className="flex items-center justify-between w-full px-2">
-                            {/* Left: Text Prediction */}
-                            <div className="flex flex-col items-center">
-                                <div className="text-[9px] font-mono uppercase text-gray-500 mb-1">{t.diagnosis.predicted}</div>
-                                <div className={`text-3xl font-black tracking-tighter mb-1 ${flags.isT4 || flags.hasMetastasis ? 'text-red-500' : 'text-emerald-400'}`}>
-                                    {tStage}{nStage}
-                                </div>
-                                <div className="text-[8px] font-mono text-gray-500">CONF: {confidence.overall}%</div>
-                            </div>
+                  <div className="flex items-center justify-between w-full">
+                    {/* Left: AI Prediction */}
+                    <div className="flex flex-col items-center flex-1">
+                      <div className="text-[8px] font-mono uppercase text-gray-500 mb-0.5">AI {t.diagnosis.predicted}</div>
+                      <div className={`text-2xl font-black tracking-tighter ${flags.isT4 || flags.hasMetastasis ? 'text-amber-400' : 'text-emerald-400'}`}>
+                        {tStage}{nStage}
+                      </div>
+                      <div className="text-[8px] font-mono text-gray-500">{confidence.overall}%</div>
+                    </div>
 
-                            {/* Right: Gauge */}
-                            {renderRiskGauge(Math.floor((scores.t + scores.n)/2))}
+                    {/* Middle: Comparison Arrow */}
+                    {validation && (
+                      <div className="flex flex-col items-center px-2">
+                        <div className={`text-lg ${
+                          validation.discrepancy === 'none' ? 'text-emerald-400' : 
+                          validation.discrepancy === 'minor' ? 'text-yellow-400' : 'text-red-400'
+                        }`}>
+                          {validation.discrepancy === 'none' ? '=' : validation.discrepancy === 'minor' ? '≈' : '≠'}
                         </div>
+                        <div className={`text-[7px] font-bold uppercase ${
+                          validation.discrepancy === 'none' ? 'text-emerald-500' : 
+                          validation.discrepancy === 'minor' ? 'text-yellow-500' : 'text-red-500'
+                        }`}>
+                          {validation.discrepancy === 'none' ? 'MATCH' : validation.discrepancy === 'minor' ? 'CLOSE' : 'DIFF'}
+                        </div>
+                      </div>
+                    )}
+
+                    {/* Right: Ground Truth */}
+                    {validation?.groundTruth && (
+                      <div className="flex flex-col items-center flex-1">
+                        <div className="text-[8px] font-mono uppercase text-gray-500 mb-0.5">{language === 'zh' ? '病理金标准' : 'PATHOLOGY'}</div>
+                        <div className="text-2xl font-black tracking-tighter text-blue-400">
+                          p{validation.groundTruth.t}{validation.groundTruth.n}
+                        </div>
+                        <div className="text-[8px] font-mono text-gray-500">Stage {validation.groundTruth.stage}</div>
+                      </div>
+                    )}
+
+                    {/* Gauge (smaller) */}
+                    <div className="ml-2 scale-75 origin-right">
+                      {renderRiskGauge(Math.floor((scores.t + scores.n)/2))}
+                    </div>
+                  </div>
+
+                  {/* Discrepancy Warning */}
+                  {validation?.discrepancy === 'major' && (
+                    <div className="mt-2 p-2 bg-red-500/10 border border-red-500/30 rounded-lg">
+                      <div className="text-[9px] text-red-400 font-medium leading-relaxed">
+                        ⚠️ {language === 'zh' ? '预测与病理存在显著差异，请结合临床综合判断' : 'Significant discrepancy detected. Please correlate clinically.'}
+                      </div>
+                    </div>
+                  )}
                 </div>
+
+                {/* Reasoning Factors (Collapsible) */}
+                {reasoning && (
+                  <div className="shrink-0 border-b border-neutral-800 bg-neutral-900/30">
+                    <details className="group">
+                      <summary className="px-3 py-2 cursor-pointer flex items-center justify-between text-[10px] font-bold text-gray-400 uppercase tracking-wider hover:bg-white/5">
+                        <span className="flex items-center gap-1.5">
+                          <Activity size={10} />
+                          {language === 'zh' ? '推理依据' : 'Reasoning'}
+                        </span>
+                        <ChevronDown size={12} className="group-open:rotate-180 transition-transform" />
+                      </summary>
+                      <div className="px-3 pb-3 space-y-2">
+                        {/* T-Stage Factors */}
+                        <div className="text-[9px]">
+                          <div className="text-gray-500 mb-1">T分期因素:</div>
+                          {reasoning.tStageFactors.slice(0, 3).map((f, i) => (
+                            <div key={i} className={`flex items-start gap-1 py-0.5 ${
+                              f.impact === 'negative' ? 'text-red-400' : 
+                              f.impact === 'positive' ? 'text-emerald-400' : 'text-gray-400'
+                            }`}>
+                              <span>{f.impact === 'negative' ? '↑' : f.impact === 'positive' ? '↓' : '→'}</span>
+                              <span>{f.factor}</span>
+                            </div>
+                          ))}
+                        </div>
+                        {/* N-Stage Factors */}
+                        <div className="text-[9px]">
+                          <div className="text-gray-500 mb-1">N分期因素:</div>
+                          {reasoning.nStageFactors.slice(0, 3).map((f, i) => (
+                            <div key={i} className={`flex items-start gap-1 py-0.5 ${
+                              f.impact === 'negative' ? 'text-red-400' : 
+                              f.impact === 'positive' ? 'text-emerald-400' : 'text-gray-400'
+                            }`}>
+                              <span>{f.impact === 'negative' ? '↑' : f.impact === 'positive' ? '↓' : '→'}</span>
+                              <span>{f.factor}</span>
+                            </div>
+                          ))}
+                        </div>
+                        {/* Clinical Suggestions */}
+                        <div className="text-[9px] mt-2 pt-2 border-t border-neutral-800">
+                          <div className="text-blue-400 mb-1">{language === 'zh' ? '临床建议:' : 'Suggestions:'}</div>
+                          {reasoning.clinicalSuggestions.map((s, i) => (
+                            <div key={i} className="text-gray-400 py-0.5">• {s}</div>
+                          ))}
+                        </div>
+                      </div>
+                    </details>
+                  </div>
+                )}
 
                 {/* Terminal */}
                 <div className="flex-1 bg-black p-3 font-mono text-[10px] leading-relaxed text-gray-400 overflow-y-auto min-h-0 relative group custom-scrollbar" onClick={toggleExpanded}>
