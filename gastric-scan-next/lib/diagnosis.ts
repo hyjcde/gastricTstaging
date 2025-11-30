@@ -99,7 +99,7 @@ export function calculateDiagnosis(state: ConceptState, patient?: Patient | null
   }
 
   const diffVal = state.differentiation || 2;
-  const differentiationPenalty = (diffVal - 1) * 8;
+  const differentiationPenalty = (diffVal - 1) * 8; 
   const diffLabels = ['高分化', '中分化', '中-低分化', '低分化', '未知'];
   if (diffVal >= 3) {
     tStageFactors.push({ 
@@ -138,7 +138,7 @@ export function calculateDiagnosis(state: ConceptState, patient?: Patient | null
     });
   }
 
-  const microEnvScore = (state.c6 > state.c7) ? 20 : 0;
+  const microEnvScore = (state.c6 > state.c7) ? 20 : 0; 
   if (state.c6 > state.c7) {
     nStageFactors.push({ 
       factor: 'CD4/CD8 比值倒置', 
@@ -477,7 +477,7 @@ export function generateNarrativeReport(
       } else if (validation.discrepancy === 'minor') {
         lines.push(`  △ 轻微差异 (临床可接受)`);
         lines.push(`    ${validation.discrepancyExplanation}`);
-      } else {
+    } else {
         lines.push(`  ⚠️ 显著差异 - 需关注`);
         lines.push(`    ${validation.discrepancyExplanation}`);
       }
@@ -561,7 +561,7 @@ export function generateNarrativeReport(
       if (validation.discrepancyExplanation) {
         lines.push(`  Note: ${validation.discrepancyExplanation}`);
       }
-      lines.push(``);
+        lines.push(``);
     }
 
     lines.push(`[REASONING FACTORS]`);

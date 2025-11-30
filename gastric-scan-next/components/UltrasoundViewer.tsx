@@ -940,24 +940,24 @@ export const UltrasoundViewer: React.FC<UltrasoundViewerProps> = ({ patient, sib
           
           {/* View Mode Group */}
           <div className="bg-black/70 backdrop-blur-md border border-white/10 rounded-lg px-1 py-0.5 flex items-center gap-0.5">
-            <button
-              onClick={() => setMode('original')}
+          <button
+            onClick={() => setMode('original')}
               className={`p-1.5 rounded-md transition-all ${
                 mode === 'original' ? 'bg-white/20 text-white' : 'text-gray-500 hover:text-white hover:bg-white/10'
-              }`}
+            }`}
               title={t.viewer.source}
-            >
+          >
               <Eye size={14} />
-            </button>
-            <button
-              onClick={() => setMode('overlay')}
+          </button>
+          <button
+            onClick={() => setMode('overlay')}
               className={`p-1.5 rounded-md transition-all ${
                 mode === 'overlay' ? 'bg-amber-500/30 text-amber-400' : 'text-gray-500 hover:text-white hover:bg-white/10'
-              }`}
+            }`}
               title={t.viewer.seg}
-            >
+          >
               <Layers size={14} />
-            </button>
+          </button>
             <button
               onClick={() => setMode('split')}
               className={`p-1.5 rounded-md transition-all ${
@@ -999,39 +999,39 @@ export const UltrasoundViewer: React.FC<UltrasoundViewerProps> = ({ patient, sib
 
           {/* Overlay & ROI Group */}
           <div className="bg-black/70 backdrop-blur-md border border-white/10 rounded-lg px-1 py-0.5 flex items-center gap-0.5">
-            <button
-              onClick={() => annotationBbox && setShowDetectionBox(prev => !prev)}
-              disabled={!annotationBbox}
+          <button
+            onClick={() => annotationBbox && setShowDetectionBox(prev => !prev)}
+            disabled={!annotationBbox}
               className={`p-1.5 rounded-md transition-all ${
                 !annotationBbox ? 'opacity-30 cursor-not-allowed text-gray-600' :
                 showDetectionBox ? 'bg-emerald-500/30 text-emerald-400' : 'text-gray-500 hover:text-white hover:bg-white/10'
               }`}
               title={t.viewer.detect}
-            >
+          >
               <Scan size={14} />
-            </button>
-            <button
+          </button>
+          <button
               onClick={() => setShowRing(prev => !prev)}
               disabled={!patient.json_url}
               className={`p-1.5 rounded-md transition-all ${
                 !patient.json_url ? 'opacity-30 cursor-not-allowed text-gray-600' :
                 showRing ? 'bg-orange-500/30 text-orange-400' : 'text-gray-500 hover:text-white hover:bg-white/10'
-              }`}
+            }`}
               title={language === 'zh' ? '瘤周环' : 'Peritumoral'}
-            >
+          >
               <CircleDashed size={14} />
-            </button>
-            <button
+          </button>
+          <button
               onClick={toggleZoomToROI}
               disabled={!annotationBbox}
               className={`p-1.5 rounded-md transition-all ${
                 !annotationBbox ? 'opacity-30 cursor-not-allowed text-gray-600' :
                 zoomToROI ? 'bg-cyan-500/30 text-cyan-400' : 'text-gray-500 hover:text-white hover:bg-white/10'
-              }`}
+            }`}
               title="ROI Zoom"
             >
               {zoomToROI ? <Minimize2 size={14} /> : <ZoomIn size={14} />}
-            </button>
+          </button>
           </div>
 
           {/* Tools Group */}
@@ -1045,19 +1045,19 @@ export const UltrasoundViewer: React.FC<UltrasoundViewerProps> = ({ patient, sib
             >
               <Ruler size={14} />
             </button>
-            <button 
-              onClick={() => setShowControls(!showControls)}
+          <button 
+            onClick={() => setShowControls(!showControls)}
               className={`p-1.5 rounded-md transition-all ${
                 showControls ? 'bg-blue-500/30 text-blue-400' : 'text-gray-500 hover:text-white hover:bg-white/10'
               }`}
               title={language === 'zh' ? '调节' : 'Adjust'}
-            >
-              <Settings2 size={14} />
-            </button>
+          >
+             <Settings2 size={14} />
+          </button>
           </div>
-
+          
           {/* Analysis Button - Highlighted */}
-          <button
+          <button 
             onClick={() => setShowExplainableAnalysis(true)}
             disabled={!patient.json_url}
             className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-all flex items-center gap-1.5 ${
@@ -1076,7 +1076,7 @@ export const UltrasoundViewer: React.FC<UltrasoundViewerProps> = ({ patient, sib
             className="p-1.5 bg-black/70 backdrop-blur-md border border-white/10 rounded-lg text-gray-500 hover:text-white hover:bg-white/10 transition-all"
             title={language === 'zh' ? '全屏' : 'Fullscreen'}
           >
-            <Maximize2 size={14} />
+             <Maximize2 size={14} />
           </button>
         </div>
       </div>

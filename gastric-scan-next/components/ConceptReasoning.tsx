@@ -36,9 +36,9 @@ export const ConceptReasoning: React.FC<ConceptReasoningProps> = React.memo(({ s
     const isDanger = val > config.thresholds.danger;
 
     return (
-      <div className="group py-2 px-2 rounded-lg hover:bg-white/5 transition-colors">
+      <div className="group py-2.5 px-2 rounded-lg hover:bg-white/5 transition-colors">
         <div className="flex justify-between items-center mb-2">
-          <span className="text-[11px] font-bold text-gray-300 group-hover:text-white transition-colors uppercase tracking-tight">
+          <span className="text-xs font-bold text-gray-300 group-hover:text-white transition-colors uppercase tracking-tight">
             {config.label[language as 'zh' | 'en']}
           </span>
           <div className="flex items-center gap-2">
@@ -46,13 +46,13 @@ export const ConceptReasoning: React.FC<ConceptReasoningProps> = React.memo(({ s
             <div className="flex items-center gap-0.5 opacity-0 group-hover:opacity-100 transition-opacity">
               <button 
                 onClick={() => quickAdjust(key, -10)}
-                className="w-5 h-5 flex items-center justify-center text-gray-500 hover:text-white hover:bg-white/10 rounded text-xs"
+                className="w-6 h-6 flex items-center justify-center text-gray-500 hover:text-white hover:bg-white/10 rounded text-sm font-bold"
               >
                 -
               </button>
               <button 
                 onClick={() => quickAdjust(key, 10)}
-                className="w-5 h-5 flex items-center justify-center text-gray-500 hover:text-white hover:bg-white/10 rounded text-xs"
+                className="w-6 h-6 flex items-center justify-center text-gray-500 hover:text-white hover:bg-white/10 rounded text-sm font-bold"
               >
                 +
               </button>
@@ -63,7 +63,7 @@ export const ConceptReasoning: React.FC<ConceptReasoningProps> = React.memo(({ s
             }`}>
               {val}
             </span>
-            <span className="text-[10px] text-gray-600">%</span>
+            <span className="text-xs text-gray-600">%</span>
           </div>
         </div>
         
@@ -181,17 +181,17 @@ export const ConceptReasoning: React.FC<ConceptReasoningProps> = React.memo(({ s
   return (
     <div className="flex flex-col h-full w-full bg-panel-bg">
       {/* Header */}
-      <div className="h-10 shrink-0 border-b border-white/5 flex items-center justify-between px-4 bg-panel-bg">
-        <span className="flex items-center gap-2 text-[11px] font-bold text-gray-300 uppercase tracking-widest">
-          <Sliders size={12} className="text-blue-500" /> 
+      <div className="h-11 shrink-0 border-b border-white/5 flex items-center justify-between px-4 bg-panel-bg">
+        <span className="flex items-center gap-2 text-xs font-bold text-gray-300 uppercase tracking-widest">
+          <Sliders size={14} className="text-blue-500" /> 
           {language === 'zh' ? '病理特征' : 'Pathology Features'}
         </span>
         <button 
           onClick={onReset} 
-          className="flex items-center gap-1 text-[10px] text-gray-600 hover:text-white transition-colors px-2 py-1 rounded hover:bg-white/10"
+          className="flex items-center gap-1.5 text-xs text-gray-600 hover:text-white transition-colors px-2.5 py-1.5 rounded hover:bg-white/10"
           title="Reset"
         >
-          <RotateCcw size={10} />
+          <RotateCcw size={12} />
           <span className="hidden sm:inline">{language === 'zh' ? '重置' : 'Reset'}</span>
         </button>
       </div>
@@ -217,8 +217,8 @@ export const ConceptReasoning: React.FC<ConceptReasoningProps> = React.memo(({ s
 
         {/* IHC Markers - 主要指标 */}
         <div className="p-2">
-          <div className="flex items-center gap-1.5 px-2 mb-1 text-[10px] font-bold text-blue-400/80 uppercase tracking-wider">
-            <Activity size={10} />
+          <div className="flex items-center gap-1.5 px-2 mb-2 text-xs font-bold text-blue-400/80 uppercase tracking-wider">
+            <Activity size={12} />
             {language === 'zh' ? '免疫组化' : 'IHC Markers'}
           </div>
           {renderSlider('c1')}
@@ -231,13 +231,13 @@ export const ConceptReasoning: React.FC<ConceptReasoningProps> = React.memo(({ s
         <div className="border-t border-white/5">
           <button 
             onClick={() => setShowTME(!showTME)}
-            className="w-full flex items-center justify-between px-4 py-2 text-[10px] font-bold text-emerald-400/80 uppercase tracking-wider hover:bg-white/5 transition-colors"
+            className="w-full flex items-center justify-between px-4 py-2.5 text-xs font-bold text-emerald-400/80 uppercase tracking-wider hover:bg-white/5 transition-colors"
           >
             <div className="flex items-center gap-1.5">
-              <Activity size={10} />
+              <Activity size={12} />
               {language === 'zh' ? '免疫微环境 (TME)' : 'TME Status'}
             </div>
-            {showTME ? <ChevronUp size={12} /> : <ChevronDown size={12} />}
+            {showTME ? <ChevronUp size={14} /> : <ChevronDown size={14} />}
           </button>
           {showTME && (
             <div className="p-2 pt-0 animate-in slide-in-from-top-2 duration-200">
@@ -250,8 +250,8 @@ export const ConceptReasoning: React.FC<ConceptReasoningProps> = React.memo(({ s
 
         {/* Pathology Type & Invasion */}
         <div className="p-2 border-t border-white/5">
-          <div className="flex items-center gap-1.5 px-2 mb-1 text-[10px] font-bold text-purple-400/80 uppercase tracking-wider">
-            <ShieldAlert size={10} />
+          <div className="flex items-center gap-1.5 px-2 mb-2 text-xs font-bold text-purple-400/80 uppercase tracking-wider">
+            <ShieldAlert size={12} />
             {language === 'zh' ? '病理分型' : 'Pathology'}
           </div>
           

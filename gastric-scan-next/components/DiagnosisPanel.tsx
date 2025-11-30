@@ -167,12 +167,12 @@ export const DiagnosisPanel: React.FC<DiagnosisPanelProps> = React.memo(({ state
   }, [patient, state, language, diagnosis, t]);
 
   const renderBar = (label: string, prob: number, color: string) => (
-    <div className="flex items-center gap-2 text-[10px] font-mono mb-1.5">
-        <span className="w-8 text-gray-500 text-right">{label}</span>
-        <div className="flex-1 h-1.5 bg-[#222] rounded-full overflow-hidden">
+    <div className="flex items-center gap-2 text-xs font-mono mb-2">
+        <span className="w-10 text-gray-500 text-right font-medium">{label}</span>
+        <div className="flex-1 h-2 bg-[#222] rounded-full overflow-hidden">
             <div className={`h-full ${color} transition-all duration-500`} style={{ width: `${prob}%` }}></div>
         </div>
-        <span className="w-6 text-gray-400 text-right">{Math.floor(prob)}%</span>
+        <span className="w-8 text-gray-400 text-right">{Math.floor(prob)}%</span>
     </div>
   );
 
@@ -465,8 +465,8 @@ export const DiagnosisPanel: React.FC<DiagnosisPanelProps> = React.memo(({ state
                 {/* Column 1: T-Stage */}
                 <div>
                     <div className="flex items-center gap-2 mb-2">
-                        <BarChart2 size={10} className="text-blue-400" />
-                        <span className="text-[9px] font-bold text-gray-500 uppercase tracking-wider">T-Stage</span>
+                        <BarChart2 size={12} className="text-blue-400" />
+                        <span className="text-xs font-bold text-gray-500 uppercase tracking-wider">T-Stage</span>
                     </div>
                     {renderBar('T4', probabilities.t4, 'bg-red-500')}
                     {renderBar('T3', probabilities.t3, 'bg-amber-500')}
@@ -476,8 +476,8 @@ export const DiagnosisPanel: React.FC<DiagnosisPanelProps> = React.memo(({ state
                 {/* Column 2: N-Stage */}
                 <div>
                     <div className="flex items-center gap-2 mb-2">
-                        <BarChart2 size={10} className="text-purple-400" />
-                        <span className="text-[9px] font-bold text-gray-500 uppercase tracking-wider">N-Stage</span>
+                        <BarChart2 size={12} className="text-purple-400" />
+                        <span className="text-xs font-bold text-gray-500 uppercase tracking-wider">N-Stage</span>
                     </div>
                     {renderBar('N0', probabilities.n0, 'bg-emerald-500')}
                     {renderBar('N1', probabilities.n1, 'bg-yellow-500')}
@@ -497,13 +497,13 @@ export const DiagnosisPanel: React.FC<DiagnosisPanelProps> = React.memo(({ state
                   <div className="flex items-center justify-between w-full">
                     {/* Left: AI Prediction - 临床分期 */}
                     <div className="flex flex-col items-center flex-1">
-                      <div className="text-[8px] font-mono uppercase text-gray-500 mb-0.5">
+                      <div className="text-[10px] font-mono uppercase text-gray-500 mb-0.5">
                         {language === 'zh' ? '临床分期预测' : 'Clinical Stage'}
                       </div>
-                      <div className={`text-2xl font-black tracking-tighter ${flags.isT4 || flags.hasMetastasis ? 'text-amber-400' : 'text-emerald-400'}`}>
+                      <div className={`text-3xl font-black tracking-tighter ${flags.isT4 || flags.hasMetastasis ? 'text-amber-400' : 'text-emerald-400'}`}>
                         c{tStage}{nStage}
                       </div>
-                      <div className="text-[8px] font-mono text-gray-500">
+                      <div className="text-[10px] font-mono text-gray-500">
                         {language === 'zh' ? '置信度' : 'Confidence'}: {confidence.overall}%
                       </div>
                     </div>
